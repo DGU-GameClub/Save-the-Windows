@@ -25,9 +25,11 @@ public class TowerUnit : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (EnemyOfRange.Count == 0) { return; }
+        GameObject AttackEnemy = FindDistanceObj();
+
     }
     //타워 공격 범위에 들어왔을때, 적이라면 공격대상에 추가.
     private void OnTriggerEnter(Collider other)
@@ -46,5 +48,19 @@ public class TowerUnit : MonoBehaviour
                 break;
             }
         }
+    }
+    //공격대상에 있는 적중 가장 가까운 적을 타겟팅.
+    private GameObject FindDistanceObj() {
+        if (EnemyOfRange.Count == 0) { return null; }
+        GameObject Enemy = EnemyOfRange[0];
+        float Mindis = 100f;
+        foreach (GameObject obj in EnemyOfRange) {
+            float dis = (gameObject.transform.position - obj.transform.position).sqrMagnitude;
+            if (Mindis > dis) {
+                Enemy = obj;
+                Mindis = dis;
+            }
+        }
+        return Enemy;
     }
 }
