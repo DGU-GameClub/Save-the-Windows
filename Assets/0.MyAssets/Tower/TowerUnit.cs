@@ -17,18 +17,23 @@ public class TowerUnit : MonoBehaviour
     
     private int TowerLevel = 1;     //현재 타워 레벨
 
-    private List<GameObject> EnemyOfRange = new();  //콜라이더 안에 들어온 Enemy 오브젝트들(공격대상)
+    private GameObject AttackEnemy; //현재 공격할 대상
+
+    private List<GameObject> EnemyOfRange;  //콜라이더 안에 들어온 Enemy 오브젝트들(공격대상)
     // Start is called before the first frame update
     void Start()
     {
-        
+        EnemyOfRange = new();
+        AttackEnemy = null;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         if (EnemyOfRange.Count == 0) { return; }
-        GameObject AttackEnemy = FindDistanceObj();
+        //현재 공격대상이 없거나 공격대상이 범위를 벗어난 경우 또는 사망한 경우 가장 가까운 적 타켓팅
+        if(AttackEnemy == null|| !EnemyOfRange.Contains(AttackEnemy))
+            AttackEnemy = FindDistanceObj();
 
     }
     //타워 공격 범위에 들어왔을때, 적이라면 공격대상에 추가.
@@ -50,6 +55,7 @@ public class TowerUnit : MonoBehaviour
         }
     }
     //공격대상에 있는 적중 가장 가까운 적을 타겟팅.
+
     private GameObject FindDistanceObj() {
         if (EnemyOfRange.Count == 0) { return null; }
         GameObject Enemy = EnemyOfRange[0];
