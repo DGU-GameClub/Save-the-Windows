@@ -16,6 +16,7 @@ public class BlackPannel : MonoBehaviour
             return;
         }
         instance = this;
+
     }
     //페이드 아웃
     public IEnumerator FadeOut() {
