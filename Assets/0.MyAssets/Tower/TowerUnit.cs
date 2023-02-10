@@ -7,14 +7,14 @@ public class TowerUnit : MonoBehaviour
     [SerializeField]
     private string UnitName;        //타워 이름
     [SerializeField]
-    private float Attak;            //공격력
+    public float Attak;            //공격력
     [SerializeField]
-    private float CoolTime;         //공격 쿨타임
+    public float Cooldown;         //공격 쿨타임
     [SerializeField]
-    private int UnitPrice;          //타워 가격
+    public int UnitPrice;          //타워 가격
     [SerializeField]
     private string Contents;        //타워 설명
-    
+
     private int TowerLevel = 1;     //현재 타워 레벨
 
     private GameObject AttackEnemy; //현재 공격할 대상
@@ -30,30 +30,39 @@ public class TowerUnit : MonoBehaviour
     //타워 공격 범위에 들어왔을때, 적이라면 공격대상에 추가.
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy")) {
+        Debug.Log("충돌");
+        if (other.tag =="Enemy")
+        {
+
             EnemyOfRange.Add(other.gameObject);
         }
     }
     //타워 공격 범위에 벗어났을 때, 공격대상에 있던 적이라면 공격대상에서 제거.
     private void OnTriggerExit(Collider other)
     {
-        foreach(GameObject obj in EnemyOfRange)
+        foreach (GameObject obj in EnemyOfRange)
         {
-            if (obj == other.gameObject) {
+            if (obj == other.gameObject)
+            {
                 EnemyOfRange.Remove(obj);
+                if (AttackEnemy.Equals(obj))
+                    AttackEnemy = null;
                 break;
             }
         }
     }
     //공격대상에 있는 적중 가장 가까운 적을 타겟팅.
 
-    private GameObject FindDistanceObj() {
+    private GameObject FindDistanceObj()
+    {
         if (EnemyOfRange.Count == 0) { return null; }
         GameObject Enemy = EnemyOfRange[0];
         float Mindis = 100f;
-        foreach (GameObject obj in EnemyOfRange) {
+        foreach (GameObject obj in EnemyOfRange)
+        {
             float dis = (gameObject.transform.position - obj.transform.position).sqrMagnitude;
-            if (Mindis > dis) {
+            if (Mindis > dis)
+            {
                 Enemy = obj;
                 Mindis = dis;
             }
@@ -61,16 +70,20 @@ public class TowerUnit : MonoBehaviour
         return Enemy;
     }
 
-    public bool CheckTheNullEnemy() {
-        if (EnemyOfRange.Count == 0) { return true; }
+    public bool CheckTheNullEnemy()
+    {
+        if (EnemyOfRange.Count == 0) { AttackEnemy = null; return true; }
         return false;
     }
-    //현재 공격대상이 없거나 공격대상이 범위를 벗어난 경우 또는 사망한 경우 가장 가까운 적 타켓팅
-    public void FindTarget() {
-        if (AttackEnemy == null || !EnemyOfRange.Contains(AttackEnemy))
+    //현재 공격대상이 없으면 가장 가까운 적 타켓팅
+    public void FindTarget()
+    {
+        if (AttackEnemy == null)
             AttackEnemy = FindDistanceObj();
     }
-    public GameObject GetEnemy() {
+    public GameObject GetEnemy()
+    {
         return AttackEnemy;
     }
 }
+
