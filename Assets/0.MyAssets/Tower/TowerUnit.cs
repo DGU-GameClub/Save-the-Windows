@@ -30,7 +30,6 @@ public class TowerUnit : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("충돌");
             EnemyOfRange.Add(other.gameObject);
         }
     }
@@ -47,9 +46,8 @@ public class TowerUnit : MonoBehaviour
             }
         }
     }
-
     //공격대상에 있는 적중 가장 가까운 적을 타겟팅.
-    private GameObject FindDistanceObj() {
+    public GameObject FindDistanceObj() {
         if (EnemyOfRange.Count == 0) { return null; }
         GameObject Enemy = EnemyOfRange[0];
         float Mindis = 100f;
