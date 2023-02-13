@@ -30,7 +30,6 @@ public class Tower1Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log("¾ÆÆÄ¿ä");
             Destroy(gameObject);
         }
     }
