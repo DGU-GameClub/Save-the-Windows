@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject settingMenu;
-    public GameObject mainMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +27,6 @@ public class MainMenu : MonoBehaviour
     public void OnClickSettings()
     {
         //게임설정(배경음악, 기타음향 조절)
-        mainMenu.SetActive(false);
-        settingMenu.SetActive(true);
         Debug.Log("Settings");
     }
 
