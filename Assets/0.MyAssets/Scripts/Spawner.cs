@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    enum SPAWNER_STATE
+    {
+        READY,
+        START,
+    }
+
     public Transform wayPoints;
     public Enemy enemyPrefabs;
     public Wave[] waves;
 
     int waveIndex;
     Wave currentWave;
+
+    SPAWNER_STATE state;
 
     int enemyRemainingToSpawn;
     int enemyRemainingAlive;
@@ -22,13 +30,18 @@ public class Spawner : MonoBehaviour
         enemyRemainingToSpawn = 0;
         enemyRemainingAlive = 0;
         nextSpawnTime = Time.time;
-        NextWave();
+
+        state = SPAWNER_STATE.READY;
+        //NextWave();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemyRemainingToSpawn > 0  && Time.time > nextSpawnTime)
+        if (state == SPAWNER_STATE.READY)
+            return;
+
+        if (enemyRemainingToSpawn > 0 && Time.time > nextSpawnTime)
         {
             enemyRemainingToSpawn--;
             nextSpawnTime = Time.time + currentWave.spawnTime;
@@ -59,13 +72,20 @@ public class Spawner : MonoBehaviour
 
         if (enemyRemainingAlive == 0)
         {
-            NextWave();
+            state = SPAWNER_STATE.READY;
+            //NextWave();
         }
     }
 
-    void NextWave()
+    public void NextWave()
     {
-        if(waveIndex < waves.Length)
+        if (state == SPAWNER_STATE.START)
+        {
+            Debug.Log("이미 시작했습니다");
+            return;
+        }
+
+        if (waveIndex < waves.Length)
         {
             currentWave = waves[waveIndex];
 
@@ -73,8 +93,9 @@ public class Spawner : MonoBehaviour
             enemyRemainingAlive = enemyRemainingToSpawn;
 
             print("Wave: " + (waveIndex + 1));
+            state = SPAWNER_STATE.START;
         }
-
+        nextSpawnTime = Time.time;
         waveIndex++;
     }
 
