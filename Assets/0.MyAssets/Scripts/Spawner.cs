@@ -50,6 +50,7 @@ public class Spawner : MonoBehaviour
         Enemy enemy = Instantiate(enemyPrefabs, Vector3.zero, Quaternion.identity);
         enemy.Setup(currentWave.sprite, currentWave.moveSpeed, currentWave.heath, wayPoints);
         enemy.OnDeath += OnEnemyDeath;
+        enemy.transform.parent = transform;
     }
 
     void OnEnemyDeath()
