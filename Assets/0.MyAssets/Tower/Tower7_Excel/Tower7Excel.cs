@@ -30,8 +30,7 @@ public class Tower7Excel : TowerUnit
     void Attack()
     {
         var Target = (AttackEnemy.transform.position - transform.position);
-        float angle = Mathf.Atan2(Target.y, Target.x) * Mathf.Rad2Deg;
-        var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.AngleAxis(angle - 90, Vector3.forward), TowerPrefeb.transform);
+        var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
         Bullet.GetComponent<Tower7Bullet>().targetPosition = Target.normalized;
         Bullet.transform.localScale = new Vector3(bulletScale_X, bulletScale_Y);
     }
