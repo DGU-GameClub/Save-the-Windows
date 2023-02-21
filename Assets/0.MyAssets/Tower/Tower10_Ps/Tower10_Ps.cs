@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : TowerUnit
+public class Tower10_Ps : TowerUnit
 {
     public GameObject TowerBullet;
     public GameObject TowerPrefeb;
@@ -30,8 +30,8 @@ public class Tower : TowerUnit
     void Attack()
     {
         Vector3 dir = AttackEnemy.transform.position - transform.position;
-        //float angle = Mathf.Atan2(dir.x,dir.y) * Mathf.Rad2Deg;
-        var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
+        float angle = Mathf.Atan2(dir.x,dir.y) * Mathf.Rad2Deg;
+        var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.AngleAxis(angle,Vector3.forward), TowerPrefeb.transform);  
         Bullet.GetComponent<TowerBullet>().targetPosition = dir.normalized;
         Bullet.transform.localScale = new Vector3(bulletScale_X, bulletScale_Y);
     }
