@@ -16,7 +16,8 @@ public class TowerUnit : MonoBehaviour
     public string Contents;        //타워 설명
     
     private int TowerLevel = 1;     //현재 타워 레벨
-
+    private float PrimitiveAttack;
+    private float PrimitiveCooldown;
     public GameObject AttackEnemy; //현재 공격할 대상
 
     private List<GameObject> EnemyOfRange;  //콜라이더 안에 들어온 Enemy 오브젝트들(공격대상)
@@ -25,6 +26,8 @@ public class TowerUnit : MonoBehaviour
     {
         EnemyOfRange = new();
         AttackEnemy = null;
+        PrimitiveAttack = Attak;
+        PrimitiveCooldown = Cooldown;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -71,5 +74,18 @@ public class TowerUnit : MonoBehaviour
         {
             AttackEnemy = FindDistanceObj();
         }
+    }
+    public void AttackUp(float Enhance) {
+        Attak *= Enhance;
+    }
+    public void AttackSpeedUp(float Enhance)
+    {
+        Cooldown -= (Cooldown * Enhance);
+    }
+    public void InitAttack() {
+        Attak = PrimitiveAttack;
+    }
+    public void InitAttackSpeed() {
+        Cooldown = PrimitiveCooldown;
     }
 }
