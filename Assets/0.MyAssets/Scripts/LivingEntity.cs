@@ -5,6 +5,7 @@ using UnityEngine;
 public class LivingEntity : MonoBehaviour
 {
     public float health { get; set; }
+    public float originHealth { get; set; }
 
     protected bool isDie;
 
