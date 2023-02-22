@@ -55,16 +55,17 @@ public class Enemy : LivingEntity
 
     public void SpecialDamage()
     {
-        if(gameObject.tag != "Enemy")
-        {
-            StopCoroutine("BurnDamage");
-            StopCoroutine("ParalysisDamage");
-            StopCoroutine("SlowDamage");
-
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.color = new Color(1, 1, 1, 1);
-            moveSpeed = originSpeed;
-        }
+        //ÁßÃ¸xÀÏ °æ¿ì
+        //if(gameObject.tag != "Enemy")
+        //{
+        //    StopCoroutine("BurnDamage");
+        //    StopCoroutine("ParalysisDamage");
+        //    StopCoroutine("SlowDamage");
+        //
+        //    SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        //    spriteRenderer.color = new Color(1, 1, 1, 1);
+        //    moveSpeed = originSpeed;
+        //}
 
         switch (gameObject.tag)
         {
