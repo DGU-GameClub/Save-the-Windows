@@ -83,6 +83,24 @@ public class Enemy : LivingEntity
                 break;
         }
     }
+/*
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.tag) {
+            case "Burn":
+                StartCoroutine(BurnDamage(10f, 3, 0.85f));
+                break;
+            case "Paralysis":
+                StartCoroutine(ParalysisDamage(2f));
+                break;
+            case "Slow":
+                StartCoroutine(SlowDamage(2f, 0.5f));
+                break;
+            default:
+                Debug.Log("특수 공격 실패");
+                break;
+        }
+    }*/
 
     IEnumerator BurnDamage(float _power, int _count, float _time)
     {
