@@ -37,15 +37,18 @@ public class SoundManager : MonoBehaviour
     // {
     //     sfxsource.volume = volume;
     // }
-
+    private void Awake()
+    {
+        
+    }
     private void Start()
     {
         //초기화
-        BgmSlider.value = PlayerPrefs.GetFloat("BGM", 0.50f);
-        SfxSlider.value = PlayerPrefs.GetFloat("SFX", 0.50f);
+        BgmSlider.value = PlayerPrefs.GetFloat("BGM", 1f);
+        SfxSlider.value = PlayerPrefs.GetFloat("SFX", 1f);
         UnityEngine.Debug.Log("BgmValue is " + BgmSlider.value);
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
     }
 
