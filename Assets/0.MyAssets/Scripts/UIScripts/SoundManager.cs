@@ -27,28 +27,12 @@ public class SoundManager : MonoBehaviour
     public GameObject settingMenu;
     public GameObject beforeMenu;
 
-    //오디오
-    // public void SetBgmVolume(float volume)
-    // {
-    //     bgmsource.volume = volume;
-    // }
-
-    // public void SetSfxVolume(float volume)
-    // {
-    //     sfxsource.volume = volume;
-    // }
-    private void Awake()
-    {
-        
-    }
     private void Start()
     {
         //초기화
         BgmSlider.value = PlayerPrefs.GetFloat("BGM", 1f);
         SfxSlider.value = PlayerPrefs.GetFloat("SFX", 1f);
         UnityEngine.Debug.Log("BgmValue is " + BgmSlider.value);
-
-        //DontDestroyOnLoad(gameObject);
 
     }
 
@@ -79,12 +63,10 @@ public class SoundManager : MonoBehaviour
     {
         sfxsource.Play();
     }
-
-    //setting menu에서 그전 menu로 이동
+    //뒤로가기
     public void OnClickBack()
     {
         settingMenu.SetActive(false);
-        beforeMenu.SetActive(true);
     }
 
 }

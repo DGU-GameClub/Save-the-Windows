@@ -12,7 +12,6 @@ public class StartMenu : MonoBehaviour
     void Start()
     {
         Screen.SetResolution(1920, 1080, true);
-        startMenu.SetActive(true);
         settingMenu.SetActive(false);
     }
 
@@ -33,7 +32,6 @@ public class StartMenu : MonoBehaviour
     public void OnClickSettings()
     {
         //게임설정(배경음악, 기타음향 조절)
-        startMenu.SetActive(false);
         settingMenu.SetActive(true);
         Debug.Log("Settings");
     }

@@ -9,14 +9,10 @@ public class SettingCanvas : MonoBehaviour
     private void Awake()
     {
         if(instance != null)
+        {
             Destroy(instance);
+        }
         instance = this;
         DontDestroyOnLoad(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
