@@ -21,7 +21,7 @@ public class Tower7Bullet : MonoBehaviour
         transform.Rotate(360f * Time.deltaTime * Vector3.forward);
         if (!isArrival)
         {
-            Debug.Log(targetPosition);
+            
             transform.position += Speed * Time.deltaTime * targetPosition;
             
             float distance = Vector3.Distance(transform.position, transform.parent.position);
