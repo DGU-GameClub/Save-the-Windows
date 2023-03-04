@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Enemy : LivingEntity
@@ -15,6 +16,13 @@ public class Enemy : LivingEntity
     public Transform wayPoints;
 
     public SpecialAttack specialAttack;
+
+    //HpBarUI 추가한 변수
+    public GameObject hpBarPrefab; //Instantiate 메서드로 복제할 프리펩을 담을 변수
+    public Vector3 hpBarOffset = Vector3.zero;
+
+    GameObject hpBar; //Slider의 초기 세팅, Hp 갱신에 사용할 Slider를 담을 변수
+    Image enemyHpBarImage; //Slider의 초기 세팅, Hp 갱신에 사용할 Slider를 담을 변수
 
     //target transform
     Transform[] targetArr;
@@ -32,6 +40,9 @@ public class Enemy : LivingEntity
         //set position
         transform.position = targetArr[0].position;
 
+        SetHpBar();
+        OnDeath += RemoveHealthBar;
+
         //move start
         StartCoroutine(MoveTarget());
     }
@@ -45,6 +56,14 @@ public class Enemy : LivingEntity
         }
     }
 
+    void RemoveHealthBar()
+    {
+        if(hpBar != null)
+        {
+            Destroy(hpBar);
+        }
+    }
+
     public void Setup(Sprite sprite, float _speed, float _health, Transform _wayPoints)
     {
         GetComponent<SpriteRenderer>().sprite = sprite;
@@ -54,6 +73,27 @@ public class Enemy : LivingEntity
         originHealth = health;
         wayPoints = _wayPoints;
     }
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+
+        if(enemyHpBarImage != null)
+            enemyHpBarImage.fillAmount = health / originHealth;
+    }
+
+    //적 위치 + offset에 HpBarPrefab 생성하기
+    void SetHpBar()
+    {
+        Canvas enemyHpBarCanvas = GameObject.Find("Enemy HpBar Canvas").GetComponent<Canvas>();
+        hpBar = Instantiate<GameObject>(hpBarPrefab, enemyHpBarCanvas.transform);
+
+        enemyHpBarImage = hpBar.GetComponent<Image>();
+        var _hpbar = hpBar.GetComponent<EnemyHpBar>();
+        _hpbar.enemyTr = transform;
+        _hpbar.offset = hpBarOffset;
+    }
+
 
     public void SpecialDamage()
     {
