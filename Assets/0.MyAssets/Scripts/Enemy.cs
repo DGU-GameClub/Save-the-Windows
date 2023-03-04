@@ -11,8 +11,10 @@ public class Enemy : LivingEntity
     [System.NonSerialized]
     public float originSpeed;
     //tile object
-    [System.NonSerialized]
+    [System.NonSerialized]  
     public Transform wayPoints;
+
+    public SpecialAttack specialAttack;
 
     //target transform
     Transform[] targetArr;
@@ -66,17 +68,17 @@ public class Enemy : LivingEntity
         //    spriteRenderer.color = new Color(1, 1, 1, 1);
         //    moveSpeed = originSpeed;
         //}
-
+        
         switch (gameObject.tag)
         {
             case "Burn":
-                StartCoroutine(BurnDamage(10f, 3, 0.85f));
+                StartCoroutine(BurnDamage());
                 break;
             case "Paralysis":
-                StartCoroutine(ParalysisDamage(2f));
+                StartCoroutine(ParalysisDamage());
                 break;
             case "Slow":
-                StartCoroutine(SlowDamage(2f, 0.5f));
+                StartCoroutine(SlowDamage());
                 break;
             default:
                 Debug.Log("특수 공격 실패");
@@ -102,44 +104,50 @@ public class Enemy : LivingEntity
         }
     }*/
 
-    IEnumerator BurnDamage(float _power, int _count, float _time)
+    IEnumerator BurnDamage()
     {
         int num = 0;
+        int count = specialAttack.burn.count;
+        float power = specialAttack.burn.power;
+        float time = specialAttack.burn.time;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(1, 0, 0, 1);
-        while (num != _count)
+        while (num != count)
         {
             num++;
-            TakeDamage(_power);
+            TakeDamage(power);
             print(health);
-            yield return new WaitForSeconds(_time);
+            yield return new WaitForSeconds(time);
         }
 
         spriteRenderer.color = new Color(1, 1, 1, 1);
         gameObject.tag = "Enemy";
     }
 
-    IEnumerator ParalysisDamage(float _time)
+    IEnumerator ParalysisDamage()
     {
+        float time = specialAttack.paralysis.time;
         float originSpeed = moveSpeed;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         
         moveSpeed = 0f;
         spriteRenderer.color = new Color(1, 0.5f, 0, 1);
 
-        yield return new WaitForSeconds(_time);
+        yield return new WaitForSeconds(time);
 
         moveSpeed = originSpeed;
         gameObject.tag = "Enemy";
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
-    IEnumerator SlowDamage(float _time, float _percent)
+    IEnumerator SlowDamage()
     {
+        float time = specialAttack.slow.time;
+        float percent = specialAttack.slow.percent;
         float originSpeed = moveSpeed;
-        moveSpeed = _percent * moveSpeed;
+        moveSpeed = percent * moveSpeed;
 
-        yield return new WaitForSeconds(_time);
+        yield return new WaitForSeconds(time);
 
         moveSpeed = originSpeed;
         gameObject.tag = "Enemy";
@@ -165,6 +173,36 @@ public class Enemy : LivingEntity
         else
         {
             StartCoroutine(MoveTarget());
+        }
+    }
+
+    [System.Serializable]
+    public class SpecialAttack
+    {
+        public Burn burn;
+        public Paralysis paralysis;
+        public Slow slow;
+
+        [System.Serializable]
+        public class Burn
+        {
+            public int count;
+            public float power;
+            public float time;
+        }
+
+        [System.Serializable]
+        public class Paralysis
+        {
+            public float time;
+        }
+
+
+        [System.Serializable]
+        public class Slow
+        {
+            public float time;
+            public float percent;
         }
     }
 }

@@ -97,3 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5d255a515caaf449d4b264be7ff740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  specialAttack:
+    burn:
+      count: 5
+      power: 10
+      time: 1
+    paralysis:
+      time: 5
+    slow:
+      time: 5
+      percent: 0.5
