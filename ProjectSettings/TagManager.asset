@@ -10,6 +10,8 @@ TagManager:
   - Burn
   - Paralysis
   - Slow
+  - TowerV3
+  - TowerAvast
   layers:
   - Default
   - TransparentFX

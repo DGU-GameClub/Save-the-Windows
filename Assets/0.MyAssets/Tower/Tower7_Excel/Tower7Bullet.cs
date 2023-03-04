@@ -46,7 +46,7 @@ public class Tower7Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(gameObject.GetComponentInParent<TowerUnit>().Attak);
         }
     }
 }
