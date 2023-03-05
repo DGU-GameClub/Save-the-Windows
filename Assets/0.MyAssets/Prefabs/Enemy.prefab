@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4304359101964226909}
   - component: {fileID: 4304359101964226910}
   - component: {fileID: 4304359101964226911}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -71,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -408266383
-  m_SortingLayer: 1
-  m_SortingOrder: 3
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f47a2279b48517b43ab87cbcf7eddd49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -109,5 +109,3 @@ MonoBehaviour:
       percent: 0.5
   hpBarPrefab: {fileID: 116353835901153737, guid: 2020d0186755129489a0ba19fdd7b74d, type: 3}
   hpBarOffset: {x: 0, y: 0, z: 0}
-  hpBar: {fileID: 0}
-  enemyHpBarImage: {fileID: 0}
