@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4304359101964226909}
   - component: {fileID: 4304359101964226910}
   - component: {fileID: 4304359101964226911}
+  - component: {fileID: -2189063006850484954}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -109,3 +110,19 @@ MonoBehaviour:
       percent: 0.5
   hpBarPrefab: {fileID: 116353835901153737, guid: 2020d0186755129489a0ba19fdd7b74d, type: 3}
   hpBarOffset: {x: 0, y: 0, z: 0}
+--- !u!58 &-2189063006850484954
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304359101964226896}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.2799999
