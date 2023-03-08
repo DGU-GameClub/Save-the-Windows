@@ -12,7 +12,7 @@ public class Tower2Chrome : TowerUnit
 
     private void Awake()
     {
-        AttackTime = Cooldown;
+        AttackTime = 0;
     }
     private void FixedUpdate()
     {

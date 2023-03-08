@@ -215,7 +215,16 @@ public class Enemy : LivingEntity
             StartCoroutine(MoveTarget());
         }
     }
-
+    public void UpPrice(float Percent)
+    {
+        Price = (int)(Price * Percent);
+    }
+    public void InitPrice() {
+        Price = OriginPrice;
+    }
+    public void StopMove() {
+        StopAllCoroutines();
+    }
     [System.Serializable]
     public class SpecialAttack
     {

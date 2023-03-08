@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower15GoClean : TowerUnit
+public class Tower20RecycleBin : TowerUnit
 {
     public GameObject TowerBullet;
     public GameObject TowerPrefeb;
     private float AttackTime = 0f;
     public float bulletScale_X = 0.5f;
     public float bulletScale_Y = 0.5f;
+    public Sprite Trash;
 
     private void Awake()
     {
@@ -30,9 +31,25 @@ public class Tower15GoClean : TowerUnit
     void Attack()
     {
         Vector3 dir = AttackEnemy.transform.position - transform.position;
-        //float angle = Mathf.Atan2(dir.x,dir.y) * Mathf.Rad2Deg;
         var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
-        Bullet.GetComponent<Tower15Bullet>().targetPosition = dir.normalized;
-        Bullet.transform.localScale = new Vector3(bulletScale_X, bulletScale_Y);
+        Bullet.GetComponent<Tower20Bullet>().Tower = gameObject;
+        AttackEnemy.GetComponent<Enemy>().StopMove();
+        AttackEnemy.tag = "Trash";
+        AttackEnemy.GetComponent<SpriteRenderer>().sprite = Trash;
+        StartCoroutine(PullObj());
+        
+    }
+    IEnumerator PullObj() {
+        float percent = 0f;
+        Vector3 originPosition = AttackEnemy.transform.position;
+        Vector3 targetPosition = transform.position;
+
+        while (percent < 1f)
+        {
+            percent += Time.deltaTime * 0.5f;
+            if (AttackEnemy == null) yield break;
+            AttackEnemy.transform.position = Vector3.Lerp(originPosition, targetPosition, percent);
+            yield return null;
+        }
     }
 }

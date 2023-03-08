@@ -12,6 +12,7 @@ TagManager:
   - Slow
   - TowerV3
   - TowerAvast
+  - Trash
   layers:
   - Default
   - TransparentFX
