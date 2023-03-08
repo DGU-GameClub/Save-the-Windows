@@ -28,6 +28,9 @@ public class Enemy : LivingEntity
     Transform[] targetArr;
     int targetIndex = 0;
 
+    //죽었을 때 지급될 재화
+    public int Price = 10;
+    public int OriginPrice;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +45,7 @@ public class Enemy : LivingEntity
 
         SetHpBar();
         OnDeath += RemoveHealthBar;
-
+        OriginPrice = Price;
         //move start
         StartCoroutine(MoveTarget());
     }
@@ -50,10 +53,7 @@ public class Enemy : LivingEntity
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SpecialDamage();
-        }
+
     }
 
     void RemoveHealthBar()
@@ -94,22 +94,9 @@ public class Enemy : LivingEntity
         _hpbar.offset = hpBarOffset;
     }
 
-
-    public void SpecialDamage()
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        //중첩x일 경우
-        //if(gameObject.tag != "Enemy")
-        //{
-        //    StopCoroutine("BurnDamage");
-        //    StopCoroutine("ParalysisDamage");
-        //    StopCoroutine("SlowDamage");
-        //
-        //    SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        //    spriteRenderer.color = new Color(1, 1, 1, 1);
-        //    moveSpeed = originSpeed;
-        //}
-        
-        switch (gameObject.tag)
+        switch (collision.tag)
         {
             case "Burn":
                 StartCoroutine(BurnDamage());
@@ -125,24 +112,6 @@ public class Enemy : LivingEntity
                 break;
         }
     }
-/*
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        switch (collision.tag) {
-            case "Burn":
-                StartCoroutine(BurnDamage(10f, 3, 0.85f));
-                break;
-            case "Paralysis":
-                StartCoroutine(ParalysisDamage(2f));
-                break;
-            case "Slow":
-                StartCoroutine(SlowDamage(2f, 0.5f));
-                break;
-            default:
-                Debug.Log("특수 공격 실패");
-                break;
-        }
-    }*/
 
     IEnumerator BurnDamage()
     {
@@ -215,7 +184,13 @@ public class Enemy : LivingEntity
             StartCoroutine(MoveTarget());
         }
     }
-
+    public void UpPrice(float Percent)
+    {
+        Price = (int)(Price * Percent);
+    }
+    public void InitPrice() {
+        Price = OriginPrice;
+    }
     [System.Serializable]
     public class SpecialAttack
     {

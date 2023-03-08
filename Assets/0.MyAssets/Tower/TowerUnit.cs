@@ -43,7 +43,7 @@ public class TowerUnit : MonoBehaviour
         {
             if (obj == other.gameObject) {
                 EnemyOfRange.Remove(obj);
-                if (AttackEnemy.Equals(obj))
+                if (AttackEnemy != null && obj != null && AttackEnemy.Equals(obj))
                     AttackEnemy = null;
                 break;
             }
