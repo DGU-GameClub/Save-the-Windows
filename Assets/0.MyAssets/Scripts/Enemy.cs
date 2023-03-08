@@ -28,6 +28,8 @@ public class Enemy : LivingEntity
     Transform[] targetArr;
     int targetIndex = 0;
 
+    public int Price = 10;
+    int OriginPrice;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,8 @@ public class Enemy : LivingEntity
 
         SetHpBar();
         OnDeath += RemoveHealthBar;
+
+        OriginPrice = Price;
 
         //move start
         StartCoroutine(MoveTarget());
