@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3914505376101749565}
   - component: {fileID: 3914505376101749567}
   - component: {fileID: 3914505376101749563}
-  - component: {fileID: 1011452919327048456}
+  - component: {fileID: 2557384144490789849}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 8f4ce10ea3997be42b641434a4e79b0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f728a8c0b7bbaf94c9138a1ce598325a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1011452919327048456
+--- !u!114 &2557384144490789849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,11 +133,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3914505376101749552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a02e49a8edbf1140b87ea4d30aa2deb, type: 3}
+  m_Script: {fileID: 11500000, guid: ed7a0ce22470a3b4abc8839181f82753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: 
-  Attak: 1.2
+  Attak: 1.5
   Cooldown: 0
   UnitPrice: 0
   Contents: 
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 6341970417656526205}
   - component: {fileID: 8432663441601734791}
   m_Layer: 0
-  m_Name: Tower8_PPT
+  m_Name: Tower19_Cmd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

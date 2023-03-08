@@ -81,6 +81,7 @@ public class TowerUnit : MonoBehaviour
     public void AttackSpeedUp(float Enhance)
     {
         Cooldown -= (Cooldown * Enhance);
+        if (Cooldown <= 0.5f) Cooldown = 0.5f;
     }
     public void InitAttack() {
         Attak = PrimitiveAttack;
