@@ -9,6 +9,7 @@ public class Tower15Bullet : MonoBehaviour
     public float Speed = 3.0f;
     public float Pdistance = 5f;
     public float Percent = 1.5f;
+    public GameObject Tower = null;
     // Use this for initialization
     void Start()
     {
@@ -32,18 +33,13 @@ public class Tower15Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            if (collision.gameObject.GetComponent<Enemy>().health - gameObject.GetComponentInParent<TowerUnit>().Attak <= 0) {
-                /*
+            if ((collision.gameObject.GetComponent<Enemy>().health - Tower.GetComponent<TowerUnit>().Attak) <= 0) {
                  collision.gameObject.GetComponent<Enemy>().UpPrice(Percent);
-                 */
             }
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(gameObject.GetComponentInParent<TowerUnit>().Attak);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attak);
             Destroy(gameObject);
         }
     }
     
-    /*public int Price = 0;
-    public void UpPrice(float Percent) {
-        Price = (int)(Price  * Percent);
-    }*/
+
 }

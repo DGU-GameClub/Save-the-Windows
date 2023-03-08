@@ -9,6 +9,7 @@ public class Tower7Bullet : MonoBehaviour
     public float Speed = 0.1f;
     bool isArrival = false;
     public float Pdistance = 5f;
+    public GameObject Tower = null;
     // Use this for initialization
     void Start()
     {
@@ -46,7 +47,7 @@ public class Tower7Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(gameObject.GetComponentInParent<TowerUnit>().Attak);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attak);
         }
     }
 }

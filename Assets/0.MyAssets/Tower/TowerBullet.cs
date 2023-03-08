@@ -8,6 +8,7 @@ public class TowerBullet : MonoBehaviour
     public GameObject ExplosionParticle = null;
     public float Speed = 3.0f;
     public float Pdistance = 5f;
+    public GameObject Tower = null;
     // Use this for initialization
     void Start()
     {
@@ -31,7 +32,7 @@ public class TowerBullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(gameObject.GetComponentInParent<TowerUnit>().Attak);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attak);
             Destroy(gameObject);
         }
     }
