@@ -12,7 +12,7 @@ public class Tower7Excel : TowerUnit
 
     private void Awake()
     {
-        AttackTime = Cooldown;
+        AttackTime = 0;
     }
     private void FixedUpdate()
     {
@@ -31,6 +31,7 @@ public class Tower7Excel : TowerUnit
     {
         var Target = (AttackEnemy.transform.position - transform.position);
         var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
+        Bullet.GetComponent<Tower7Bullet>().Tower = gameObject;
         Bullet.GetComponent<Tower7Bullet>().targetPosition = Target.normalized;
         Bullet.transform.localScale = new Vector3(bulletScale_X, bulletScale_Y);
     }

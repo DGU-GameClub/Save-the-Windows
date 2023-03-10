@@ -12,7 +12,7 @@ public class Tower2Chrome : TowerUnit
 
     private void Awake()
     {
-        AttackTime = Cooldown;
+        AttackTime = 0;
     }
     private void FixedUpdate()
     {
@@ -31,6 +31,7 @@ public class Tower2Chrome : TowerUnit
     {
         int RandomNum = Random.Range(0, 3);
         var Bullet = Instantiate(TowerBullet[RandomNum], transform.position, Quaternion.identity, TowerPrefeb.transform);
+        Bullet.GetComponent<TowerBullet>().Tower = gameObject;
         Bullet.GetComponent<TowerBullet>().targetPosition = (AttackEnemy.transform.position - transform.position).normalized;
         Bullet.transform.localScale = new Vector3(bulletScale_X, bulletScale_Y);
     }

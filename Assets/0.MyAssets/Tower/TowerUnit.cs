@@ -43,7 +43,7 @@ public class TowerUnit : MonoBehaviour
         {
             if (obj == other.gameObject) {
                 EnemyOfRange.Remove(obj);
-                if (AttackEnemy.Equals(obj))
+                if (AttackEnemy != null && obj != null && AttackEnemy.Equals(obj))
                     AttackEnemy = null;
                 break;
             }
@@ -81,6 +81,7 @@ public class TowerUnit : MonoBehaviour
     public void AttackSpeedUp(float Enhance)
     {
         Cooldown -= (Cooldown * Enhance);
+        if (Cooldown <= 0.5f) Cooldown = 0.5f;
     }
     public void InitAttack() {
         Attak = PrimitiveAttack;

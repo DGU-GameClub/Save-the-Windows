@@ -102,7 +102,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1
 --- !u!50 &3914505376101749563
 Rigidbody2D:
   serializedVersion: 4
@@ -141,6 +141,7 @@ MonoBehaviour:
   Cooldown: 0
   UnitPrice: 0
   Contents: 
+  AttackEnemy: {fileID: 0}
 --- !u!1 &6926746675528595401
 GameObject:
   m_ObjectHideFlags: 0

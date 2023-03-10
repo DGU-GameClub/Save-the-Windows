@@ -9,6 +9,7 @@ public class Tower7Bullet : MonoBehaviour
     public float Speed = 0.1f;
     bool isArrival = false;
     public float Pdistance = 5f;
+    public GameObject Tower = null;
     // Use this for initialization
     void Start()
     {
@@ -21,7 +22,7 @@ public class Tower7Bullet : MonoBehaviour
         transform.Rotate(360f * Time.deltaTime * Vector3.forward);
         if (!isArrival)
         {
-            Debug.Log(targetPosition);
+            
             transform.position += Speed * Time.deltaTime * targetPosition;
             
             float distance = Vector3.Distance(transform.position, transform.parent.position);
@@ -46,7 +47,7 @@ public class Tower7Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attak);
         }
     }
 }

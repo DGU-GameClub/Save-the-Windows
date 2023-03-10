@@ -10,6 +10,9 @@ TagManager:
   - Burn
   - Paralysis
   - Slow
+  - TowerV3
+  - TowerAvast
+  - Trash
   layers:
   - Default
   - TransparentFX
@@ -17,9 +20,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
   - Tile
+  - OverUI
+  - 
   - 
   - 
   - 
