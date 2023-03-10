@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Slot : MonoBehaviour
 {
@@ -8,6 +10,10 @@ public class Slot : MonoBehaviour
     public TowerProperty tower;
     public UnityEngine.UI.Image image;
     public UnityEngine.UI.Button sellBtn;
+    GameObject prefeb;
+    public TextMeshProUGUI contents;
+    int price;
+
 
     private void Start() 
     {
@@ -21,6 +27,7 @@ public class Slot : MonoBehaviour
             sellBtn.interactable = b;
         }
     }
+
     public void SetTower(TowerProperty tower)
     {
         this.tower = tower;
@@ -29,14 +36,16 @@ public class Slot : MonoBehaviour
         {
             image.enabled = false;
             SetSellBtnOn(false);
-            gameObject.name = "Empty";
+            gameObject.name = "";
         }
         else
         {
             image.enabled = true;
-
             gameObject.name = tower.name;
-            image.sprite = tower.sprite;
+            image.sprite= tower.prefeb.GetComponentInChildren<SpriteRenderer>().sprite;
+            price = tower.prefeb.GetComponentInChildren<TowerUnit>().UnitPrice;
+            prefeb = tower.prefeb;
+            if (contents.text != "") contents.text = tower.prefeb.GetComponentInChildren<TowerUnit>().Contents;
             SetSellBtnOn(true);
         }
     }
@@ -45,4 +54,5 @@ public class Slot : MonoBehaviour
     {
         SetTower(null);
     }
+
 }
