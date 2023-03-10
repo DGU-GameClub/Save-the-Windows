@@ -10,6 +10,7 @@ TagManager:
   - Burn
   - Paralysis
   - Slow
+  - Store
   layers:
   - Default
   - TransparentFX

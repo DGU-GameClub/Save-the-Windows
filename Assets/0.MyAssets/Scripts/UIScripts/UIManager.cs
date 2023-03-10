@@ -1,24 +1,26 @@
-using System.Runtime;
-using System.Transactions;
-using System;
-using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class MainMenu : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     GameObject settingMenu;
-    [SerializeField] float setTime = 10.0f;
+    GameManager gameManager;
+    public GameObject GameOver;
+    public GameObject GameWin;
+    
     [SerializeField] TextMeshProUGUI countdownText;
+    [SerializeField] float setTime = 10.0f;
     int min;
     float sec;
+
     void Start() 
     {
-        settingMenu = GameObject.Find("SettingCanvas").transform.Find("Setting Menu").gameObject;
+        // settingMenu = GameObject.Find("Setting Canvas").transform.Find("Setting Menu").gameObject;
         countdownText.text = setTime.ToString();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -41,22 +43,9 @@ public class MainMenu : MonoBehaviour
         {
             countdownText.text = "남은 시간 : 0분 0초";
             //몇초 쉬고 넘어가기
-            GameOver();
+            gameManager.GameOver();
         }
     }
-    // public void pauseBtn()
-    // {
-    //     if (IsPause)
-    //     {
-    //         Time.timeScale = 1;
-    //         IsPause = false;
-    //     }
-    //     else
-    //     {
-    //         Time.timeScale = 0;
-    //         IsPause = true;
-    //     }
-    // }
 
     public void OnClickSettings()
     {
@@ -65,8 +54,14 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Settings");
     }
 
-    public void GameOver(){
-        //GameOver 캔버스 활성화
+    public void GameOverOn()
+    {
+        GameOver.SetActive(true);
     }
 
+    public void GameWinOn()
+    {
+        GameWin.SetActive(true);
+        //소리 넣기
+    }
 }

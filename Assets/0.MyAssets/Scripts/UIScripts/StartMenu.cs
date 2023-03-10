@@ -7,18 +7,11 @@ public class StartMenu : MonoBehaviour
 {
     public GameObject settingMenu;
     public GameObject startMenu;
-    private SoundManager BgmSlider;
     // Start is called before the first frame update
     void Start()
     {
         Screen.SetResolution(1920, 1080, true);
         settingMenu.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnClickNewGame()
@@ -50,10 +43,7 @@ public class StartMenu : MonoBehaviour
     public IEnumerator nnn(){
         //StartCoroutine 안의 함수가 끝나고 나서 다음 코드 실행
         yield return StartCoroutine(BlackPannel.instance.FadeIn());
-        //
-        BlackPannel.instance.NextScene("02. Main");
-        
-
+        BlackPannel.instance.NextScene("01. Main");
     }
 
 }

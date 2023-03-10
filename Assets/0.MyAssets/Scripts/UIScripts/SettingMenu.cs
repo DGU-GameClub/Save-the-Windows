@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +9,12 @@ using System;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SoundManager : MonoBehaviour
+public class SettingMenu : MonoBehaviour
 {
+    // private GameObject[] musics;
+
+    public static SettingMenu instance;
+
     public AudioSource bgmsource;
     public AudioSource sfxsource;
 
@@ -25,7 +27,16 @@ public class SoundManager : MonoBehaviour
 
     //menu
     public GameObject settingMenu;
-    public GameObject beforeMenu;
+
+    private void Awake()
+    {
+        if(instance != null)
+        {
+            Destroy(instance);
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
@@ -33,14 +44,11 @@ public class SoundManager : MonoBehaviour
         BgmSlider.value = PlayerPrefs.GetFloat("BGM", 1f);
         SfxSlider.value = PlayerPrefs.GetFloat("SFX", 1f);
         UnityEngine.Debug.Log("BgmValue is " + BgmSlider.value);
-
     }
 
     //볼륨조절
     public void SetBgmSlider()
     {
-        //UnityEngine.Debug.Log("BgmValue is " + BgmSlider.value);
-        //로그 연산 값 오디오 믹서에 전달
         if(BgmSlider.value == -40f)
             audioMixer.SetFloat("BGM", -80f);
         else
@@ -68,5 +76,18 @@ public class SoundManager : MonoBehaviour
     {
         settingMenu.SetActive(false);
     }
+
+
+    // //장면 전환시에 쓸수도 있으니 남겨두기
+    // public void PlayMusic()
+    // {
+    //     if (audioSource.isPlaying) return;
+    //     audioSource.Play();
+    // }
+
+    // public void StopMusic()
+    // {
+    //     audioSource.Stop();
+    // }
 
 }

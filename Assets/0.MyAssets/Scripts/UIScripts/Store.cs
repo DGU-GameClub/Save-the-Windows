@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Store : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class Store : MonoBehaviour
     private List<Slot> slots;
 	//onSlotClick에 외부에서 연결해주면 호출
 	public System.Action<TowerProperty> onSlotClick;
+    public bool fullInvenSlot = false;
     void Start()
     {
         slots = new List<Slot>();
@@ -24,17 +27,11 @@ public class Store : MonoBehaviour
             }
             else
             {
-                //아이템 없는 슬롯의 경우 버튼 비활, 이미지 비활
+                //아이템 없는 슬롯의 경우 버튼 비활
 				slot.GetComponent<UnityEngine.UI.Button>().interactable = false;
-                
             }
             slots.Add(slot);
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
 	public void OnClickSlot(Slot slot)
@@ -42,8 +39,18 @@ public class Store : MonoBehaviour
 		if(onSlotClick != null)
 		{
             slot.image.enabled = false;
-			onSlotClick(slot.tower);
+            onSlotClick(slot.tower);
+            slot.GetComponent<UnityEngine.UI.Button>().interactable = false;
 		}
 	}
+
+    public void SetText()
+    {
+        var emptySlot = slots.Find(t => t.image.enabled == true);
+        if (emptySlot != null)
+        {
+            emptySlot.contents.enabled = true;
+        }
+    }
 
 }
