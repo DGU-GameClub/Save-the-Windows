@@ -30,6 +30,7 @@ public class Enemy : LivingEntity
 
     public int Price = 10;
     int OriginPrice;
+    bool[] isSpecial = new bool[3];
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +47,8 @@ public class Enemy : LivingEntity
         OnDeath += RemoveHealthBar;
 
         OriginPrice = Price;
+        for(int i =0; i< isSpecial.Length; i++)
+            isSpecial[i] = false;
 
         //move start
         StartCoroutine(MoveTarget());
@@ -116,12 +119,14 @@ public class Enemy : LivingEntity
 
     IEnumerator BurnDamage()
     {
+        if (isSpecial[0]) yield break;
         int num = 0;
         int count = specialAttack.burn.count;
         float power = specialAttack.burn.power;
         float time = specialAttack.burn.time;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(1, 0, 0, 1);
+        isSpecial[0] = true;
         while (num != count)
         {
             num++;
@@ -132,35 +137,41 @@ public class Enemy : LivingEntity
 
         spriteRenderer.color = new Color(1, 1, 1, 1);
         gameObject.tag = "Enemy";
+        isSpecial[0] = false;
     }
 
     IEnumerator ParalysisDamage()
     {
+        if (isSpecial[1]) yield break;
         float time = specialAttack.paralysis.time;
         float originSpeed = moveSpeed;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        
+        isSpecial[1] = true;
         moveSpeed = 0f;
         spriteRenderer.color = new Color(1, 0.5f, 0, 1);
 
         yield return new WaitForSeconds(time);
-
+        
         moveSpeed = originSpeed;
         gameObject.tag = "Enemy";
+        isSpecial[1] = false;
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     IEnumerator SlowDamage()
     {
+        if (isSpecial[2]) yield break;
         float time = specialAttack.slow.time;
         float percent = specialAttack.slow.percent;
         float originSpeed = moveSpeed;
+        isSpecial[2] = true;
         moveSpeed = percent * moveSpeed;
 
         yield return new WaitForSeconds(time);
 
         moveSpeed = originSpeed;
         gameObject.tag = "Enemy";
+        isSpecial[2] = false;
     }
 
     IEnumerator MoveTarget()

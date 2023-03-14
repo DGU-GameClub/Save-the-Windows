@@ -12,7 +12,7 @@ public class Tower : TowerUnit
 
     private void Awake()
     {
-        AttackTime = 0;
+        AttackTime = Cooldown;
     }
     private void FixedUpdate()
     {

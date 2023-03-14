@@ -13,7 +13,7 @@ public class Tower18Folder : TowerUnit
     public float Area = 1.5f;
     private void Awake()
     {
-        AttackTime = 0;
+        AttackTime = Cooldown;
     }
     private void FixedUpdate()
     {

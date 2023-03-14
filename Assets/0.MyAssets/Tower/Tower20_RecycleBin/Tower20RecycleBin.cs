@@ -10,7 +10,7 @@ public class Tower20RecycleBin : TowerUnit
     public float bulletScale_X = 0.5f;
     public float bulletScale_Y = 0.5f;
     public Sprite Trash;
-
+    public int BossAttack = 10;
     private void Awake()
     {
         AttackTime = 0;
@@ -30,9 +30,12 @@ public class Tower20RecycleBin : TowerUnit
     }
     void Attack()
     {
-        Vector3 dir = AttackEnemy.transform.position - transform.position;
         var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
         Bullet.GetComponent<Tower20Bullet>().Tower = gameObject;
+        if (AttackEnemy.CompareTag("Boss")) {
+            AttackEnemy.GetComponent<Enemy>().TakeDamage(BossAttack);
+            return;
+        }
         AttackEnemy.GetComponent<Enemy>().StopMove();
         AttackEnemy.tag = "Trash";
         AttackEnemy.GetComponent<SpriteRenderer>().sprite = Trash;

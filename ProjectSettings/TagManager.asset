@@ -13,6 +13,7 @@ TagManager:
   - TowerV3
   - TowerAvast
   - Trash
+  - TowerNotepad
   layers:
   - Default
   - TransparentFX

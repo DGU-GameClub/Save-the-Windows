@@ -13,7 +13,7 @@ public class Tower4Whale : TowerUnit
     public float StopTime;
     private void Awake()
     {
-        AttackTime = 0;
+        AttackTime = Cooldown;
     }
     private void FixedUpdate()
     {
