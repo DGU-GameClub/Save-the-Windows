@@ -11,7 +11,6 @@ public class Store : MonoBehaviour
     private List<Slot> slots;
 	//onSlotClick에 외부에서 연결해주면 호출
 	public System.Action<TowerProperty> onSlotClick;
-    public bool fullInvenSlot = false;
     void Start()
     {
         slots = new List<Slot>();
@@ -24,6 +23,7 @@ public class Store : MonoBehaviour
             if(i < towerBuffer.towers.Count)
             {
                 slot.SetTower(towerBuffer.towers[i]);
+                slot.contents.enabled = true;
             }
             else
             {
@@ -39,18 +39,10 @@ public class Store : MonoBehaviour
 		if(onSlotClick != null)
 		{
             slot.image.enabled = false;
+            slot.contents.enabled = false;
             onSlotClick(slot.tower);
             slot.GetComponent<UnityEngine.UI.Button>().interactable = false;
 		}
 	}
-
-    public void SetText()
-    {
-        var emptySlot = slots.Find(t => t.image.enabled == true);
-        if (emptySlot != null)
-        {
-            emptySlot.contents.enabled = true;
-        }
-    }
 
 }

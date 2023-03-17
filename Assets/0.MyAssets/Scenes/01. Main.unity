@@ -5457,7 +5457,7 @@ MonoBehaviour:
     name: 
     prefeb: {fileID: 0}
   image: {fileID: 487638025}
-  sellBtn: {fileID: 0}
+  sellBtn: {fileID: 650270205}
   contents: {fileID: 0}
 --- !u!114 &702808300
 MonoBehaviour:
@@ -6600,6 +6600,7 @@ MonoBehaviour:
   rootSlot: {fileID: 798435190}
   store: {fileID: 1762700534}
   sellBtn: {fileID: 0}
+  IsFull: 0
 --- !u!222 &899707318
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10267,7 +10268,7 @@ MonoBehaviour:
     name: 
     prefeb: {fileID: 0}
   image: {fileID: 1051154348}
-  sellBtn: {fileID: 0}
+  sellBtn: {fileID: 1393395888}
   contents: {fileID: 0}
 --- !u!114 &1320033236
 MonoBehaviour:
@@ -12426,7 +12427,7 @@ MonoBehaviour:
     name: 
     prefeb: {fileID: 0}
   image: {fileID: 1103926503}
-  sellBtn: {fileID: 0}
+  sellBtn: {fileID: 1972730404}
   contents: {fileID: 0}
 --- !u!114 &1525098582
 MonoBehaviour:
@@ -13610,7 +13611,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerBuffer: {fileID: 1884948720}
   slotRoot: {fileID: 1408009880}
-  fullInvenSlot: 0
 --- !u!4 &1772304291 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 774089973823153102, guid: 1c5050cb39516d94a9f5c595246a3874, type: 3}
