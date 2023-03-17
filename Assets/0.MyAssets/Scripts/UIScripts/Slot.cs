@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class Slot : MonoBehaviour
     GameObject prefeb;
     public TextMeshProUGUI contents;
     int price;
+
 
 
     private void Start() 
@@ -36,7 +38,7 @@ public class Slot : MonoBehaviour
         {
             image.enabled = false;
             SetSellBtnOn(false);
-            gameObject.name = "";
+            gameObject.name = " ";
         }
         else
         {
@@ -45,13 +47,18 @@ public class Slot : MonoBehaviour
             image.sprite= tower.prefeb.GetComponentInChildren<SpriteRenderer>().sprite;
             price = tower.prefeb.GetComponentInChildren<TowerUnit>().UnitPrice;
             prefeb = tower.prefeb;
-            if (contents.text != "") contents.text = tower.prefeb.GetComponentInChildren<TowerUnit>().Contents;
+            if(contents != null)
+            {
+                contents.text = tower.prefeb.GetComponentInChildren<TowerUnit>().Contents;
+                contents.enabled = true;
+            }
             SetSellBtnOn(true);
         }
     }
 
     public void OnClickSellBtn()
     {
+        inven.setCount();
         SetTower(null);
     }
 

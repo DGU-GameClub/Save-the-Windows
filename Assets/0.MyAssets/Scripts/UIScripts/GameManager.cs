@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public int invenCount;
     UIManager uiManager;
 
+
+    public void setCount(int count)
+    {
+        this.invenCount = count;
+    }
+    
     private void Start() {
         StartCoroutine(BlackPannel.instance.FadeOut());
         uiManager = FindObjectOfType<UIManager>();

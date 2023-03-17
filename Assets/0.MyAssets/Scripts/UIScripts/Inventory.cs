@@ -9,7 +9,6 @@ public class Inventory : MonoBehaviour
     public Store store;
     private Slot[] slots;
     public UnityEngine.UI.Button sellBtn;
-    // Start is called before the first frame update
     void Start()
     {
         slots = new Slot[3];
@@ -19,6 +18,7 @@ public class Inventory : MonoBehaviour
         {
             var slot = rootSlot.GetChild(i).GetComponent<Slot>();
             slots[i] = slot;
+            slots[i].gameObject.name = " ";
         }
         store.onSlotClick += BuyTower;
     }
@@ -27,20 +27,35 @@ public class Inventory : MonoBehaviour
     void BuyTower(TowerProperty tower) 
     {
         Slot emptySlot = null;
-
         for(int i = 0; i < slots.Length; i++)
         {
-            if(slots[i].tower.name == "" || slots[i].tower == null)
+            if(slots[i].gameObject.name == " " || slots[i].tower == null)
             {
                 emptySlot = slots[i];
                 break;
             }
         }
-        Debug.Log(emptySlot);
         //빈 슬롯이 있다면
         if(emptySlot != null)
         {
             emptySlot.SetTower(tower);
+            setCount(count + 1);
+            UnityEngine.Debug.Log(invenCount);
+        }
+        
+        // foreach(Slot slot in slots)
+        // {
+        //     if(slot.name != " " || slot.tower != null)
+        //         count++;
+        // }
+
+        if(count == 3)
+        {
+            foreach(Transform child in store.slotRoot)
+            {
+                child.GetComponent<UnityEngine.UI.Button>().interactable = false;
+            }
         }
     }
+
 }

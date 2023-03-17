@@ -103,7 +103,8 @@ MonoBehaviour:
   Attak: 2.5
   Cooldown: 2
   UnitPrice: 0
-  Contents: 
+  Contents: "\uD55C\uAE00(\u314E)\uC744 \uB0A0\uB9B0\uB2E4.(1\uC778\uACF5\uACA9,
+    \uCFE8\uC774 \uC9E7\uC74C.)"
   AttackEnemy: {fileID: 0}
   TowerBullet: {fileID: 4628127536894035491, guid: 5ae49d9dd2afe1f4b9579ef720a05fc7, type: 3}
   TowerPrefeb: {fileID: 6926746675528595401}
