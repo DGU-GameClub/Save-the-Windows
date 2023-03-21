@@ -28,7 +28,7 @@ public class Enemy : LivingEntity
     Transform[] targetArr;
     int targetIndex = 0;
 
-    public int Price = 10;
+    public int Price;
     int OriginPrice;
     bool[] isSpecial = new bool[3];
     // Start is called before the first frame update
@@ -68,7 +68,7 @@ public class Enemy : LivingEntity
         }
     }
 
-    public void Setup(Sprite sprite, float _speed, float _health, Transform _wayPoints)
+    public void Setup(Sprite sprite, float _speed, float _health, Transform _wayPoints, int price)
     {
         GetComponent<SpriteRenderer>().sprite = sprite;
         moveSpeed = _speed;
@@ -76,6 +76,8 @@ public class Enemy : LivingEntity
         health = _health;
         originHealth = health;
         wayPoints = _wayPoints;
+        Price = price;
+        OriginPrice = Price;
     }
 
     public override void TakeDamage(float damage)
@@ -190,6 +192,8 @@ public class Enemy : LivingEntity
         if (targetIndex >= targetArr.Length)
         {
             Die();
+            GameManagers.instance.DamageLife();
+            GameManagers.instance.GetMoney(Price);
         }
         else
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    //인벤토리에서 타워 꺼내야하므로 인벤토리 슬롯에는 버튼컴포넌트 그대로 두기
+    /*//인벤토리에서 타워 꺼내야하므로 인벤토리 슬롯에는 버튼컴포넌트 그대로 두기
     public Transform rootSlot;
     public Store store;
     private Slot[] slots;
@@ -56,6 +56,6 @@ public class Inventory : MonoBehaviour
                 child.GetComponent<UnityEngine.UI.Button>().interactable = false;
             }
         }
-    }
+    }*/
 
 }

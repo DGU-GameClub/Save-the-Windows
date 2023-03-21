@@ -58,7 +58,7 @@ public class Slot : MonoBehaviour
 
     public void OnClickSellBtn()
     {
-        inven.setCount();
+        //inven.setCount();
         SetTower(null);
     }
 

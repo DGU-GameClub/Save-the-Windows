@@ -52,13 +52,16 @@ MonoBehaviour:
     heath: 100
     moveSpeed: 2
     spawnTime: 1
+    Price: 10
   - sprite: {fileID: 21300000, guid: 5d9b41568a8f5224c8634ea786c49553, type: 3}
     enemyCount: 3
     heath: 100
     moveSpeed: 3
     spawnTime: 2
+    Price: 15
   - sprite: {fileID: 21300000, guid: bc2684d8271addb439edc1fda2029603, type: 3}
     enemyCount: 3
     heath: 100
     moveSpeed: 5
     spawnTime: 1
+    Price: 20

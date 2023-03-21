@@ -61,7 +61,7 @@ public class Spawner : MonoBehaviour
         }
 
         Enemy enemy = Instantiate(enemyPrefabs, Vector3.zero, Quaternion.identity);
-        enemy.Setup(currentWave.sprite, currentWave.moveSpeed, currentWave.heath, wayPoints);
+        enemy.Setup(currentWave.sprite, currentWave.moveSpeed, currentWave.heath, wayPoints, currentWave.Price);
         enemy.OnDeath += OnEnemyDeath;
         enemy.transform.parent = transform;
     }
@@ -73,6 +73,8 @@ public class Spawner : MonoBehaviour
         if (enemyRemainingAlive == 0)
         {
             state = SPAWNER_STATE.READY;
+            GameManagers.instance.TowerV3Ability();
+            GameManagers.instance.TowerAvastAbility();
             //NextWave();
         }
     }
@@ -94,11 +96,14 @@ public class Spawner : MonoBehaviour
 
             print("Wave: " + (waveIndex + 1));
             state = SPAWNER_STATE.START;
+            GameManagers.instance.TowerNotepadAbility();
         }
         nextSpawnTime = Time.time;
         waveIndex++;
     }
-
+    public int CuurentState() {
+        return (int)state;
+    }
     [System.Serializable]
     public class Wave
     {
@@ -107,5 +112,6 @@ public class Spawner : MonoBehaviour
         public float heath;
         public float moveSpeed;
         public float spawnTime;
+        public int Price;
     }
 }
