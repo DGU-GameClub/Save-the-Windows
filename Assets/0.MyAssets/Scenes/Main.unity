@@ -1908,6 +1908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 426244799}
   - component: {fileID: 426244800}
+  - component: {fileID: 426244801}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -1924,7 +1925,7 @@ Transform:
   m_GameObject: {fileID: 426244798}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1503, y: 1.1503, z: 1.1503}
+  m_LocalScale: {x: 1.1503, y: 1.1503, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 883517890}
@@ -1945,6 +1946,20 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 1
   m_CellSwizzle: 0
+--- !u!114 &426244801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426244798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30490a64ceade14428c26351ce277729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 883517892}
+  currentTilePos: {x: 0, y: 0, z: 0}
 --- !u!1001 &430257888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5920,6 +5935,10 @@ PrefabInstance:
     - target: {fileID: 8330089515511821557, guid: a6a2a13571f925d43bd8e0f971e0104e, type: 3}
       propertyPath: m_Name
       value: FadeCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330089515511821557, guid: a6a2a13571f925d43bd8e0f971e0104e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6a2a13571f925d43bd8e0f971e0104e, type: 3}
