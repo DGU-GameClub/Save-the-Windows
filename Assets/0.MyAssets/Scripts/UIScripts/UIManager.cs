@@ -7,7 +7,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     GameObject settingMenu;
-    GameManager gameManager;
+   
     public GameObject GameOver;
     public GameObject GameWin;
     
@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     {
         // settingMenu = GameObject.Find("Setting Canvas").transform.Find("Setting Menu").gameObject;
         countdownText.text = setTime.ToString();
-        gameManager = FindObjectOfType<GameManager>();
+        
         store = GameObject.Find("Store").GetComponent<Store>();
     }
 
@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
         {
             countdownText.text = "남은 시간 : 0분 0초";
             //몇초 쉬고 넘어가기
-            gameManager.GameOver();
+            
         }
     }
 
