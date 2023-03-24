@@ -15,12 +15,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] float setTime = 10.0f;
     int min;
     float sec;
+    Store store;
 
     void Start() 
     {
         // settingMenu = GameObject.Find("Setting Canvas").transform.Find("Setting Menu").gameObject;
         countdownText.text = setTime.ToString();
         gameManager = FindObjectOfType<GameManager>();
+        store = GameObject.Find("Store").GetComponent<Store>();
     }
 
     void Update()
@@ -62,6 +64,14 @@ public class UIManager : MonoBehaviour
     public void GameWinOn()
     {
         GameWin.SetActive(true);
-        //소리 넣기
+    }
+
+    public void ResetStore()
+    {
+        if (store != null)
+        {
+            store.DestroyAllTower();
+        }
+        store.DestroyAllTower();
     }
 }
