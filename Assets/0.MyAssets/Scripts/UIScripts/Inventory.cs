@@ -1,61 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    /*//인벤토리에서 타워 꺼내야하므로 인벤토리 슬롯에는 버튼컴포넌트 그대로 두기
-    public Transform rootSlot;
-    public Store store;
-    private Slot[] slots;
-    public UnityEngine.UI.Button sellBtn;
-    void Start()
-    {
-        slots = new Slot[3];
-        int slotCnt = rootSlot.childCount;
+    private GameObject[] invenSlots;//인벤토리 슬롯 배열
+    public GameObject invenParent;//Inven 오브젝트
+    private int currentSlot = 0; //인벤토리의 현재 슬롯 번호
 
-        for(int i=0; i < slotCnt; i++)
+    private void Start() {
+        invenSlots = new GameObject[3];
+        //인벤토리 내 하위 슬롯들 초기화
+        for (int i = 0; i < invenSlots.Length; i++)
         {
-            var slot = rootSlot.GetChild(i).GetComponent<Slot>();
-            slots[i] = slot;
-            slots[i].gameObject.name = " ";
+            invenSlots[i] = invenParent.transform.GetChild(i).gameObject;
         }
-        store.onSlotClick += BuyTower;
     }
 
-    //어떤 타워가 들어오는지 알아야 함
-    void BuyTower(TowerProperty tower) 
+    public void OnTowerClick(GameObject towerPrefab)
     {
-        Slot emptySlot = null;
-        for(int i = 0; i < slots.Length; i++)
+        int currentSlot = 0;
+        //현재 슬롯이 인벤토리 슬롯의 배열길이보다 작고, 배열의 자식 슬롯들이 1이 아닌지(타워가 들어가 있는지) 확인
+        while (currentSlot < invenSlots.Length && invenSlots[currentSlot].transform.childCount != 1)
         {
-            if(slots[i].gameObject.name == " " || slots[i].tower == null)
+            currentSlot++;
+        }
+
+        // 인벤토리 슬롯이 모두 찼으면 추가x
+        if (currentSlot == invenSlots.Length)
+        {
+            return;
+        }
+
+        //인벤토리에 타워 추가
+        GameObject tower = Instantiate(towerPrefab, invenSlots[currentSlot].transform.position, Quaternion.identity);
+        tower.transform.SetParent(invenSlots[currentSlot].transform);
+        invenSlots[currentSlot].GetComponent<Image>().sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
+        invenSlots[currentSlot].gameObject.GetComponentInChildren<Button>().interactable = true;
+    }
+
+    //판매버튼 클릭시 이벤트
+    public void OnSellClick(int slotIndex)
+    {
+        Destroy(invenSlots[slotIndex].transform.GetChild(1).gameObject);
+        invenSlots[slotIndex].GetComponent<Image>().sprite = null;
+        invenSlots[slotIndex].gameObject.GetComponentInChildren<Button>().interactable = false;
+    }
+
+    public bool IsInvenFull()
+    {
+        for (int i = 0; i < invenSlots.Length; i++)
+        {
+            //인벤슬롯에 타워가 들어갔으면
+            if(invenSlots[i].transform.childCount != 2)
             {
-                emptySlot = slots[i];
-                break;
+                return false;
             }
         }
-        //빈 슬롯이 있다면
-        if(emptySlot != null)
-        {
-            emptySlot.SetTower(tower);
-            setCount(count + 1);
-            UnityEngine.Debug.Log(invenCount);
-        }
-        
-        // foreach(Slot slot in slots)
-        // {
-        //     if(slot.name != " " || slot.tower != null)
-        //         count++;
-        // }
-
-        if(count == 3)
-        {
-            foreach(Transform child in store.slotRoot)
-            {
-                child.GetComponent<UnityEngine.UI.Button>().interactable = false;
-            }
-        }
-    }*/
-
+        Debug.Log("invenfull");
+        return true;
+    }
 }
