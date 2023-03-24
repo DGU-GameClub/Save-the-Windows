@@ -28,8 +28,7 @@ public class Enemy : LivingEntity
     Transform[] targetArr;
     int targetIndex = 0;
 
-    public int Price;
-    int OriginPrice;
+    
     bool[] isSpecial = new bool[3];
     // Start is called before the first frame update
     void Start()
@@ -114,7 +113,6 @@ public class Enemy : LivingEntity
                 StartCoroutine(SlowDamage());
                 break;
             default:
-                Debug.Log("특수 공격 실패");
                 break;
         }
     }
@@ -133,7 +131,6 @@ public class Enemy : LivingEntity
         {
             num++;
             TakeDamage(power);
-            print(health);
             yield return new WaitForSeconds(time);
         }
 
@@ -193,7 +190,6 @@ public class Enemy : LivingEntity
         {
             Die();
             GameManagers.instance.DamageLife();
-            GameManagers.instance.GetMoney(Price);
         }
         else
         {

@@ -10,13 +10,15 @@ public class LivingEntity : MonoBehaviour
     protected bool isDie;
 
     public event System.Action OnDeath;
-
+    public int Price;
+    public int OriginPrice;
     public virtual void TakeDamage(float damage)
     {
         health -= damage;
 
         if (health <= 0 && !isDie)
         {
+            GameManagers.instance.AddMoney(Price);
             Die();
         }
 
@@ -30,7 +32,6 @@ public class LivingEntity : MonoBehaviour
         {
             OnDeath();
         }
-
         Destroy(gameObject);
     }
 }

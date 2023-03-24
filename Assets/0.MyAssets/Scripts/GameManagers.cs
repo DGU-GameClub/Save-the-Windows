@@ -27,8 +27,9 @@ public class GameManagers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Money);
     }
-    public void GetMoney(int price) {
+    public void AddMoney(int price) {
         Money += price;
     }
     public void DamageLife() {
