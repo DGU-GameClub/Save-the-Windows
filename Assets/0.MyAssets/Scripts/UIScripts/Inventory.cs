@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
     private GameObject[] invenSlots;//인벤토리 슬롯 배열
     public GameObject invenParent;//Inven 오브젝트
     private int currentSlot = 0; //인벤토리의 현재 슬롯 번호
+    public Map map;
 
     private void Start() {
         invenSlots = new GameObject[3];
@@ -14,6 +15,7 @@ public class Inventory : MonoBehaviour
         {
             invenSlots[i] = invenParent.transform.GetChild(i).gameObject;
         }
+
     }
 
     public void OnTowerClick(GameObject towerPrefab)
@@ -41,6 +43,8 @@ public class Inventory : MonoBehaviour
     //판매버튼 클릭시 이벤트
     public void OnSellClick(int slotIndex)
     {
+        //돈 다시 리턴
+        GameManagers.instance.Money += invenSlots[slotIndex].transform.GetChild(1).GetComponentInChildren<TowerUnit>().UnitPrice;
         Destroy(invenSlots[slotIndex].transform.GetChild(1).gameObject);
         invenSlots[slotIndex].GetComponent<Image>().sprite = null;
         invenSlots[slotIndex].gameObject.GetComponentInChildren<Button>().interactable = false;
@@ -50,8 +54,8 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < invenSlots.Length; i++)
         {
-            //인벤슬롯에 타워가 들어갔으면
-            if(invenSlots[i].transform.childCount != 2)
+            //인벤슬롯에 타워가 안 들어갔으면
+            if(invenSlots[i].transform.childCount == 1)
             {
                 return false;
             }

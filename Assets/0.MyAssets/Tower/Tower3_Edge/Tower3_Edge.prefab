@@ -102,7 +102,7 @@ MonoBehaviour:
   UnitName: 
   Attak: 2.5
   Cooldown: 2
-  UnitPrice: 0
+  UnitPrice: 10
   Contents: "\uBC14\uB78C\uC744 \uB0A0\uB9B0\uB2E4.(1\uC778\uACF5\uACA9, \uC2AC\uB85C\uC6B0)"
   AttackEnemy: {fileID: 0}
   TowerBullet: {fileID: 4628127536894035491, guid: 88f6afb628cce8e429e67245caa45b79, type: 3}

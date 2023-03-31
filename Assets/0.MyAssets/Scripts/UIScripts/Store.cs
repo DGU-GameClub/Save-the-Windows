@@ -1,3 +1,6 @@
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
+using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -12,11 +15,13 @@ public class Store : MonoBehaviour
     private GameObject[] slots; // 상점의 슬롯 배열.
     private bool[] slotOn;  // 상점 슬롯의 활성화 여부를 저장하는 배열. 
     private ColorBlock colors; //버튼 비활시 지정된 색 변경
+    private Transform texts;
+    private int price;
 
     private void Start() {
         //상점 슬롯들의 활성화 여부 true로 초기화
-        slotOn = new bool[5];
-        slots = new GameObject[5];
+        slotOn = new bool[3];
+        slots = new GameObject[3];
         inven = GameObject.Find("Inventory").GetComponent<Inventory>();
 
         for(int i = 0; i < slots.Length; i++)
@@ -29,35 +34,37 @@ public class Store : MonoBehaviour
     void InitSlot()
     {
         //상점슬롯에 타워 랜덤하게 가져오고 이미지, context 띄우기
-        List<int> ranList = new List<int>();
         int random;
-        for(int i=0; i< slots.Length; i++)
-        {
-            do
-            {
-                random = Random.Range(0,towerPrefabs.Length);
-            }
-            while (ranList.Contains(random));
-            ranList.Add(random);
-        }
+        Sprite sprite;
+        string contents;
+        string name;
 
         for (int i = 0; i < slots.Length; i++)
         {
-            random = ranList[i];
+            random = Random.Range(0,towerPrefabs.Length);
             GameObject towerPrefab = towerPrefabs[random];
             GameObject tower = Instantiate(towerPrefab, slots[i].transform.position, Quaternion.identity);
             tower.transform.SetParent(slots[i].transform);
 
-            slots[i].GetComponent<Image>().sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
-            slots[i].transform.Find("Text").GetComponent<TMP_Text>().text= towerPrefab.GetComponentInChildren<TowerUnit>().Contents;
+            sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
+            name = towerPrefab.name.Substring(towerPrefab.name.LastIndexOf('_')+1);
+            price = tower.GetComponentInChildren<TowerUnit>().UnitPrice;
+            contents = tower.GetComponentInChildren<TowerUnit>().Contents;
+            texts = slots[i].transform.Find("Texts");
+
+            slots[i].GetComponent<Image>().sprite = sprite;
+            texts.GetChild(0).GetComponent<TMP_Text>().text = name + " : " + contents;
+            texts.GetChild(1).GetComponent<TMP_Text>().text = "PRICE : " + price.ToString();
+            slots[i].transform.GetChild(0).gameObject.SetActive(true);
             slotOn[i] = true;
         }
+        
     }
 
     public void OnSlotClick(int slotIndex)
     {
         //해당 슬롯이 비어있거나 인벤토리가 다 차 있으면 클릭 불가능
-        if (!slotOn[slotIndex] || inven.IsInvenFull())
+        if (!slotOn[slotIndex] || inven.IsInvenFull() || GameManagers.instance.Money == 0)
         {
             //색 안변하게 기존 설정 변경
             colors = slots[slotIndex].gameObject.GetComponent<Button>().colors;
@@ -70,19 +77,22 @@ public class Store : MonoBehaviour
 
         //해당 슬롯에 있는 타워 프리팹을 인벤토리에 추가.
         GameObject towerPrefab = slots[slotIndex].transform.GetChild(1).gameObject;
+        price = towerPrefab.GetComponentInChildren<TowerUnit>().UnitPrice;
         inven.OnTowerClick(towerPrefab);
 
         //해당 슬롯 비활성화
         slotOn[slotIndex] = false;
-        SellTower(slotIndex);
+        SellTower(slotIndex, price);
     }
 
     //타워를 판매하는 함수
-    void SellTower(int slotIndex)
+    void SellTower(int slotIndex, int price)
     {
+        //타워 가격 빼기
+        GameManagers.instance.Money -= price;
         //판매시 슬롯의 타워 오브젝트 삭제
         slots[slotIndex].gameObject.GetComponent<Image>().sprite = null;
-        slots[slotIndex].transform.Find("Text").GetComponent<TMP_Text>().text = null;
+        slots[slotIndex].transform.GetChild(0).gameObject.SetActive(false);
         Destroy(slots[slotIndex].transform.GetChild(1).gameObject);
     }
 

@@ -102,7 +102,7 @@ MonoBehaviour:
   UnitName: 
   Attak: 2.5
   Cooldown: 2
-  UnitPrice: 0
+  UnitPrice: 10
   Contents: "\uBD88\uC744 \uB358\uC9C4\uB2E4.(\uD2F1 \uB300\uBBF8\uC9C0, \uD654\uC0C1,
     1\uC778\uACF5\uACA9)"
   AttackEnemy: {fileID: 0}

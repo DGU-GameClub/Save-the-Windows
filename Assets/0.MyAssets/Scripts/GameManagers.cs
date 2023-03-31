@@ -6,7 +6,8 @@ public class GameManagers : MonoBehaviour
 {
     public static GameManagers instance;
     public int Money { set; get; }
-    private int Life;
+    //private -> public 으로 수정
+    public int Life;
     public UIManager UIManager;
     public Spawner Spawner;
 
@@ -25,13 +26,10 @@ public class GameManagers : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(Money);
-    }
     public void AddMoney(int price) {
         Money += price;
     }
+
     public void DamageLife() {
         Life -= 1;
         if (Life <= 0)

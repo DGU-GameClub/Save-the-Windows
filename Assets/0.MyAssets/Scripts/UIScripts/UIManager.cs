@@ -1,3 +1,5 @@
+using System.ComponentModel;
+using System.Data.SqlTypes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,17 +19,21 @@ public class UIManager : MonoBehaviour
     float sec;
     Store store;
 
+    [SerializeField] TextMeshProUGUI moneyText;
+    [SerializeField] TextMeshProUGUI lifeText;
+    int money;
+    int life;
+
     void Start() 
     {
         // settingMenu = GameObject.Find("Setting Canvas").transform.Find("Setting Menu").gameObject;
         countdownText.text = setTime.ToString();
-        
         store = GameObject.Find("Store").GetComponent<Store>();
     }
 
     void Update()
     {
-        //타이머
+        //타이머 -> 정비시간때만 돌아가게. 실제 실행때는 리셋.
         if (setTime > 0)
         {
             setTime -= Time.deltaTime;
@@ -44,8 +50,20 @@ public class UIManager : MonoBehaviour
         if (setTime <= 0)
         {
             countdownText.text = "남은 시간 : 0분 0초";
-            //몇초 쉬고 넘어가기
-            
+        }
+        
+        //돈
+        if (money != GameManagers.instance.Money)
+        {
+            money = GameManagers.instance.Money;
+            moneyText.text = ": " + money.ToString();
+        }
+
+        //생명
+        if (life != GameManagers.instance.Life)
+        {
+            life = GameManagers.instance.Life;
+            lifeText.text = ": " + life.ToString();
         }
     }
 
@@ -68,10 +86,11 @@ public class UIManager : MonoBehaviour
 
     public void ResetStore()
     {
-        if (store != null)
+        if (store != null && GameManagers.instance.Money >= 20)
         {
             store.DestroyAllTower();
+            //리셋버튼 클릭시 -20원으로 설정
+            GameManagers.instance.Money -= 20;
         }
-        store.DestroyAllTower();
     }
 }
