@@ -19,7 +19,7 @@ public class Tower22Calculator : TowerUnit
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Enemy>().UpPrice(Attak);
+            collision.gameObject.GetComponent<Enemy>().UpPrice(Attack);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

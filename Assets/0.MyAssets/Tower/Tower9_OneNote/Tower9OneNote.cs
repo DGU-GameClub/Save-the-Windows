@@ -18,7 +18,7 @@ public class Tower9OneNote : TowerUnit
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Tower")) {
-            collision.gameObject.GetComponentInChildren<TowerUnit>().AttackSpeedUp(Attak);
+            collision.gameObject.GetComponentInChildren<TowerUnit>().AttackSpeedUp(Attack);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

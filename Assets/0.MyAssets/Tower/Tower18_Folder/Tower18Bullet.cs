@@ -51,7 +51,7 @@ public class Tower18Bullet : MonoBehaviour
         Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, Area);
         for (int i = 0; i < colls.Length; i++) {
             if (colls[i].CompareTag("Enemy")) {
-                colls[i].gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attak);
+                colls[i].gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attack);
             }
         }
         Destroy(gameObject);

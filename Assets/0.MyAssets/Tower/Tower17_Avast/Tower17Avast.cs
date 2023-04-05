@@ -6,6 +6,6 @@ public class Tower17Avast : TowerUnit
 {
     public void GetMoney()
     {
-        GameManagers.instance.AddMoney((int)Attak);
+        GameManagers.instance.AddMoney((int)Attack);
     }
 }

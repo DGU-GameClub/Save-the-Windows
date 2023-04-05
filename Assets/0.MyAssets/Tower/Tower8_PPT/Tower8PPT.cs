@@ -18,7 +18,7 @@ public class Tower8PPT : TowerUnit
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Tower")) {
-            collision.gameObject.GetComponentInChildren<TowerUnit>().AttackUp(Attak);
+            collision.gameObject.GetComponentInChildren<TowerUnit>().AttackUp(Attack);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

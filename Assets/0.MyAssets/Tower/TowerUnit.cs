@@ -5,29 +5,41 @@ using UnityEngine;
 public class TowerUnit : MonoBehaviour
 {
     [SerializeField]
-    private string UnitName;        //타워 이름
+    public string UnitName;        //타워 이름
     [SerializeField]
-    public float Attak;            //공격력
+    public float Attack;            //공격력
     [SerializeField]
     public float Cooldown;         //공격 쿨타임
     [SerializeField]
     public int UnitPrice;          //타워 가격
     [SerializeField]
     public string Contents;        //타워 설명
-    
-    private int TowerLevel = 1;     //현재 타워 레벨
+
+    public string Synergy1;        //타워 시너지1
+    public string Synergy2;        //타워 시너지2
+    public SpriteRenderer TowerImage;
+
+    public int TowerLevel;     //현재 타워 레벨
+    private int curExp;
+    private int[] MaxExp; 
     private float PrimitiveAttack;
     private float PrimitiveCooldown;
     public GameObject AttackEnemy; //현재 공격할 대상
 
     private List<GameObject> EnemyOfRange;  //콜라이더 안에 들어온 Enemy 오브젝트들(공격대상)
+    
     // Start is called before the first frame update
     void Start()
     {
         EnemyOfRange = new();
         AttackEnemy = null;
-        PrimitiveAttack = Attak;
+        PrimitiveAttack = Attack;
         PrimitiveCooldown = Cooldown;
+        TowerLevel = 1;
+        MaxExp = new int[2];
+        curExp = 0;
+        MaxExp[0] = 8;  //3개 먹이면 1렙업
+        MaxExp[1] = 19; //6개 먹이면 2렙업
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -76,17 +88,49 @@ public class TowerUnit : MonoBehaviour
         }
     }
     public void AttackUp(float Enhance) {
-        Attak *= Enhance;
+        Attack *= Enhance;
     }
     public void AttackSpeedUp(float Enhance)
     {
         Cooldown -= (Cooldown * Enhance);
-        if (Cooldown <= 0.5f) Cooldown = 0.5f;
+        if (Cooldown <= 1f) Cooldown = 1f;
     }
     public void InitAttack() {
-        Attak = PrimitiveAttack;
+        Attack = PrimitiveAttack;
     }
     public void InitAttackSpeed() {
         Cooldown = PrimitiveCooldown;
     }
+    public void AddExp(GameObject obj) {
+        if (!obj.GetComponentInChildren<Tower>().UnitName.Equals(UnitName)) 
+            return;
+        if (TowerLevel >= 3)
+            return;
+        curExp += 3;
+        CheckLevelUp();
+        Destroy(obj);
+    }
+    private void CheckLevelUp()
+    {
+        if (curExp >= MaxExp[TowerLevel - 1]) {
+            TowerLevel++;
+            curExp -= MaxExp[TowerLevel - 1];
+            StatusUp();
+        }
+    }
+    private void StatusUp()
+    {
+        if (TowerLevel == 2)
+        {
+            PrimitiveAttack *= 1.2f;
+            Attack *= 1.2f;
+        }
+        else if (TowerLevel == 3) {
+            PrimitiveAttack *= 1.4f;
+            Attack *= 1.4f;
+            Cooldown -= (Cooldown * 0.2f);
+            PrimitiveCooldown -= (PrimitiveCooldown * 0.2f);
+        }
+    }
+    
 }

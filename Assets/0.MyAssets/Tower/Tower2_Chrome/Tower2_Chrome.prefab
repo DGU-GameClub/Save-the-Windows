@@ -99,12 +99,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a843be29f4f6bc4fb1f97b10ae62079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: 
-  Attak: 2.5
-  Cooldown: 2
+  UnitName: "\uD06C\uB86C"
+  Attack: 1
+  Cooldown: 2.5
   UnitPrice: 15
-  Contents: "\uB79C\uB364 3\uC18D\uC131(\uBD88(\uD654\uC0C1), \uC804\uAE30(\uB9C8\uBE44),
-    \uD480(\uC2AC\uB85C\uC6B0) "
+  Contents: "\uC5EC\uB7EC\uAC00\uC9C0\uC758 \uC18D\uC131 \uC911 \uD558\uB098\uB97C
+    \uC0AC\uC6A9\uD558\uC5EC \uD558\uB098\uC758 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C
+    \uC785\uD78C\uB2E4."
+  Synergy1: "\uBE0C\uB77C\uC6B0\uC800"
+  Synergy2: "\uCE74\uBA5C\uB808\uC628"
+  TowerImage: {fileID: 8697795016242353169}
+  TowerLevel: 1
   AttackEnemy: {fileID: 0}
   TowerBullet:
   - {fileID: 6981353994338291809, guid: 32c81a8bcaa4ecc4f8927ea0cb39f7e9, type: 3}
@@ -128,7 +133,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 2
 --- !u!50 &4272387165437484526
 Rigidbody2D:
   serializedVersion: 4
@@ -160,6 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8697795018057888717}
   - component: {fileID: 5622899431523855280}
+  - component: {fileID: 3820821232189760608}
   m_Layer: 0
   m_Name: Tower2_Chrome
   m_TagString: Tower
@@ -199,3 +205,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3820821232189760608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697795018057888716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5515966274c7f3b4bbada1f5d4068513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alpha150: {fileID: 8697795018057888716, guid: be52c94fc2f30f748b997cc3fa6a77bc, type: 3}

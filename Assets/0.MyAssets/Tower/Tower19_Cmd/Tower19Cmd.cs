@@ -21,8 +21,8 @@ public class Tower19Cmd : TowerUnit
         if (index == 0) return;
         int RandomNumber = Random.Range(0, index);
         UpgradeTower = Towers[RandomNumber];
-        UpgradeTower.GetComponentInChildren<TowerUnit>().AttackSpeedUp((Attak-1));
-        UpgradeTower.GetComponentInChildren<TowerUnit>().AttackUp(Attak);
+        UpgradeTower.GetComponentInChildren<TowerUnit>().AttackSpeedUp((Attack-1));
+        UpgradeTower.GetComponentInChildren<TowerUnit>().AttackUp(Attack);
 
     }
     
