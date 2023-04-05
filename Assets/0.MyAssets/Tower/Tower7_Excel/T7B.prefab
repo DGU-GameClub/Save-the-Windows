@@ -122,8 +122,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
   ExplosionParticle: {fileID: 0}
-  Speed: 3
-  Pdistance: 5
+  Speed: 5
+  Pdistance: 4
+  Tower: {fileID: 0}
 --- !u!58 &8172459421533944316
 CircleCollider2D:
   m_ObjectHideFlags: 0

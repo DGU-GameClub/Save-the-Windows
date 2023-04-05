@@ -9,18 +9,21 @@ public class TowerSpawn : MonoBehaviour
     private bool isCreate = false;
     public GameObject alpha150 = null;
     private GameObject createalpha = null;
-
+    public GameObject Range;
     private void OnMouseDown()
     {
         isclicked = true;
         TowerUnit Tu = gameObject.GetComponentInChildren<TowerUnit>();
-        TowerInfoManager.instance.Setup(Tu.TowerImage, Tu.UnitPrice, Tu.UnitName, 
+        TowerInfoManager.instance.Setup(Tu.TowerImage, Tu.UnitPrice, Tu.UnitName,
             Tu.Synergy1, Tu.Synergy2, Tu.TowerLevel, Tu.Contents, Tu.Attack, Tu.Cooldown);
-        if (isCreate) return;
-        createalpha = Instantiate(alpha150, transform);
-        Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousepos.z = 1.0f;
-        createalpha.transform.position = mousepos;
+        if (!isCreate)
+        {
+            createalpha = Instantiate(alpha150);
+            Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousepos.z = 1.0f;
+            createalpha.transform.position = mousepos;
+            return;
+        }
     }
 
     private void OnMouseDrag()
@@ -31,6 +34,9 @@ public class TowerSpawn : MonoBehaviour
             Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousepos.z = 1.0f;
             createalpha.transform.position = mousepos;
+        }
+        else if (isCreate) {
+            Range.SetActive(true);
         }
     }
 
@@ -45,6 +51,7 @@ public class TowerSpawn : MonoBehaviour
             isCreate = true;
             Destroy(createalpha);
         }
+        Range.SetActive(false);
         TowerInfoManager.instance.CloseInfo();
     }
 }

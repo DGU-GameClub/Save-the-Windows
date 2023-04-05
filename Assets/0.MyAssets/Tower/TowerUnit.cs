@@ -19,7 +19,7 @@ public class TowerUnit : MonoBehaviour
     public string Synergy2;        //타워 시너지2
     public SpriteRenderer TowerImage;
 
-    public int TowerLevel;     //현재 타워 레벨
+    public int TowerLevel = 1;     //현재 타워 레벨
     private int curExp;
     private int[] MaxExp; 
     private float PrimitiveAttack;
@@ -93,7 +93,7 @@ public class TowerUnit : MonoBehaviour
     public void AttackSpeedUp(float Enhance)
     {
         Cooldown -= (Cooldown * Enhance);
-        if (Cooldown <= 1f) Cooldown = 1f;
+        if (Cooldown <= 0.5f) Cooldown = 0.5f;
     }
     public void InitAttack() {
         Attack = PrimitiveAttack;

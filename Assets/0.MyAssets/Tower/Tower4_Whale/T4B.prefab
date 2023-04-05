@@ -103,6 +103,7 @@ MonoBehaviour:
   ExplosionParticle: {fileID: 0}
   Speed: 3
   Pdistance: 15
+  Tower: {fileID: 0}
 --- !u!50 &1052823204949146293
 Rigidbody2D:
   serializedVersion: 4

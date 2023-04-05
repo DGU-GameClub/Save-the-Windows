@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4476913582953059364}
   - component: {fileID: 7854705603927428187}
+  - component: {fileID: 4120779827695816423}
   m_Layer: 0
   m_Name: Tower4_Whale
   m_TagString: Tower
@@ -30,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 643997944199232890}
+  - {fileID: 4657540740572801270}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,6 +51,51 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4120779827695816423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421553550944468666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5515966274c7f3b4bbada1f5d4068513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alpha150: {fileID: 6926746675528595401, guid: 8afa518c0a96b6943bb379e75d6329a9, type: 3}
+  Range: {fileID: 4682834500384985809}
+--- !u!1 &4682834500384985809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4657540740572801270}
+  m_Layer: 0
+  m_Name: Range
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4657540740572801270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4682834500384985809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4476913582953059364}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4832411162004952623
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +109,7 @@ GameObject:
   - component: {fileID: 6251042479852336587}
   - component: {fileID: 1179818279241100094}
   - component: {fileID: 1038706460775088622}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,12 +232,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5868329109c2640898ae8641a7c1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: 
-  Attak: 2.5
-  Cooldown: 2
-  UnitPrice: 0
+  UnitName: "\uC6E8\uC77C"
+  Attack: 1
+  Cooldown: 5
+  UnitPrice: 10
   Contents: "\uBB3C\uBC29\uC6B8 5\uAC1C\uB97C \uB0A0\uB9B0\uB2E4.(1\uC778\uACF5\uACA9,
     \uD0C0\uACA9 \uC131\uACF5\uB960 \uB0AE\uC74C)"
+  Synergy1: "\uBE0C\uB77C\uC6B0\uC800"
+  Synergy2: "\uB3D9\uBB3C"
+  TowerImage: {fileID: 2207661317959785680}
+  TowerLevel: 1
   AttackEnemy: {fileID: 0}
   TowerBullet: {fileID: 6698710950876614016, guid: ab55cdc49d9e4214880522aa3aeaf056, type: 3}
   TowerPrefeb: {fileID: 4421553550944468666}
