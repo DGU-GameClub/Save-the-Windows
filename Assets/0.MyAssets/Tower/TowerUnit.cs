@@ -51,6 +51,7 @@ public class TowerUnit : MonoBehaviour
     //타워 공격 범위에 벗어났을 때, 공격대상에 있던 적이라면 공격대상에서 제거.
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (EnemyOfRange.Count <= 0) return;
         foreach(GameObject obj in EnemyOfRange)
         {
             if (obj == other.gameObject) {

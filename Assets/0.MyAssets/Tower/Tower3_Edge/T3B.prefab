@@ -102,7 +102,7 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   ExplosionParticle: {fileID: 0}
   Speed: 5
-  Pdistance: 2
+  Pdistance: 2.5
   Tower: {fileID: 0}
 --- !u!58 &8801529211498549932
 CircleCollider2D:

@@ -6,7 +6,7 @@ public class TowerSpawn : MonoBehaviour
 {   
     //마우스 이벤트
     private bool isclicked = false;
-    private bool isCreate = false;
+    public bool isCreate = false;
     public GameObject alpha150 = null;
     private GameObject createalpha = null;
     public GameObject Range;

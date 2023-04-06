@@ -66,4 +66,13 @@ public class GameManagers : MonoBehaviour
             obj.GetComponentInChildren<Tower23Notepad>().RandomTowerSpawn();
         }
     }
+    public void TowerNotepadAbilityOff()
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("TowerNotepad");
+        if (gameObjects.Length == 0) return;
+        foreach (GameObject obj in gameObjects)
+        {
+            obj.GetComponentInChildren<Tower23Notepad>().TowerDestory();
+        }
+    }
 }

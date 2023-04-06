@@ -102,7 +102,7 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   ExplosionParticle: {fileID: 0}
   Speed: 3
-  Pdistance: 15
+  Pdistance: 20
   Tower: {fileID: 0}
 --- !u!50 &1052823204949146293
 Rigidbody2D:

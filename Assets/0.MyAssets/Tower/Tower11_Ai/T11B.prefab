@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4672936364614779113}
   - component: {fileID: 1566198148080433312}
-  - component: {fileID: 7257014276858906046}
   - component: {fileID: 8801529211498549932}
   - component: {fileID: -587486620523332974}
+  - component: {fileID: -7045903486703499989}
   m_Layer: 0
   m_Name: T11B
   m_TagString: Untagged
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7257014276858906046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4628127536894035491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f496b39513ee3d44c9652cfc87779c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPosition: {x: 0, y: 0, z: 0}
-  ExplosionParticle: {fileID: 0}
-  Speed: 2
-  Pdistance: 5
 --- !u!58 &8801529211498549932
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -140,3 +124,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-7045903486703499989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4628127536894035491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b4b9d2376ace44a8db6a0d39bdce79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPosition: {x: 0, y: 0, z: 0}
+  ExplosionParticle: {fileID: 0}
+  Speed: 5
+  Pdistance: 3
+  Tower: {fileID: 0}

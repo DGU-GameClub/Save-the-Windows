@@ -101,8 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
   ExplosionParticle: {fileID: 0}
-  Speed: 2
-  Pdistance: 5
+  Speed: 5
+  Pdistance: 2.25
+  Tower: {fileID: 0}
 --- !u!50 &-587486620523332974
 Rigidbody2D:
   serializedVersion: 4

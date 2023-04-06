@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5515966274c7f3b4bbada1f5d4068513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCreate: 0
   alpha150: {fileID: 6926746675528595401, guid: 8afa518c0a96b6943bb379e75d6329a9, type: 3}
   Range: {fileID: 4682834500384985809}
 --- !u!1 &4682834500384985809
@@ -236,8 +237,8 @@ MonoBehaviour:
   Attack: 1
   Cooldown: 5
   UnitPrice: 10
-  Contents: "\uBB3C\uBC29\uC6B8 5\uAC1C\uB97C \uB0A0\uB9B0\uB2E4.(1\uC778\uACF5\uACA9,
-    \uD0C0\uACA9 \uC131\uACF5\uB960 \uB0AE\uC74C)"
+  Contents: "\uAC70\uB9AC\uC640 \uC0C1\uAD00\uC5C6\uC774 \uBA85\uC911\uB960\uC774
+    \uC88B\uC9C0 \uC54A\uC740 \uBB3C\uBC29\uC6B8 5\uAC1C\uB97C \uB0A0\uB9B0\uB2E4."
   Synergy1: "\uBE0C\uB77C\uC6B0\uC800"
   Synergy2: "\uB3D9\uBB3C"
   TowerImage: {fileID: 2207661317959785680}

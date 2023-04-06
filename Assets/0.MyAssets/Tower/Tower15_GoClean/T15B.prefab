@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
   ExplosionParticle: {fileID: 0}
-  Speed: 3
-  Pdistance: 5
+  Speed: 5
+  Pdistance: 2
   Percent: 1.5
+  Tower: {fileID: 0}

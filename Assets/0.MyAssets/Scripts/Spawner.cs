@@ -75,6 +75,7 @@ public class Spawner : MonoBehaviour
             state = SPAWNER_STATE.READY;
             GameManagers.instance.TowerV3Ability();
             GameManagers.instance.TowerAvastAbility();
+            GameManagers.instance.TowerNotepadAbilityOff();
             //NextWave();
         }
     }

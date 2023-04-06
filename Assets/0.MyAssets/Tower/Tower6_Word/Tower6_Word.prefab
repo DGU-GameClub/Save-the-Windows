@@ -103,7 +103,8 @@ MonoBehaviour:
   Attack: 1.2
   Cooldown: 1.2
   UnitPrice: 0
-  Contents: 
+  Contents: "\uC801 \uD558\uB098\uC5D0\uAC8C \uBE60\uB974\uAC8C \uC601\uC5B4(A)\uB97C
+    \uB0A0\uB9B0\uB2E4."
   Synergy1: "\uC624\uD53C\uC2A4"
   Synergy2: 
   TowerImage: {fileID: 3914505376101749565}
@@ -213,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5515966274c7f3b4bbada1f5d4068513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCreate: 0
   alpha150: {fileID: 6926746675528595401, guid: 798cbc7b96cea5d41878525d6a8daae5, type: 3}
   Range: {fileID: 6935957303971079367}
 --- !u!1 &6935957303971079367

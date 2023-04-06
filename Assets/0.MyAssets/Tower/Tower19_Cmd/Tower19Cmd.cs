@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Tower19Cmd : TowerUnit
 {
-    bool isStop = false;
     GameObject UpgradeTower;
-    private void Start()
+    public void SetupCMD()
     {
         Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, 1f);
         int index = 0;
