@@ -9,11 +9,32 @@ public class Map : MonoBehaviour
     public Vector3 currentTilePos;
 
     Vector3Int preTilePos;
+    public Vector3[] tilePosArr;
+
+    private void Awake()
+    {
+        List<Vector3> worldPositions = new List<Vector3>();
+        for (int x = 0; x < tilemap.size.x; x++)
+        {
+            for (int y = 0; y < tilemap.size.y; y++)
+            {
+                Vector3Int cellPos = new Vector3Int(x, y, 0);
+                TileBase tile = tilemap.GetTile(cellPos);
+                if (tile != null)
+                {
+                    Vector3 worldPos = tilemap.CellToWorld(cellPos);
+                    worldPositions.Add(worldPos);
+                    Debug.Log(worldPos);
+                }
+            }
+        }
+        tilePosArr = worldPositions.ToArray();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -45,4 +66,6 @@ public class Map : MonoBehaviour
     public Vector3 GetCoordTileUnderMouse() {
         return currentTilePos;
     }
+
+
 }
