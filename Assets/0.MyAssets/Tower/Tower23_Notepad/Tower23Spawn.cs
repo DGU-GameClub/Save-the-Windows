@@ -9,6 +9,11 @@ public class Tower23Spawn : MonoBehaviour
     public GameObject alpha150 = null;
     private GameObject createalpha = null;
     public GameObject Range;
+    Map Tilemap;
+    private void Start()
+    {
+        Tilemap = GameObject.Find("Grid").GetComponent<Map>();
+    }
     private void OnMouseDown()
     {
         isclicked = true;
@@ -45,10 +50,11 @@ public class Tower23Spawn : MonoBehaviour
         isclicked = false;
         if (!isCreate)
         {
-            //타워 설치 위치 검사 후 설치
-            //Instantiate(realTower, createalpha.transform.position, Quaternion.identity);
-            gameObject.transform.position = createalpha.transform.position;
-            isCreate = true;
+            if (Vector3.Distance(Tilemap.GetCoordTileUnderMouse(), createalpha.transform.position) < 1.16f)
+            {
+                gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
+                isCreate = true;
+            }
             Destroy(createalpha);
         }
         Range.SetActive(false);
