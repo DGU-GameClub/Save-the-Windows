@@ -1,17 +1,12 @@
-using System.ComponentModel;
-using System.Data.SqlTypes;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    GameObject settingMenu;
-   
-    public GameObject GameOver;
-    public GameObject GameWin;
+    public GameObject mainCanvas;
+    public GameObject gameOverCanvas;
+    public GameObject gameWinCanvas;
     
     [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] float setTime = 10.0f;
@@ -24,9 +19,19 @@ public class UIManager : MonoBehaviour
     int money;
     int life;
 
+    public static UIManager instance;
+    private void Awake()
+    {
+        if(instance != null)
+        {
+            Destroy(instance);
+        }
+        instance = this;
+        
+    }
     void Start() 
     {
-        // settingMenu = GameObject.Find("Setting Canvas").transform.Find("Setting Menu").gameObject;
+        StartCoroutine(BlackPannel.instance.FadeOut());
         countdownText.text = setTime.ToString();
         store = GameObject.Find("Store").GetComponent<Store>();
     }
@@ -70,21 +75,9 @@ public class UIManager : MonoBehaviour
     public void OnClickSettings()
     {
         //설정메뉴키기
-        settingMenu.SetActive(true);
-        Debug.Log("Settings");
+        SettingCanvas.instance.transform.GetChild(0).gameObject.SetActive(true);
     }
-
-    public void GameOverOn()
-    {
-        GameOver.SetActive(true);
-    }
-
-    public void GameWinOn()
-    {
-        GameWin.SetActive(true);
-    }
-
-    public void ResetStore()
+    public void ResetButtonOn()
     {
         if (store != null && GameManagers.instance.Money >= 20)
         {
@@ -92,5 +85,34 @@ public class UIManager : MonoBehaviour
             //리셋버튼 클릭시 -20원으로 설정
             GameManagers.instance.Money -= 20;
         }
+    }
+    public void OnClickResetButton()
+    {
+        //게임종료하기 전에 확인 메세지 띄우기
+        StartCoroutine(GameOver());
+    }
+
+    public void OnClickRestart()
+    {
+        StartCoroutine(BackToStart());
+    }
+    public IEnumerator BackToStart()
+    {
+        yield return StartCoroutine(BlackPannel.instance.FadeIn()); 
+        BlackPannel.instance.NextScene("00.Start");
+    }
+    public IEnumerator GameOver()
+    {
+        yield return StartCoroutine(BlackPannel.instance.FadeIn());
+        mainCanvas.SetActive(false);
+        gameOverCanvas.SetActive(true);
+        yield return StartCoroutine(BlackPannel.instance.FadeOut());
+    }
+
+    public IEnumerator GameWin()
+    {
+        yield return StartCoroutine(BlackPannel.instance.FadeOut());
+        gameWinCanvas.SetActive(true);
+        StartCoroutine(BackToStart());
     }
 }

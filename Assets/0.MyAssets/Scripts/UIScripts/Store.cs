@@ -1,6 +1,3 @@
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -13,14 +10,11 @@ public class Store : MonoBehaviour
     public Inventory inven;
 
     private GameObject[] slots; // 상점의 슬롯 배열.
-    private bool[] slotOn;  // 상점 슬롯의 활성화 여부를 저장하는 배열. 
     private ColorBlock colors; //버튼 비활시 지정된 색 변경
     private Transform texts;
     private int price;
 
     private void Start() {
-        //상점 슬롯들의 활성화 여부 true로 초기화
-        slotOn = new bool[3];
         slots = new GameObject[3];
         inven = GameObject.Find("Inventory").GetComponent<Inventory>();
 
@@ -56,22 +50,19 @@ public class Store : MonoBehaviour
             texts.GetChild(0).GetComponent<TMP_Text>().text = name + " : " + contents;
             texts.GetChild(1).GetComponent<TMP_Text>().text = "PRICE : " + price.ToString();
             slots[i].transform.GetChild(0).gameObject.SetActive(true);
-            slotOn[i] = true;
         }
         
     }
 
     public void OnSlotClick(int slotIndex)
     {
-        //해당 슬롯이 비어있거나 인벤토리가 다 차 있으면 클릭 불가능
-        if (!slotOn[slotIndex] || inven.IsInvenFull() || GameManagers.instance.Money == 0)
+        //해당 슬롯이 비어있거나, 인벤토리가 다 차 있거나, 돈이 없으면 클릭 불가능
+        if (slots[slotIndex].transform.childCount == 1 || inven.IsInvenFull() || GameManagers.instance.Money == 0)
         {
             //색 안변하게 기존 설정 변경
             colors = slots[slotIndex].gameObject.GetComponent<Button>().colors;
             colors.disabledColor = colors.normalColor;
             slots[slotIndex].gameObject.GetComponent<Button>().colors = colors;
-            //버튼 비활
-            slots[slotIndex].gameObject.GetComponent<Button>().interactable = false;
             return;
         }
 
@@ -80,8 +71,6 @@ public class Store : MonoBehaviour
         price = towerPrefab.GetComponentInChildren<TowerUnit>().UnitPrice;
         inven.OnTowerClick(towerPrefab);
 
-        //해당 슬롯 비활성화
-        slotOn[slotIndex] = false;
         SellTower(slotIndex, price);
     }
 

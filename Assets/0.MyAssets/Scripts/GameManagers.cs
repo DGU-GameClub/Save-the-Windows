@@ -6,7 +6,6 @@ public class GameManagers : MonoBehaviour
 {
     public static GameManagers instance;
     public int Money { set; get; }
-    //private -> public 으로 수정
     public int Life;
     public UIManager UIManager;
     public Spawner Spawner;
@@ -18,6 +17,7 @@ public class GameManagers : MonoBehaviour
             Destroy(gameObject);
         }
         instance = this;
+        
     }
     void Start()
     {
@@ -35,7 +35,7 @@ public class GameManagers : MonoBehaviour
         if (Life <= 0)
         {
             //게임 오버
-            UIManager.GameOverOn();
+            StartCoroutine(UIManager.instance.GameOver());
         }
     }
     public void RecoveryLife(int rate) {
