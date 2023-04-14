@@ -28,8 +28,46 @@ public class Tower19Cmd : TowerUnit
     private void OnDestroy()
     {
         if (UpgradeTower != null) { 
-            UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttack();
-            UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttackSpeed();
+            UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttack(Attack);
+            UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttackSpeed(Attack-1);
+        }
+    }
+    protected override void StatusUp()
+    {
+        if (TowerLevel == 2)
+        {
+            if (UpgradeTower != null)
+            {
+                UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttack(Attack);
+                UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttackSpeed(Attack-1);
+                PrimitiveAttack = 1.5f;
+                Attack = 1.5f;
+                UpgradeTower.GetComponentInChildren<TowerUnit>().AttackSpeedUp((Attack - 1));
+                UpgradeTower.GetComponentInChildren<TowerUnit>().AttackUp(Attack);
+            }
+            else {
+                PrimitiveAttack = 1.5f;
+                Attack = 1.5f;
+                SetupCMD();
+            }
+        }
+        else if (TowerLevel == 3)
+        {
+            if (UpgradeTower != null)
+            {
+                UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttack(Attack);
+                UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttackSpeed(Attack - 1);
+                PrimitiveAttack = 1.6f;
+                Attack = 1.6f;
+                UpgradeTower.GetComponentInChildren<TowerUnit>().AttackSpeedUp((Attack - 1));
+                UpgradeTower.GetComponentInChildren<TowerUnit>().AttackUp(Attack);
+            }
+            else
+            {
+                PrimitiveAttack = 1.5f;
+                Attack = 1.5f;
+                SetupCMD();
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ public class Tower19Spawn : MonoBehaviour
         isclicked = true;
         TowerUnit Tu = gameObject.GetComponentInChildren<TowerUnit>();
         TowerInfoManager.instance.Setup(Tu.TowerImage, Tu.UnitPrice, Tu.UnitName,
-            Tu.Synergy1, Tu.Synergy2, Tu.TowerLevel, Tu.Contents, Tu.Attack, Tu.Cooldown);
+            Tu.Synergy1, Tu.Synergy2, Tu.TowerLevel, Tu.Contents, Tu.Attack, Tu.Cooldown, Tu.ExpPercent());
         if (!isCreate)
         {
             createalpha = Instantiate(alpha150);
@@ -50,11 +50,23 @@ public class Tower19Spawn : MonoBehaviour
         isclicked = false;
         if (!isCreate)
         {
-            if (Vector3.Distance(Tilemap.GetCoordTileUnderMouse(), createalpha.transform.position) < 1.16f)
+            if (Vector3.Distance(Tilemap.GetCoordTileUnderMouse(), createalpha.transform.position) < 1.1f)
             {
-                gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
-                gameObject.GetComponentInChildren<Tower19Cmd>().SetupCMD();
-                isCreate = true;
+                Collider2D objectCollider = Physics2D.OverlapCircle(createalpha.transform.position, 0.05f, 1 << 8);
+
+                if (objectCollider != null && !objectCollider.Equals(gameObject))
+                {
+                    if (objectCollider.gameObject.GetComponentInChildren<TowerUnit>().AddExp(gameObject))
+                    {
+                        Destroy(gameObject);
+                    }
+                }
+                else
+                {
+                    gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
+                    gameObject.GetComponentInChildren<Tower19Cmd>().SetupCMD();
+                    isCreate = true;
+                }
             }
             Destroy(createalpha);
         }

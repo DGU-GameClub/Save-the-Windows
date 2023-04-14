@@ -32,5 +32,16 @@ public class Tower23Notepad : TowerUnit
             NotepadOn();
         }
     }
-    
+    protected override void StatusUp()
+    {
+        if (TowerLevel == 2)
+        {
+            return;
+        }
+        else if (TowerLevel == 3)
+        {
+            return;
+        }
+    }
+
 }

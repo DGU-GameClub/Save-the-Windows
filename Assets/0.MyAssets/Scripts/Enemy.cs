@@ -89,7 +89,7 @@ public class Enemy : LivingEntity
     void SetHpBar()
     {
         Canvas enemyHpBarCanvas = GameObject.Find("Enemy HpBar Canvas").GetComponent<Canvas>();
-        hpBar = Instantiate<GameObject>(hpBarPrefab, enemyHpBarCanvas.transform);
+        hpBar = Instantiate(hpBarPrefab, enemyHpBarCanvas.transform);
 
         enemyHpBarImage = hpBar.GetComponent<Image>();
         var _hpbar = hpBar.GetComponent<EnemyHpBar>();

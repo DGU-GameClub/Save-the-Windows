@@ -6,7 +6,6 @@ public class Tower24Explorer : TowerUnit
 {
     public GameObject TowerBullet;
     public GameObject TowerPrefeb;
-    private float AttackTime = 0f;
     public float bulletScale_X = 0.5f;
     public float bulletScale_Y = 0.5f;
     public Transform[] firePoints;
@@ -27,7 +26,7 @@ public class Tower24Explorer : TowerUnit
         }
 
     }
-    void Attack()
+    new void Attack()
     {
         for (int i = 0; i < 8; i++)
         {

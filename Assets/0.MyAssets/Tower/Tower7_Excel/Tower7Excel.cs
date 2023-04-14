@@ -6,7 +6,6 @@ public class Tower7Excel : TowerUnit
 {
     public GameObject TowerBullet;
     public GameObject TowerPrefeb;
-    private float AttackTime = 0f;
     public float bulletScale_X = 0f;
     public float bulletScale_Y = 0f;
 
@@ -27,7 +26,7 @@ public class Tower7Excel : TowerUnit
         }
 
     }
-    void Attack()
+    new void Attack()
     {
         var Target = (AttackEnemy.transform.position - transform.position);
         var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);

@@ -8,4 +8,17 @@ public class Tower17Avast : TowerUnit
     {
         GameManagers.instance.AddMoney((int)Attack);
     }
+    protected override void StatusUp()
+    {
+        if (TowerLevel == 2)
+        {
+            PrimitiveAttack = 30f;
+            Attack = 30f;
+        }
+        else if (TowerLevel == 3)
+        {
+            PrimitiveAttack = 50f;
+            Attack = 50f;
+        }
+    }
 }

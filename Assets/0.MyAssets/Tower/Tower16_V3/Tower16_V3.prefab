@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: V3
-  Attack: 0
+  Attack: 1
   Cooldown: 0
   UnitPrice: 0
   Contents: "\uD0D0\uC0C9\uC744 \uD1B5\uD574 \uC545\uC131\uD504\uB85C\uADF8\uB7A8\uC744

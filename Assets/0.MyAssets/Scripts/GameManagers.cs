@@ -75,4 +75,10 @@ public class GameManagers : MonoBehaviour
             obj.GetComponentInChildren<Tower23Notepad>().TowerDestory();
         }
     }
+    public void InitTower() {
+        GameObject[] Towers = GameObject.FindGameObjectsWithTag("Tower");
+        foreach (GameObject obj in Towers) {
+            obj.GetComponentInChildren<TowerUnit>().InitAttackTime();
+        }
+    }
 }

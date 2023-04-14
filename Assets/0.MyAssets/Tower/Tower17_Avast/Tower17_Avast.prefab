@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: Avast
-  Attack: 0
+  Attack: 10
   Cooldown: 0
   UnitPrice: 0
   Contents: "\uB9E4 \uC2A4\uD14C\uC774\uC9C0\uAC00 \uB05D\uB0A0 \uB54C \uB9C8\uB2E4

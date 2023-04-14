@@ -17,6 +17,8 @@ public class TowerInfoManager : MonoBehaviour
     public TextMeshProUGUI Contents;
     public TextMeshProUGUI Attack;
     public TextMeshProUGUI Cooldown;
+    public Slider ExpBar;
+    public GameObject FillArea;
     private void Awake()
     {
         if (instance != null) {
@@ -25,7 +27,7 @@ public class TowerInfoManager : MonoBehaviour
         instance = this;
     }
 
-    public void Setup(SpriteRenderer sp, int tm, string tn, string ts1, string ts2, int tl, string tc, float ta, float tcd) {
+    public void Setup(SpriteRenderer sp, int tm, string tn, string ts1, string ts2, int tl, string tc, float ta, float tcd, float exp) {
         TowerImage.sprite = sp.sprite;
         Money.text = tm.ToString();
         Name.text = tn;
@@ -35,6 +37,11 @@ public class TowerInfoManager : MonoBehaviour
         Contents.text = tc;
         Attack.text = "공격력 : " + ta.ToString();
         Cooldown.text = "쿨타임 : " + tcd.ToString();
+        ExpBar.value = exp;
+        if(ExpBar.value <= 0 )
+            FillArea.SetActive(false);
+        else
+            FillArea.SetActive(true);
         Towerinfo.SetActive(true);
     }
     public void CloseInfo() {

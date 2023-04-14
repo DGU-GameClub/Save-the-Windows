@@ -142,4 +142,4 @@ MonoBehaviour:
   Pdistance: 10
   Tower: {fileID: 0}
   time: 5
-  percent: 1.5
+  percent: 0.5

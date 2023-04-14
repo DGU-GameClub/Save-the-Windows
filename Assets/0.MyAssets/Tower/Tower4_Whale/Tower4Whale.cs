@@ -6,7 +6,6 @@ public class Tower4Whale : TowerUnit
 {
     public GameObject TowerBullet;
     public GameObject TowerPrefeb;
-    private float AttackTime = 0f;
     public float bulletScale_X = 0f;
     public float bulletScale_Y = 0f;
     public float Correction;
@@ -27,7 +26,7 @@ public class Tower4Whale : TowerUnit
         }
 
     }
-    IEnumerator Attack() {
+     new IEnumerator Attack() {
         Vector3 EnemyRandomPosition = new Vector3(
             AttackEnemy.transform.position.x + Random.Range(-1 * Correction, Correction),
             AttackEnemy.transform.position.y + Random.Range(-1 * Correction, Correction),
