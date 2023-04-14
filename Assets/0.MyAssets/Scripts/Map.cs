@@ -6,35 +6,36 @@ using UnityEngine.Tilemaps;
 public class Map : MonoBehaviour
 {
     public Tilemap tilemap;
-    public Vector3 currentTilePos;
 
+    Vector3 currentTilePos;
+    Dictionary<Vector3Int, bool> tileStatesDict;
+    Vector3Int curCellPos;
     Vector3Int preTilePos;
-    public Vector3[] tilePosArr;
 
     private void Awake()
     {
-        List<Vector3> worldPositions = new List<Vector3>();
-        for (int x = 0; x < tilemap.size.x; x++)
+        tileStatesDict = new Dictionary<Vector3Int, bool>();
+        BoundsInt bounds = tilemap.cellBounds;
+
+        for (int x = bounds.min.x; x < bounds.max.x; x++)
         {
-            for (int y = 0; y < tilemap.size.y; y++)
+            for (int y = bounds.min.y; y < bounds.max.y; y++)
             {
                 Vector3Int cellPos = new Vector3Int(x, y, 0);
                 TileBase tile = tilemap.GetTile(cellPos);
                 if (tile != null)
                 {
-                    Vector3 worldPos = tilemap.CellToWorld(cellPos);
-                    worldPositions.Add(worldPos);
-                    Debug.Log(worldPos);
+                    tileStatesDict.Add(cellPos, false);
+                    //tileStatesDict[cellPos] = false;
                 }
             }
         }
-        tilePosArr = worldPositions.ToArray();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -46,8 +47,11 @@ public class Map : MonoBehaviour
 
         TileBase tile = tilemap.GetTile(cellPos);
 
+        curCellPos = cellPos;
+
         if (tile != null)
         {
+            //»ö º¯°æ
             if (cellPos != preTilePos)
             {
                 tilemap.SetTileFlags(preTilePos, TileFlags.None);
@@ -55,7 +59,7 @@ public class Map : MonoBehaviour
             }
 
             tilemap.SetTileFlags(cellPos, TileFlags.None);
-            tilemap.SetColor(cellPos, new Color(1,1,1,0.7f));
+            tilemap.SetColor(cellPos, new Color(1, 1, 1, 0.7f));
 
             preTilePos = cellPos;
 
@@ -67,5 +71,40 @@ public class Map : MonoBehaviour
         return currentTilePos;
     }
 
+    public Vector3Int GetCurTileCellPos()
+    {
+        return curCellPos;
+    }
+
+    public bool GetTileState(Vector3Int cell)
+    {
+        return tileStatesDict[cell];
+    }
+
+    public void SetTileState(Vector3Int cell, bool value)
+    {
+        tileStatesDict[cell] = value;
+    }
 
 }
+
+
+/*
+ * 
+  List<Vector3> worldPositions = new List<Vector3>();
+        for (int x = 0; x < tilemap.size.x; x++)
+        {
+            for (int y = 0; y < tilemap.size.y; y++)
+            {
+                Vector3Int cellPos = new Vector3Int(x, y, 0);
+
+                TileBase tile = tilemap.GetTile(cellPos);
+                if (tile != null)
+                {
+                    Vector3 worldPos = tilemap.CellToWorld(cellPos);
+                    worldPositions.Add(worldPos);
+                }
+            }
+        }
+        tilePosArr = worldPositions.ToArray();
+ */
