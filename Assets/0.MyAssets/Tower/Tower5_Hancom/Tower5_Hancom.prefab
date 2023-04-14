@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 6341970417656526205}
   - component: {fileID: 2932991449770282381}
   - component: {fileID: 7105705758724057335}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower5_Hancom
   m_TagString: Tower
   m_Icon: {fileID: 0}

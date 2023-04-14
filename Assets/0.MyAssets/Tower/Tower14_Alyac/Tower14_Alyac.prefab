@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 6341970417656526205}
   - component: {fileID: 1652442619182757650}
   - component: {fileID: 6505833518383461287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower14_Alyac
   m_TagString: Tower
   m_Icon: {fileID: 0}

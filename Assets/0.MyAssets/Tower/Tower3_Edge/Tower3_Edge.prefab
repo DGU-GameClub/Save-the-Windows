@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 6341970417656526205}
   - component: {fileID: 1491062467016603680}
   - component: {fileID: 7197469334244289008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower3_Edge
   m_TagString: Tower
   m_Icon: {fileID: 0}

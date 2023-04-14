@@ -9,15 +9,16 @@ public class Tower23Spawn : MonoBehaviour
     public GameObject alpha150 = null;
     private GameObject createalpha = null;
     public GameObject Range;
+    TowerUnit Tu;
     Map Tilemap;
     private void Start()
     {
         Tilemap = GameObject.Find("Grid").GetComponent<Map>();
+        Tu = gameObject.GetComponentInChildren<TowerUnit>();
     }
     private void OnMouseDown()
     {
         isclicked = true;
-        TowerUnit Tu = gameObject.GetComponent<TowerUnit>();
         TowerInfoManager.instance.Setup(Tu.TowerImage, Tu.UnitPrice, Tu.UnitName,
             Tu.Synergy1, Tu.Synergy2, Tu.TowerLevel, Tu.Contents, Tu.Attack, Tu.Cooldown);
         if (!isCreate)
@@ -52,8 +53,21 @@ public class Tower23Spawn : MonoBehaviour
         {
             if (Vector3.Distance(Tilemap.GetCoordTileUnderMouse(), createalpha.transform.position) < 1.16f)
             {
-                gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
-                isCreate = true;
+                Collider2D objectCollider = Physics2D.OverlapCircle(createalpha.transform.position, 0.1f, 1 << 8);
+
+                if (objectCollider != null)
+                {
+                    if (objectCollider.gameObject.GetComponentInChildren<TowerUnit>().AddExp(gameObject))
+                    {
+                        Destroy(createalpha);
+                        Destroy(gameObject);
+                    }
+                }
+                else
+                {
+                    gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
+                    isCreate = true;
+                }
             }
             Destroy(createalpha);
         }

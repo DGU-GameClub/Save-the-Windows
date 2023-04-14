@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4476913582953059364}
   - component: {fileID: 7854705603927428187}
   - component: {fileID: 4120779827695816423}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower4_Whale
   m_TagString: Tower
   m_Icon: {fileID: 0}

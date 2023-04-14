@@ -102,20 +102,24 @@ public class TowerUnit : MonoBehaviour
     public void InitAttackSpeed() {
         Cooldown = PrimitiveCooldown;
     }
-    public void AddExp(GameObject obj) {
-        if (!obj.GetComponentInChildren<Tower>().UnitName.Equals(UnitName)) 
-            return;
+    public bool AddExp(GameObject obj) {
+        if (!obj.GetComponentInChildren<TowerUnit>().UnitName.Equals(UnitName)) 
+            return false;
         if (TowerLevel >= 3)
-            return;
+            return false;
         curExp += 3;
         CheckLevelUp();
         Destroy(obj);
+        return true;
     }
     private void CheckLevelUp()
     {
         if (curExp >= MaxExp[TowerLevel - 1]) {
             TowerLevel++;
-            curExp -= MaxExp[TowerLevel - 1];
+            if (TowerLevel >= 3)
+                curExp = 0;
+            else
+                curExp -= MaxExp[TowerLevel - 1];
             StatusUp();
         }
     }

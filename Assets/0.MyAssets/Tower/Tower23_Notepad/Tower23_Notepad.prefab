@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6971769816056215298}
   - component: {fileID: 3772343347749590877}
   - component: {fileID: 6844172348341503100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower23_Notepad
   m_TagString: TowerNotepad
   m_Icon: {fileID: 0}

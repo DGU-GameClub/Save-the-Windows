@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower21Bullet : MonoBehaviour
+public class Tower21Bullet : TowerBulletParalysis
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -11,8 +12,8 @@ public class Tower21Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        return;
     }
 }

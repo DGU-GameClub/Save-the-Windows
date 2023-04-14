@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 6412209122566825732}
   - component: {fileID: 3564681705285606970}
   - component: {fileID: 2505534403723906280}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower7_Excel
   m_TagString: Tower
   m_Icon: {fileID: 0}

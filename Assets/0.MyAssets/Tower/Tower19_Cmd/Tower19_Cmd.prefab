@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 6341970417656526205}
   - component: {fileID: 8432663441601734791}
   - component: {fileID: 4723000609270408530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower19_Cmd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
