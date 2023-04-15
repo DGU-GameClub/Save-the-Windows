@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Tower8PPT : TowerUnit
 {
-    List<GameObject> Effectobj = new List<GameObject>();
+    List<GameObject> Effectobjs = new List<GameObject>();
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Tower")) {
-            Effectobj.Add(collision.gameObject);
+            Effectobjs.Add(collision.gameObject);
             collision.gameObject.GetComponentInChildren<TowerUnit>().AttackUp(Attack);
         }
     }
@@ -18,13 +18,14 @@ public class Tower8PPT : TowerUnit
         
         if (collision.CompareTag("Tower"))
         {
-            Effectobj.Remove(collision.gameObject);
+            Effectobjs.Remove(collision.gameObject);
             collision.gameObject.GetComponentInChildren<TowerUnit>().InitAttack(Attack);
         }
     }
     private void OnDestroy() {
-        for (int i = 0; i < Effectobj.Count; i++) { 
-            Effectobj[i].GetComponentInChildren<TowerUnit>().InitAttack(Attack);
+        for (int i = 0; i < Effectobjs.Count; i++) {
+            if (Effectobjs[i] != null)
+                Effectobjs[i].GetComponentInChildren<TowerUnit>().InitAttack(Attack);
         }
     }
 

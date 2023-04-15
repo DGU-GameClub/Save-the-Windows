@@ -18,6 +18,7 @@ public class TowerUnit : MonoBehaviour
     public string Synergy1;        //타워 시너지1
     public string Synergy2;        //타워 시너지2
     public SpriteRenderer TowerImage;
+    public GameObject Effectobj;
 
     public int TowerLevel = 1;     //현재 타워 레벨
     private int curExp;
@@ -149,5 +150,9 @@ public class TowerUnit : MonoBehaviour
     }
     public void InitAttackTime() {
         AttackTime = 0f;
+    }
+    public virtual void EffectOn() {
+        if (Effectobj != null)
+            Effectobj.SetActive(true);
     }
 }

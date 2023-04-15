@@ -10,14 +10,16 @@ public class Tower19Spawn : MonoBehaviour
     private GameObject createalpha = null;
     public GameObject Range;
     Map Tilemap;
+    TowerUnit Tu;
     private void Start()
     {
         Tilemap = GameObject.Find("Grid").GetComponent<Map>();
+        Tu = gameObject.GetComponentInChildren<TowerUnit>();
     }
     private void OnMouseDown()
     {
         isclicked = true;
-        TowerUnit Tu = gameObject.GetComponentInChildren<TowerUnit>();
+        
         TowerInfoManager.instance.Setup(Tu.TowerImage, Tu.UnitPrice, Tu.UnitName,
             Tu.Synergy1, Tu.Synergy2, Tu.TowerLevel, Tu.Contents, Tu.Attack, Tu.Cooldown, Tu.ExpPercent());
         if (!isCreate)
@@ -65,6 +67,7 @@ public class Tower19Spawn : MonoBehaviour
                 {
                     gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
                     gameObject.GetComponentInChildren<Tower19Cmd>().SetupCMD();
+                    Tu.EffectOn();
                     isCreate = true;
                 }
             }

@@ -64,6 +64,7 @@ public class TowerSpawn : MonoBehaviour
                 }
                 else {
                     gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
+                    Tu.EffectOn();
                     isCreate = true;
                 }
             }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Tower9OneNote : TowerUnit
 {
-    List<GameObject> Effectobj = new List<GameObject>();
+    List<GameObject> Effectobjs = new List<GameObject>();
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Tower")) {
-            Effectobj.Add(collision.gameObject);
+            Effectobjs.Add(collision.gameObject);
             collision.gameObject.GetComponentInChildren<TowerUnit>().AttackSpeedUp(Attack);
         }
     }
@@ -16,15 +16,16 @@ public class Tower9OneNote : TowerUnit
     {
         if (collision.CompareTag("Tower"))
         {
-            Effectobj.Remove(collision.gameObject);
+            Effectobjs.Remove(collision.gameObject);
             collision.gameObject.GetComponentInChildren<TowerUnit>().InitAttackSpeed(Attack);
         }
     }
     private void OnDestroy()
     {
-        for (int i = 0; i < Effectobj.Count; i++)
+        for (int i = 0; i < Effectobjs.Count; i++)
         {
-            Effectobj[i].GetComponentInChildren<TowerUnit>().InitAttackSpeed(Attack);
+            if(Effectobjs[i] != null)
+                Effectobjs[i].GetComponentInChildren<TowerUnit>().InitAttackSpeed(Attack);
         }
     }
     protected override void StatusUp()

@@ -230,6 +230,7 @@ MonoBehaviour:
   Synergy1: "\uC6D0\uB3C4\uC6B0 \uD504\uB85C\uADF8\uB7A8"
   Synergy2: 
   TowerImage: {fileID: 3914505376101749565}
+  Effectobj: {fileID: 276821370480727446, guid: 99abcdecd2a9c4a41ae8ab968fbc47b1, type: 3}
   TowerLevel: 1
   AttackEnemy: {fileID: 0}
 --- !u!1 &6926746675528595401

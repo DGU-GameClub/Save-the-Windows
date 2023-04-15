@@ -70,4 +70,8 @@ public class Tower19Cmd : TowerUnit
             }
         }
     }
+    public override void EffectOn() {
+        if (UpgradeTower == null) return;
+        Instantiate(Effectobj, UpgradeTower.transform);
+    }
 }
