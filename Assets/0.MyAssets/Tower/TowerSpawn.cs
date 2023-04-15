@@ -11,6 +11,7 @@ public class TowerSpawn : MonoBehaviour
     public GameObject alpha150 = null;
     private GameObject createalpha = null;
     public GameObject Range;
+    public GameObject child;
     TowerUnit Tu;
     Map Tilemap;
     private void Start()
@@ -64,6 +65,7 @@ public class TowerSpawn : MonoBehaviour
                     }
                 }
                 else {
+                    child.GetComponent<CircleCollider2D>().enabled = true;
                     gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
                     Tu.EffectOn();
                     isCreate = true;

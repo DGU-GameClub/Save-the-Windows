@@ -8826,7 +8826,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 669141920}
-  currentTilePos: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1235288574
 Grid:
   m_ObjectHideFlags: 0

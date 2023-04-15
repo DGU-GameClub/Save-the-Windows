@@ -21,6 +21,7 @@ public class Tower23Notepad : TowerUnit
         SpawnTower = Instantiate(Towers[RandomNum], gameObject.transform);
         SpawnTower.GetComponent<TowerSpawn>().isCreate = true;
         SpawnTower.GetComponentInChildren<TowerUnit>().EffectOn();
+        SpawnTower.transform.Find("Body").GetComponent<CircleCollider2D>().enabled = true;
         NotepadOff();
     }
     public void TowerDestory()

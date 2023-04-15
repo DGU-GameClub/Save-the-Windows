@@ -11,6 +11,7 @@ public class Tower19Spawn : MonoBehaviour
     public GameObject Range;
     Map Tilemap;
     TowerUnit Tu;
+    public GameObject child;
     private void Start()
     {
         Tilemap = GameObject.Find("Grid").GetComponent<Map>();
@@ -65,6 +66,7 @@ public class Tower19Spawn : MonoBehaviour
                 }
                 else
                 {
+                    child.GetComponent<CircleCollider2D>().enabled = true;
                     gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
                     gameObject.GetComponentInChildren<Tower19Cmd>().SetupCMD();
                     Tu.EffectOn();

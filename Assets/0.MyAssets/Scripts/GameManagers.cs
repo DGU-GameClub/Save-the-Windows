@@ -63,7 +63,8 @@ public class GameManagers : MonoBehaviour
         if (gameObjects.Length == 0) return;
         foreach (GameObject obj in gameObjects)
         {
-            obj.GetComponentInChildren<Tower23Notepad>().RandomTowerSpawn();
+            if(obj.GetComponent<Tower23Spawn>().isCreate)
+                obj.GetComponentInChildren<Tower23Notepad>().RandomTowerSpawn();
         }
     }
     public void TowerNotepadAbilityOff()

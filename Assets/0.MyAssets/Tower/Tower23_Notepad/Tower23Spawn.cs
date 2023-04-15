@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tower23Spawn : MonoBehaviour
 {
     private bool isclicked = false;
-    private bool isCreate = false;
+    public bool isCreate = false;
     public GameObject alpha150 = null;
     private GameObject createalpha = null;
     public GameObject Range;

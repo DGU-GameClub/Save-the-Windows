@@ -193,6 +193,7 @@ MonoBehaviour:
   Synergy1: "\uBE0C\uB77C\uC6B0\uC800"
   Synergy2: "\uCE74\uBA5C\uB808\uC628"
   TowerImage: {fileID: 8697795016242353169}
+  Effectobj: {fileID: 0}
   TowerLevel: 1
   AttackEnemy: {fileID: 0}
   TowerBullet:
@@ -209,7 +210,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8697795016242353182}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -305,3 +306,4 @@ MonoBehaviour:
   isCreate: 0
   alpha150: {fileID: 8697795018057888716, guid: be52c94fc2f30f748b997cc3fa6a77bc, type: 3}
   Range: {fileID: 1572778046350814263}
+  child: {fileID: 8697795016242353182}

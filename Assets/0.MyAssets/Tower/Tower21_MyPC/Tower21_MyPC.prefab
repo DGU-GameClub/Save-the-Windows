@@ -94,7 +94,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3914505376101749552}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 855490331e6e3e5448a8288327008b84, type: 3}
   m_Name: 
@@ -108,6 +108,7 @@ MonoBehaviour:
   Synergy1: "\uC708\uB3C4\uC6B0 \uD504\uB85C\uADF8\uB7A8"
   Synergy2: 
   TowerImage: {fileID: 3914505376101749565}
+  Effectobj: {fileID: 0}
   TowerLevel: 1
   AttackEnemy: {fileID: 0}
   TowerBullet: {fileID: 4628127536894035491, guid: 9383056a7cc88a7448f3df983e9c69db, type: 3}
@@ -248,3 +249,4 @@ MonoBehaviour:
   isCreate: 0
   alpha150: {fileID: 6926746675528595401, guid: d596b065d8842c249a1b8d04262afabb, type: 3}
   Range: {fileID: 6644489824155158258}
+  child: {fileID: 3914505376101749552}
