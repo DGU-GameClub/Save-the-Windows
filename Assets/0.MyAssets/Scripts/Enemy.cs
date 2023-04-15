@@ -15,8 +15,6 @@ public class Enemy : LivingEntity
     [System.NonSerialized]  
     public Transform wayPoints;
 
-    public SpecialAttack specialAttack;
-
     //HpBarUI 추가한 변수
     public GameObject hpBarPrefab; //Instantiate 메서드로 복제할 프리펩을 담을 변수
     public Vector3 hpBarOffset = Vector3.zero;
@@ -91,7 +89,7 @@ public class Enemy : LivingEntity
     void SetHpBar()
     {
         Canvas enemyHpBarCanvas = GameObject.Find("Enemy HpBar Canvas").GetComponent<Canvas>();
-        hpBar = Instantiate<GameObject>(hpBarPrefab, enemyHpBarCanvas.transform);
+        hpBar = Instantiate(hpBarPrefab, enemyHpBarCanvas.transform);
 
         enemyHpBarImage = hpBar.GetComponent<Image>();
         var _hpbar = hpBar.GetComponent<EnemyHpBar>();
@@ -104,26 +102,26 @@ public class Enemy : LivingEntity
         switch (collision.tag)
         {
             case "Burn":
-                StartCoroutine(BurnDamage());
+                StartCoroutine(BurnDamage(collision.gameObject.GetComponent<TowerBulletBurn>()));
                 break;
             case "Paralysis":
-                StartCoroutine(ParalysisDamage());
+                StartCoroutine(ParalysisDamage(collision.gameObject.GetComponent<TowerBulletParalysis>()));
                 break;
             case "Slow":
-                StartCoroutine(SlowDamage());
+                StartCoroutine(SlowDamage(collision.gameObject.GetComponent<TowerBulletSlow>()));
                 break;
             default:
                 break;
         }
     }
 
-    IEnumerator BurnDamage()
+    IEnumerator BurnDamage(TowerBulletBurn burn)
     {
         if (isSpecial[0]) yield break;
         int num = 0;
-        int count = specialAttack.burn.count;
-        float power = specialAttack.burn.power;
-        float time = specialAttack.burn.time;
+        int count = burn.count;
+        float power = burn.power;
+        float time = burn.time;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(1, 0, 0, 1);
         isSpecial[0] = true;
@@ -139,10 +137,10 @@ public class Enemy : LivingEntity
         isSpecial[0] = false;
     }
 
-    IEnumerator ParalysisDamage()
+    IEnumerator ParalysisDamage(TowerBulletParalysis paralysis)
     {
         if (isSpecial[1]) yield break;
-        float time = specialAttack.paralysis.time;
+        float time = paralysis.time;
         float originSpeed = moveSpeed;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         isSpecial[1] = true;
@@ -157,11 +155,11 @@ public class Enemy : LivingEntity
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
-    IEnumerator SlowDamage()
+    IEnumerator SlowDamage(TowerBulletSlow slow)
     {
         if (isSpecial[2]) yield break;
-        float time = specialAttack.slow.time;
-        float percent = specialAttack.slow.percent;
+        float time = slow.time;
+        float percent = slow.percent;
         float originSpeed = moveSpeed;
         isSpecial[2] = true;
         moveSpeed = percent * moveSpeed;
@@ -206,33 +204,5 @@ public class Enemy : LivingEntity
     public void StopMove() {
         StopAllCoroutines();
     }
-    [System.Serializable]
-    public class SpecialAttack
-    {
-        public Burn burn;
-        public Paralysis paralysis;
-        public Slow slow;
-
-        [System.Serializable]
-        public class Burn
-        {
-            public int count;
-            public float power;
-            public float time;
-        }
-
-        [System.Serializable]
-        public class Paralysis
-        {
-            public float time;
-        }
-
-
-        [System.Serializable]
-        public class Slow
-        {
-            public float time;
-            public float percent;
-        }
-    }
+    
 }

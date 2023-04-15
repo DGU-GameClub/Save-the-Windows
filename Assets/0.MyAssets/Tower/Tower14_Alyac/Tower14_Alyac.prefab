@@ -224,7 +224,8 @@ MonoBehaviour:
   Attack: 2.5
   Cooldown: 2
   UnitPrice: 0
-  Contents: "\uC801 \uD558\uB098\uC5D0\uAC8C \uC54C\uC57D \uBB49\uCE58\uB97C \uB0A0\uB9B0\uB2E4."
+  Contents: "\uC801 \uD558\uB098\uC5D0\uAC8C \uC54C\uC57D \uBB49\uCE58\uB97C \uB0A0\uB9B0\uB2E4.
+    \uC54C\uC57D\uC740 \uC801\uC744 \uB290\uB9AC\uAC8C\uD55C\uB2E4."
   Synergy1: "\uBCF4\uC548"
   Synergy2: 
   TowerImage: {fileID: 3914505376101749565}
@@ -245,7 +246,7 @@ GameObject:
   - component: {fileID: 6341970417656526205}
   - component: {fileID: 1652442619182757650}
   - component: {fileID: 6505833518383461287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower14_Alyac
   m_TagString: Tower
   m_Icon: {fileID: 0}

@@ -20,6 +20,7 @@ public class Tower23Notepad : TowerUnit
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
         SpawnTower = Instantiate(Towers[RandomNum], gameObject.transform);
         SpawnTower.GetComponent<TowerSpawn>().isCreate = true;
+        SpawnTower.GetComponentInChildren<TowerUnit>().EffectOn();
         NotepadOff();
     }
     public void TowerDestory()
@@ -32,5 +33,16 @@ public class Tower23Notepad : TowerUnit
             NotepadOn();
         }
     }
-    
+    protected override void StatusUp()
+    {
+        if (TowerLevel == 2)
+        {
+            return;
+        }
+        else if (TowerLevel == 3)
+        {
+            return;
+        }
+    }
+
 }

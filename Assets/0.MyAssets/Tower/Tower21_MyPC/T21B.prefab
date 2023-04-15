@@ -83,3 +83,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb2924fb0f7e1444b49e772b56bcbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPosition: {x: 0, y: 0, z: 0}
+  ExplosionParticle: {fileID: 0}
+  Speed: 0
+  Pdistance: 5
+  Tower: {fileID: 0}
+  time: 6

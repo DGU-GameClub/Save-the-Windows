@@ -6,7 +6,6 @@ public class Tower15GoClean : TowerUnit
 {
     public GameObject TowerBullet;
     public GameObject TowerPrefeb;
-    private float AttackTime = 0f;
     public float bulletScale_X = 0.5f;
     public float bulletScale_Y = 0.5f;
 
@@ -27,7 +26,7 @@ public class Tower15GoClean : TowerUnit
         }
 
     }
-    void Attack()
+    new void Attack()
     {
         Vector3 dir = AttackEnemy.transform.position - transform.position;
         //float angle = Mathf.Atan2(dir.x,dir.y) * Mathf.Rad2Deg;

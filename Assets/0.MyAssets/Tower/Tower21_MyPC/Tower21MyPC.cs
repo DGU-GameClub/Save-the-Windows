@@ -6,7 +6,6 @@ public class Tower21MyPC : TowerUnit
 {
     public GameObject TowerBullet;
     public GameObject TowerPrefeb;
-    private float AttackTime = 0f;
     public float bulletScale_X = 0.5f;
     public float bulletScale_Y = 0.5f;
 
@@ -26,7 +25,7 @@ public class Tower21MyPC : TowerUnit
 
         }
     }
-    void Attack()
+    new void Attack()
     {
         Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
     }

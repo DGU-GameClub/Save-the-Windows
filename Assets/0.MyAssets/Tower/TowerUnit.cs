@@ -14,16 +14,17 @@ public class TowerUnit : MonoBehaviour
     public int UnitPrice;          //타워 가격
     [SerializeField]
     public string Contents;        //타워 설명
-
+    protected float AttackTime = 0f;
     public string Synergy1;        //타워 시너지1
     public string Synergy2;        //타워 시너지2
     public SpriteRenderer TowerImage;
+    public GameObject Effectobj;
 
     public int TowerLevel = 1;     //현재 타워 레벨
     private int curExp;
     private int[] MaxExp; 
-    private float PrimitiveAttack;
-    private float PrimitiveCooldown;
+    protected float PrimitiveAttack;
+    protected float PrimitiveCooldown;
     public GameObject AttackEnemy; //현재 공격할 대상
 
     private List<GameObject> EnemyOfRange;  //콜라이더 안에 들어온 Enemy 오브젝트들(공격대상)
@@ -36,10 +37,11 @@ public class TowerUnit : MonoBehaviour
         PrimitiveAttack = Attack;
         PrimitiveCooldown = Cooldown;
         TowerLevel = 1;
-        MaxExp = new int[2];
+        MaxExp = new int[3];
         curExp = 0;
         MaxExp[0] = 8;  //3개 먹이면 1렙업
         MaxExp[1] = 19; //6개 먹이면 2렙업
+        MaxExp[2] = 10000;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -96,30 +98,34 @@ public class TowerUnit : MonoBehaviour
         Cooldown -= (Cooldown * Enhance);
         if (Cooldown <= 0.5f) Cooldown = 0.5f;
     }
-    public void InitAttack() {
-        Attack = PrimitiveAttack;
+    public void InitAttack(float Enhance) {
+        Attack /= Enhance;
     }
-    public void InitAttackSpeed() {
-        Cooldown = PrimitiveCooldown;
+    public void InitAttackSpeed(float Enhance) {
+        Cooldown /= (1 - Enhance);
     }
-    public void AddExp(GameObject obj) {
-        if (!obj.GetComponentInChildren<Tower>().UnitName.Equals(UnitName)) 
-            return;
+    public bool AddExp(GameObject obj) {
+        if (!obj.GetComponentInChildren<TowerUnit>().UnitName.Equals(UnitName)) 
+            return false;
         if (TowerLevel >= 3)
-            return;
+            return false;
         curExp += 3;
         CheckLevelUp();
         Destroy(obj);
+        return true;
     }
     private void CheckLevelUp()
     {
         if (curExp >= MaxExp[TowerLevel - 1]) {
             TowerLevel++;
-            curExp -= MaxExp[TowerLevel - 1];
+            if (TowerLevel >= 3)
+                curExp = 0;
+            else
+                curExp -= MaxExp[TowerLevel - 2];
             StatusUp();
         }
     }
-    private void StatusUp()
+    virtual protected void StatusUp()
     {
         if (TowerLevel == 2)
         {
@@ -131,7 +137,22 @@ public class TowerUnit : MonoBehaviour
             Attack *= 1.4f;
             Cooldown -= (Cooldown * 0.2f);
             PrimitiveCooldown -= (PrimitiveCooldown * 0.2f);
+            if (Cooldown <= 0.5f) {
+                Cooldown -= 0.5f;
+            }
+            if (PrimitiveCooldown <= 0.5f) {
+                PrimitiveCooldown = 0.5f;
+            }
         }
     }
-    
+    public float ExpPercent() {
+        return (float)curExp / (float)MaxExp[TowerLevel - 1];
+    }
+    public void InitAttackTime() {
+        AttackTime = 0f;
+    }
+    public virtual void EffectOn() {
+        if (Effectobj != null)
+            Effectobj.SetActive(true);
+    }
 }

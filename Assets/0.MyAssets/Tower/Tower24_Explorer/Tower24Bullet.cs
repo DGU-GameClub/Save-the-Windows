@@ -2,13 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower24Bullet : MonoBehaviour
+public class Tower24Bullet : TowerBulletSlow
 {
-    public Vector3 targetPosition = Vector3.zero;
-    public GameObject ExplosionParticle = null;
-    public float Speed = 3.0f;
-    public float Pdistance = 5f;
-    public GameObject Tower = null;
+    
     // Use this for initialization
     void Start()
     {

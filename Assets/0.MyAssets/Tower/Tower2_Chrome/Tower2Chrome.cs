@@ -6,7 +6,7 @@ public class Tower2Chrome : TowerUnit
 {
     public GameObject[] TowerBullet;
     public GameObject TowerPrefeb;
-    private float AttackTime = 0f;
+
     public float bulletScale_X = 0.5f;
     public float bulletScale_Y = 0.5f;
 
@@ -27,7 +27,7 @@ public class Tower2Chrome : TowerUnit
         }
 
     }
-    void Attack()
+   new void Attack()
     {
         int RandomNum = Random.Range(0, 3);
         var Bullet = Instantiate(TowerBullet[RandomNum], transform.position, Quaternion.identity, TowerPrefeb.transform);

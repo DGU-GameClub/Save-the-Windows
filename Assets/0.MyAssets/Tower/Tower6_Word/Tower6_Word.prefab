@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 6341970417656526205}
   - component: {fileID: 2998082820939473574}
   - component: {fileID: 9182362039766386829}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower6_Word
   m_TagString: Tower
   m_Icon: {fileID: 0}

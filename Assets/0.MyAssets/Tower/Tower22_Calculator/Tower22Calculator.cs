@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class Tower22Calculator : TowerUnit
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
@@ -28,5 +17,30 @@ public class Tower22Calculator : TowerUnit
         {
             collision.gameObject.GetComponent<Enemy>().InitPrice();
         }
+    }
+    protected override void StatusUp()
+    {
+        if (TowerLevel == 2)
+        {
+            StartCoroutine(OnOffColloder(1.2f));
+        }
+        else if (TowerLevel == 3)
+        {
+            StartCoroutine(OnOffColloder(1.3f));
+        }
+    }
+    IEnumerator OnOffColloder(float Value)
+    {
+        CircleCollider2D circleCollider = gameObject.GetComponent<CircleCollider2D>();
+        Vector3 originalPosition = transform.position;
+
+        circleCollider.enabled = false;
+        PrimitiveAttack = Value;
+        Attack = Value;
+        transform.position = new Vector3(10000f, 10000f, 0f);
+        circleCollider.enabled = true;
+
+        yield return new WaitForFixedUpdate();
+        transform.position = originalPosition;
     }
 }

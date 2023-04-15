@@ -6,7 +6,6 @@ public class Tower20RecycleBin : TowerUnit
 {
     public GameObject TowerBullet;
     public GameObject TowerPrefeb;
-    private float AttackTime = 0f;
     public float bulletScale_X = 0.5f;
     public float bulletScale_Y = 0.5f;
     public Sprite Trash;
@@ -28,7 +27,7 @@ public class Tower20RecycleBin : TowerUnit
         }
 
     }
-    void Attack()
+    new void Attack()
     {
         var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
         Bullet.GetComponent<Tower20Bullet>().Tower = gameObject;

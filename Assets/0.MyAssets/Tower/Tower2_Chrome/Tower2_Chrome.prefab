@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 8697795018057888717}
   - component: {fileID: 5622899431523855280}
   - component: {fileID: 3820821232189760608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower2_Chrome
   m_TagString: Tower
   m_Icon: {fileID: 0}

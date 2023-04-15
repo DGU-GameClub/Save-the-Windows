@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6981353994338291807}
   - component: {fileID: 6981353994338291808}
-  - component: {fileID: 5563995865074278880}
   - component: {fileID: -3131327723404512196}
   - component: {fileID: 5934163291720609154}
+  - component: {fileID: 1570777951958205735}
   m_Layer: 0
   m_Name: T2B_Burn
   m_TagString: Burn
@@ -87,23 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5563995865074278880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6981353994338291809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f496b39513ee3d44c9652cfc87779c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPosition: {x: 0, y: 0, z: 0}
-  ExplosionParticle: {fileID: 0}
-  Speed: 5
-  Pdistance: 2.5
-  Tower: {fileID: 0}
 --- !u!50 &-3131327723404512196
 Rigidbody2D:
   serializedVersion: 4
@@ -141,3 +124,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1570777951958205735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981353994338291809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0266555fe7fbc5d49b5d381dc6d13db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPosition: {x: 0, y: 0, z: 0}
+  ExplosionParticle: {fileID: 0}
+  Speed: 5
+  Pdistance: 2.5
+  Tower: {fileID: 0}
+  count: 3
+  power: 1
+  time: 1

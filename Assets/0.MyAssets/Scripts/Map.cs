@@ -42,9 +42,7 @@ public class Map : MonoBehaviour
     void Update()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         Vector3Int cellPos = tilemap.WorldToCell(mousePos);
-
         TileBase tile = tilemap.GetTile(cellPos);
 
 
@@ -62,8 +60,16 @@ public class Map : MonoBehaviour
             tilemap.SetColor(cellPos, new Color(1, 1, 1, 0.7f));
 
             preTilePos = cellPos;
-
             currentTilePos = tilemap.CellToWorld(cellPos);
+        }
+        else
+        {
+            if (preTilePos != null && tilemap.GetTile(preTilePos) != null)
+            {
+                tilemap.SetTileFlags(preTilePos, TileFlags.None);
+                tilemap.SetColor(preTilePos, Color.white);
+            }
+            preTilePos = cellPos;
         }
     }
 

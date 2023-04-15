@@ -11,12 +11,19 @@ public class TowerSpawn : MonoBehaviour
     public GameObject alpha150 = null;
     private GameObject createalpha = null;
     public GameObject Range;
+    TowerUnit Tu;
+    Map Tilemap;
+    private void Start()
+    {
+        Tilemap = GameObject.Find("Grid").GetComponent<Map>();
+        Tu = gameObject.GetComponentInChildren<TowerUnit>();
+    }
     private void OnMouseDown()
     {
         isclicked = true;
-        TowerUnit Tu = gameObject.GetComponentInChildren<TowerUnit>();
+        
         TowerInfoManager.instance.Setup(Tu.TowerImage, Tu.UnitPrice, Tu.UnitName,
-            Tu.Synergy1, Tu.Synergy2, Tu.TowerLevel, Tu.Contents, Tu.Attack, Tu.Cooldown);
+            Tu.Synergy1, Tu.Synergy2, Tu.TowerLevel, Tu.Contents, Tu.Attack, Tu.Cooldown, Tu.ExpPercent());
         if (!isCreate)
         {
             createalpha = Instantiate(alpha150);
@@ -47,9 +54,21 @@ public class TowerSpawn : MonoBehaviour
         if (!isCreate)
         {
             //타워 설치 위치 검사 후 설치
-            //Instantiate(realTower, createalpha.transform.position, Quaternion.identity);
-            gameObject.transform.position = createalpha.transform.position;
-            isCreate = true;
+            if (Vector3.Distance(Tilemap.GetCoordTileUnderMouse(), createalpha.transform.position) < 1.1f)
+            {
+                Collider2D objectCollider = Physics2D.OverlapCircle(createalpha.transform.position, 0.05f, 1 << 8);
+                
+                if (objectCollider != null && !objectCollider.Equals(gameObject)) {
+                    if (objectCollider.gameObject.GetComponentInChildren<TowerUnit>().AddExp(gameObject)) {
+                        Destroy(gameObject); 
+                    }
+                }
+                else {
+                    gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
+                    Tu.EffectOn();
+                    isCreate = true;
+                }
+            }
             Destroy(createalpha);
         }
         Range.SetActive(false);

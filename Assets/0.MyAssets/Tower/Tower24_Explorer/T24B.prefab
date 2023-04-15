@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4672936364614779113}
-  - component: {fileID: 7053813681073563939}
   - component: {fileID: 1566198148080433312}
   - component: {fileID: 8801529211498549932}
   - component: {fileID: -587486620523332974}
+  - component: {fileID: -3836023050479865262}
   m_Layer: 0
   m_Name: T24B
   m_TagString: Slow
@@ -35,23 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7053813681073563939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4628127536894035491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15f95bcf1b0b0784c9d23d3a047b7777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPosition: {x: 0, y: 0, z: 0}
-  ExplosionParticle: {fileID: 0}
-  Speed: 3
-  Pdistance: 10
-  Tower: {fileID: 0}
 --- !u!212 &1566198148080433312
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -141,3 +124,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3836023050479865262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4628127536894035491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef1b3c7284b2ca41a6efb3d447ec004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPosition: {x: 0, y: 0, z: 0}
+  ExplosionParticle: {fileID: 0}
+  Speed: 5
+  Pdistance: 10
+  Tower: {fileID: 0}
+  time: 5
+  percent: 0.5

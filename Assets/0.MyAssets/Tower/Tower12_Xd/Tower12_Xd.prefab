@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 6341970417656526205}
   - component: {fileID: 1652442619182757650}
   - component: {fileID: 8279986605571595828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower12_Xd
   m_TagString: Tower
   m_Icon: {fileID: 0}
