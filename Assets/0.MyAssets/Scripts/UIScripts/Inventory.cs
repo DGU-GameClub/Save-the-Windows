@@ -1,5 +1,8 @@
+using System;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
+// using UnityEngine.EventSystem;
 
 public class Inventory : MonoBehaviour
 {
@@ -34,7 +37,7 @@ public class Inventory : MonoBehaviour
         }
 
         //인벤토리에 타워 추가
-        GameObject tower = Instantiate(towerPrefab, invenSlots[currentSlot].transform.position, Quaternion.identity);
+        GameObject tower = Instantiate(towerPrefab, invenSlots[currentSlot].transform.position, UnityEngine.Quaternion.identity);
         tower.transform.SetParent(invenSlots[currentSlot].transform);
         invenSlots[currentSlot].transform.GetChild(0).GetComponent<Image>().sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
         invenSlots[currentSlot].gameObject.GetComponentInChildren<Button>().interactable = true;
@@ -45,10 +48,15 @@ public class Inventory : MonoBehaviour
     {
         //돈 다시 리턴
         GameManagers.instance.Money += invenSlots[slotIndex].transform.GetChild(2).GetComponentInChildren<TowerUnit>().UnitPrice;
-        Destroy(invenSlots[slotIndex].transform.GetChild(2).gameObject);
+		DestoryTower(slotIndex);
+    }
+
+	public void DestoryTower(int slotIndex)
+	{
+		Destroy(invenSlots[slotIndex].transform.GetChild(2).gameObject);
         invenSlots[slotIndex].transform.GetChild(0).GetComponent<Image>().sprite = null;
         invenSlots[slotIndex].gameObject.GetComponentInChildren<Button>().interactable = false;
-    }
+	}
 
     public bool IsInvenFull()
     {
