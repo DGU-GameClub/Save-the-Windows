@@ -47,10 +47,10 @@ public class Map : MonoBehaviour
 
         TileBase tile = tilemap.GetTile(cellPos);
 
-        curCellPos = cellPos;
 
         if (tile != null)
         {
+            curCellPos = cellPos;
             //»ö º¯°æ
             if (cellPos != preTilePos)
             {
