@@ -10,6 +10,7 @@ public class Tower20RecycleBin : TowerUnit
     public float bulletScale_Y = 0.5f;
     public Sprite Trash;
     public int BossAttack = 10;
+    public AudioSource TowerAudio;
     private void Awake()
     {
         AttackTime = 0;
@@ -38,6 +39,7 @@ public class Tower20RecycleBin : TowerUnit
         AttackEnemy.GetComponent<Enemy>().StopMove();
         AttackEnemy.tag = "Trash";
         AttackEnemy.GetComponent<SpriteRenderer>().sprite = Trash;
+        TowerAudio.Play();
         StartCoroutine(PullObj());
         
     }

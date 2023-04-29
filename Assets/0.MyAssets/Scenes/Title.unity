@@ -6709,6 +6709,10 @@ PrefabInstance:
       propertyPath: wayPoints
       value: 
       objectReference: {fileID: 495861419}
+    - target: {fileID: 2872605405735655333, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
+      propertyPath: waves.Array.data[0].moveSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2872605405735655334, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
       propertyPath: m_Name
       value: Spawner

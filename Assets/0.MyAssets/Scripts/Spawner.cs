@@ -76,7 +76,6 @@ public class Spawner : MonoBehaviour
             GameManagers.instance.TowerV3Ability();
             GameManagers.instance.TowerAvastAbility();
             GameManagers.instance.TowerNotepadAbilityOff();
-            GameManagers.instance.InitTower();
             //NextWave();
         }
     }
@@ -99,6 +98,7 @@ public class Spawner : MonoBehaviour
             print("Wave: " + (waveIndex + 1));
             state = SPAWNER_STATE.START;
             GameManagers.instance.TowerNotepadAbility();
+            GameManagers.instance.InitTower();
         }
         nextSpawnTime = Time.time;
         waveIndex++;

@@ -10,7 +10,7 @@ public class Tower18Bullet : MonoBehaviour
     public float Pdistance = 5f;
     public float Percent = 1.5f;
     public GameObject Tower = null;
-
+    public AudioSource TowerAudio;
     bool isStop = false;
     public float Area;
     public Sprite NextSprite;
@@ -47,6 +47,7 @@ public class Tower18Bullet : MonoBehaviour
 
     IEnumerator Attack() { 
         ExplosionParticle.SetActive(true);
+        TowerAudio.Play();
         yield return new WaitForSeconds(0.5f);
         Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, Area);
         for (int i = 0; i < colls.Length; i++) {
