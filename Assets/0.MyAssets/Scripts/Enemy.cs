@@ -175,14 +175,11 @@ public class Enemy : LivingEntity
 
     IEnumerator MoveTarget()
     {
-        float percent = 0f;
-        Vector3 originPosition = transform.position;
         Vector3 targetPosition = targetArr[targetIndex++].position;
 
-        while (percent < 1f)
+        while (transform.position != targetPosition)
         {
-            percent += Time.deltaTime * moveSpeed;
-            transform.position = Vector3.Lerp(originPosition, targetPosition, percent);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
 
