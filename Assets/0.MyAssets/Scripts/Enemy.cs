@@ -26,8 +26,9 @@ public class Enemy : LivingEntity
     Transform[] targetArr;
     int targetIndex = 0;
 
-    
-    bool[] isSpecial = new bool[3];
+    private Coroutine slowDamageCoroutine = null;
+    private Coroutine burnDamageCoroutine = null;
+    private Coroutine paralysisDamageCoroutine = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +45,6 @@ public class Enemy : LivingEntity
         OnDeath += RemoveHealthBar;
 
         OriginPrice = Price;
-        for(int i =0; i< isSpecial.Length; i++)
-            isSpecial[i] = false;
 
         //move start
         StartCoroutine(MoveTarget());
@@ -102,29 +101,36 @@ public class Enemy : LivingEntity
         switch (collision.tag)
         {
             case "Burn":
-                StartCoroutine(BurnDamage(collision.gameObject.GetComponent<TowerBulletBurn>()));
+                ApplyBurn(collision.gameObject.GetComponent<TowerBulletBurn>());
                 break;
             case "Paralysis":
-                StartCoroutine(ParalysisDamage(collision.gameObject.GetComponent<TowerBulletParalysis>()));
+                ApplyParalysis(collision.gameObject.GetComponent<TowerBulletParalysis>());
                 break;
             case "Slow":
-                StartCoroutine(SlowDamage(collision.gameObject.GetComponent<TowerBulletSlow>()));
+                ApplySlow(collision.gameObject.GetComponent<TowerBulletSlow>());
                 break;
             default:
                 break;
         }
     }
-
+    public void ApplyBurn(TowerBulletBurn burn)
+    {
+        if (burnDamageCoroutine != null)
+        {
+            return;
+        }
+        burnDamageCoroutine = StartCoroutine(BurnDamage(burn));
+    }
     IEnumerator BurnDamage(TowerBulletBurn burn)
     {
-        if (isSpecial[0]) yield break;
+   
         int num = 0;
         int count = burn.count;
         float power = burn.power;
         float time = burn.time;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(1, 0, 0, 1);
-        isSpecial[0] = true;
+
         while (num != count)
         {
             num++;
@@ -134,16 +140,22 @@ public class Enemy : LivingEntity
 
         spriteRenderer.color = new Color(1, 1, 1, 1);
         gameObject.tag = "Enemy";
-        isSpecial[0] = false;
+        burnDamageCoroutine = null;
     }
-
+    public void ApplyParalysis(TowerBulletParalysis paralysis)
+    {
+        if (paralysisDamageCoroutine != null)
+        {
+            return;
+        }
+        paralysisDamageCoroutine = StartCoroutine(ParalysisDamage(paralysis));
+    }
     IEnumerator ParalysisDamage(TowerBulletParalysis paralysis)
     {
-        if (isSpecial[1]) yield break;
         float time = paralysis.time;
         float originSpeed = moveSpeed;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        isSpecial[1] = true;
+ 
         moveSpeed = 0f;
         spriteRenderer.color = new Color(1, 0.5f, 0, 1);
 
@@ -151,24 +163,30 @@ public class Enemy : LivingEntity
         
         moveSpeed = originSpeed;
         gameObject.tag = "Enemy";
-        isSpecial[1] = false;
+        paralysisDamageCoroutine = null;
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
+    public void ApplySlow(TowerBulletSlow slow)
+    {
+        if (slowDamageCoroutine != null)
+        {
+            return;
+        }
+        slowDamageCoroutine = StartCoroutine(SlowDamage(slow));
+    }
     IEnumerator SlowDamage(TowerBulletSlow slow)
     {
-        if (isSpecial[2]) yield break;
         float time = slow.time;
         float percent = slow.percent;
         float originSpeed = moveSpeed;
-        isSpecial[2] = true;
         moveSpeed = percent * moveSpeed;
 
         yield return new WaitForSeconds(time);
 
         moveSpeed = originSpeed;
         gameObject.tag = "Enemy";
-        isSpecial[2] = false;
+        slowDamageCoroutine = null;
     }
 
     IEnumerator MoveTarget()

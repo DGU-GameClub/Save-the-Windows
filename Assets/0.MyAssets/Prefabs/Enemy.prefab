@@ -98,20 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5d255a515caaf449d4b264be7ff740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialAttack:
-    burn:
-      count: 5
-      power: 10
-      time: 1
-    paralysis:
-      time: 5
-    slow:
-      time: 5
-      percent: 0.5
-  hpBarPrefab: {fileID: 116353835901153737, guid: 2020d0186755129489a0ba19fdd7b74d, type: 3}
-  hpBarOffset: {x: 0, y: 0, z: 0}
   Price: 10
   OriginPrice: 0
+  hpBarPrefab: {fileID: 116353835901153737, guid: 2020d0186755129489a0ba19fdd7b74d, type: 3}
+  hpBarOffset: {x: 0, y: 0, z: 0}
 --- !u!58 &-2189063006850484954
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -127,4 +117,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.2799999
+  m_Radius: 1

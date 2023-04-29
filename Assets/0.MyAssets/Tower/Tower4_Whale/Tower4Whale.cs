@@ -10,6 +10,7 @@ public class Tower4Whale : TowerUnit
     public float bulletScale_Y = 0f;
     public float Correction;
     public float StopTime;
+    public int Special = 5;
     private void Awake()
     {
         AttackTime = Cooldown;
@@ -31,7 +32,7 @@ public class Tower4Whale : TowerUnit
             AttackEnemy.transform.position.x + Random.Range(-1 * Correction, Correction),
             AttackEnemy.transform.position.y + Random.Range(-1 * Correction, Correction),
             0);
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < Special; i++)
         {
             var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
             Bullet.GetComponent<TowerBullet>().Tower = gameObject;
@@ -39,5 +40,9 @@ public class Tower4Whale : TowerUnit
             Bullet.transform.localScale = new Vector3(bulletScale_X, bulletScale_Y);
             yield return new WaitForSeconds(StopTime); 
         }
+     }
+    protected override void StatusUp() {
+        if (TowerLevel == 2) { Special = 7; }
+        else if (TowerLevel == 3) { Special = 10; }
     }
 }

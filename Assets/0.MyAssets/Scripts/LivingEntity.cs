@@ -15,7 +15,6 @@ public class LivingEntity : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         health -= damage;
-
         if (health <= 0 && !isDie)
         {
             GameManagers.instance.AddMoney(Price);

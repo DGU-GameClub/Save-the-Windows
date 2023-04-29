@@ -239,7 +239,8 @@ MonoBehaviour:
   Cooldown: 5
   UnitPrice: 10
   Contents: "\uAC70\uB9AC\uC640 \uC0C1\uAD00\uC5C6\uC774 \uBA85\uC911\uB960\uC774
-    \uC88B\uC9C0 \uC54A\uC740 \uBB3C\uBC29\uC6B8 5\uAC1C\uB97C \uB0A0\uB9B0\uB2E4."
+    \uC88B\uC9C0 \uC54A\uC740 \uBB3C\uBC29\uC6B8\uC744 \uC5F0\uC18D\uC73C\uB85C \uB0A0\uB9B0\uB2E4.
+    (5,7,10)"
   Synergy1: "\uBE0C\uB77C\uC6B0\uC800"
   Synergy2: "\uB3D9\uBB3C"
   TowerImage: {fileID: 2207661317959785680}
@@ -248,7 +249,8 @@ MonoBehaviour:
   AttackEnemy: {fileID: 0}
   TowerBullet: {fileID: 6698710950876614016, guid: ab55cdc49d9e4214880522aa3aeaf056, type: 3}
   TowerPrefeb: {fileID: 4421553550944468666}
-  bulletScale_X: 0.3
-  bulletScale_Y: 0.3
+  bulletScale_X: 0.25
+  bulletScale_Y: 0.25
   Correction: 0.5
-  StopTime: 0.12
+  StopTime: 0.08
+  Special: 5
