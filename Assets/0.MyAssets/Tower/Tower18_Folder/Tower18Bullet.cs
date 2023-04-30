@@ -37,7 +37,7 @@ public class Tower18Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
         {
             isStop = true;
             gameObject.GetComponent<SpriteRenderer>().sprite = NextSprite;
@@ -51,7 +51,7 @@ public class Tower18Bullet : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, Area);
         for (int i = 0; i < colls.Length; i++) {
-            if (colls[i].CompareTag("Enemy")) {
+            if (colls[i].CompareTag("Enemy") || colls[i].CompareTag("Boss")) {
                 colls[i].gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attack);
             }
         }

@@ -104,9 +104,11 @@ public class Enemy : LivingEntity
                 ApplyBurn(collision.gameObject.GetComponent<TowerBulletBurn>());
                 break;
             case "Paralysis":
+                if (gameObject.CompareTag("Boss")) return;
                 ApplyParalysis(collision.gameObject.GetComponent<TowerBulletParalysis>());
                 break;
             case "Slow":
+                if (gameObject.CompareTag("Boss")) return;
                 ApplySlow(collision.gameObject.GetComponent<TowerBulletSlow>());
                 break;
             default:
@@ -139,7 +141,7 @@ public class Enemy : LivingEntity
         }
 
         spriteRenderer.color = new Color(1, 1, 1, 1);
-        gameObject.tag = "Enemy";
+        
         burnDamageCoroutine = null;
     }
     public void ApplyParalysis(TowerBulletParalysis paralysis)
@@ -162,7 +164,7 @@ public class Enemy : LivingEntity
         yield return new WaitForSeconds(time);
         
         moveSpeed = originSpeed;
-        gameObject.tag = "Enemy";
+
         paralysisDamageCoroutine = null;
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
@@ -185,7 +187,7 @@ public class Enemy : LivingEntity
         yield return new WaitForSeconds(time);
 
         moveSpeed = originSpeed;
-        gameObject.tag = "Enemy";
+
         slowDamageCoroutine = null;
     }
 
