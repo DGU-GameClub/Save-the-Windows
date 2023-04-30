@@ -67,7 +67,7 @@ public class Enemy : LivingEntity
         }
     }
 
-    public void Setup(Sprite sprite, float _speed, float _health, Transform _wayPoints, int price)
+    public void Setup(Sprite sprite, float _speed, float _health, Transform _wayPoints, int price, string tag = "Enemy")
     {
         GetComponent<SpriteRenderer>().sprite = sprite;
         moveSpeed = _speed;
@@ -77,6 +77,7 @@ public class Enemy : LivingEntity
         wayPoints = _wayPoints;
         Price = price;
         OriginPrice = Price;
+        gameObject.tag = tag;
     }
 
     public override void TakeDamage(float damage)

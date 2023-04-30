@@ -12,9 +12,12 @@ public class Spawner : MonoBehaviour
 
     public Transform wayPoints;
     public Enemy enemyPrefabs;
+    public int bossParttern = 3;
     public Wave[] waves;
+    public Wave[] bossWaves;
 
     int waveIndex;
+    int bossWaveIndex;
     Wave currentWave;
 
     SPAWNER_STATE state;
@@ -22,14 +25,17 @@ public class Spawner : MonoBehaviour
     int enemyRemainingToSpawn;
     int enemyRemainingAlive;
     float nextSpawnTime;
+    bool isBoss;
 
     // Start is called before the first frame update
     void Start()
     {
+        bossWaveIndex = 0;
         waveIndex = 0;
         enemyRemainingToSpawn = 0;
         enemyRemainingAlive = 0;
         nextSpawnTime = Time.time;
+        isBoss = false;
 
         state = SPAWNER_STATE.READY;
         //NextWave();
@@ -60,10 +66,35 @@ public class Spawner : MonoBehaviour
             yield return null;
         }
 
+
         Enemy enemy = Instantiate(enemyPrefabs, Vector3.zero, Quaternion.identity);
-        enemy.Setup(currentWave.sprite, currentWave.moveSpeed, currentWave.heath, wayPoints, currentWave.Price);
-        enemy.OnDeath += OnEnemyDeath;
-        enemy.transform.parent = transform;
+        if (isBoss)
+        {
+            enemy.Setup(currentWave.sprite, currentWave.moveSpeed, currentWave.heath, wayPoints, currentWave.Price, "Boss");
+            enemy.OnDeath += OnBossDeath;
+        }
+        else
+        {
+            enemy.Setup(currentWave.sprite, currentWave.moveSpeed, currentWave.heath, wayPoints, currentWave.Price);
+            enemy.OnDeath += OnEnemyDeath;
+            enemy.transform.parent = transform;
+        }
+
+    }
+
+    void OnBossDeath()
+    {
+        enemyRemainingAlive--;
+
+        if (enemyRemainingAlive == 0)
+        {
+            state = SPAWNER_STATE.READY;
+            isBoss = false;
+
+            //GameManagers.instance.TowerV3Ability();
+            //GameManagers.instance.TowerAvastAbility();
+            //GameManagers.instance.TowerNotepadAbilityOff();
+        }
     }
 
     void OnEnemyDeath()
@@ -73,11 +104,45 @@ public class Spawner : MonoBehaviour
         if (enemyRemainingAlive == 0)
         {
             state = SPAWNER_STATE.READY;
-            GameManagers.instance.TowerV3Ability();
-            GameManagers.instance.TowerAvastAbility();
-            GameManagers.instance.TowerNotepadAbilityOff();
+
+            if(bossParttern <= 0)
+            {
+                bossParttern = 1;
+            }
+
+            if (isBoss == false && waveIndex % bossParttern == 0)
+            {
+                isBoss = true;
+                BossWave();
+            }
+
+            //GameManagers.instance.TowerV3Ability();
+            //GameManagers.instance.TowerAvastAbility();
+            //GameManagers.instance.TowerNotepadAbilityOff();
             //NextWave();
         }
+    }
+    public void BossWave()
+    {
+        if (state == SPAWNER_STATE.START)
+        {
+            Debug.Log("이미 시작했습니다");
+            return;
+        }
+
+        if (bossWaveIndex < bossWaves.Length)
+        {
+            currentWave = bossWaves[bossWaveIndex++];
+
+            enemyRemainingToSpawn = currentWave.enemyCount;
+            enemyRemainingAlive = enemyRemainingToSpawn;
+
+            print( "Boss Wave: "  +  bossWaveIndex);
+
+            state = SPAWNER_STATE.START;
+            //GameManagers.instance.TowerNotepadAbility();
+        }
+        nextSpawnTime = Time.time;
     }
 
     public void NextWave()
@@ -90,21 +155,24 @@ public class Spawner : MonoBehaviour
 
         if (waveIndex < waves.Length)
         {
-            currentWave = waves[waveIndex];
+            currentWave = waves[waveIndex++];
 
             enemyRemainingToSpawn = currentWave.enemyCount;
             enemyRemainingAlive = enemyRemainingToSpawn;
 
-            print("Wave: " + (waveIndex + 1));
+            print( "Wave: " + waveIndex);
+
             state = SPAWNER_STATE.START;
-            GameManagers.instance.TowerNotepadAbility();
+            //GameManagers.instance.TowerNotepadAbility();
         }
         nextSpawnTime = Time.time;
-        waveIndex++;
+        //waveIndex++;
     }
+
     public int CuurentState() {
         return (int)state;
     }
+
     [System.Serializable]
     public class Wave
     {
