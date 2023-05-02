@@ -142,6 +142,7 @@ MonoBehaviour:
   Synergy1: "\uC708\uB3C4\uC6B0 \uD504\uB85C\uADF8\uB7A8"
   Synergy2: 
   TowerImage: {fileID: 2521654542059483546}
+  Effectobj: {fileID: 0}
   TowerLevel: 1
   AttackEnemy: {fileID: 0}
   Notepad: {fileID: 44518904792306628}
@@ -164,7 +165,6 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: f258cae68cb86b049beff7add0f26630, type: 3}
   - {fileID: 6926746675528595401, guid: b4dfd09275479e84eb65fb7cbb0ee5da, type: 3}
   - {fileID: 6926746675528595401, guid: a3b57ee84b270484ebca4aa0c88f09b0, type: 3}
-  - {fileID: 6926746675528595401, guid: 43bc2468ef40dda4cb29bda2327b3a03, type: 3}
   - {fileID: 6926746675528595401, guid: 1b8afc21cab3a2a4388ab1386c148490, type: 3}
 --- !u!114 &3772343347749590877
 MonoBehaviour:
@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ec8d428ef49b74e8c530181eefebfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCreate: 0
   alpha150: {fileID: 6926746675528595401, guid: d6cd149807d40e944bb053aa1f173817, type: 3}
   Range: {fileID: 7823324884453313753}
 --- !u!58 &6844172348341503100

@@ -117,7 +117,7 @@ MonoBehaviour:
   bulletScale_X: 0.5
   bulletScale_Y: 0.5
   Trash: {fileID: 21300000, guid: 2220dcaae7aad1b42b9d07c84cf3bf22, type: 3}
-  BossAttack: 30
+  BossAttack: 60
   TowerAudio: {fileID: 4351898603134200870}
 --- !u!58 &3914505376101749567
 CircleCollider2D:

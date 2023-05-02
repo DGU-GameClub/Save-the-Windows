@@ -64,8 +64,8 @@ public class Tower19Cmd : TowerUnit
             }
             else
             {
-                PrimitiveAttack = 1.5f;
-                Attack = 1.5f;
+                PrimitiveAttack = 1.6f;
+                Attack = 1.6f;
                 SetupCMD();
             }
         }

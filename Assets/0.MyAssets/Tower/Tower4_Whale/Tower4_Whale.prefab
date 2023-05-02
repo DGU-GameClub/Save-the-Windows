@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: "\uC6E8\uC77C"
-  Attack: 1
+  Attack: 1.2
   Cooldown: 5
   UnitPrice: 10
   Contents: "\uAC70\uB9AC\uC640 \uC0C1\uAD00\uC5C6\uC774 \uBA85\uC911\uB960\uC774
