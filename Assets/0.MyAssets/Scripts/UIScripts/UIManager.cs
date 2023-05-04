@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -7,6 +8,7 @@ public class UIManager : MonoBehaviour
     public GameObject mainCanvas;
     public GameObject gameOverCanvas;
     public GameObject gameWinCanvas;
+    public Spawner spawner;
     
     [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] float setTime = 10.0f;
@@ -18,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI lifeText;
     int money;
     int life;
+    float initTime;
 
     public static UIManager instance;
     private void Awake()
@@ -34,12 +37,15 @@ public class UIManager : MonoBehaviour
         StartCoroutine(BlackPannel.instance.FadeOut());
         countdownText.text = setTime.ToString();
         store = GameObject.Find("Store").GetComponent<Store>();
+        initTime = setTime;
     }
 
     void Update()
     {
         //타이머 -> 정비시간때만 돌아가게. 실제 실행때는 리셋.
-        if (setTime > 0)
+
+        //Spawner 스크립트의 Spawner_state를 사용해야 함 -> 질문
+        if (setTime > 0 && spawner.CurrentState() == 0)
         {
             setTime -= Time.deltaTime;
             if (setTime >= 60f)
@@ -55,6 +61,8 @@ public class UIManager : MonoBehaviour
         if (setTime <= 0)
         {
             countdownText.text = "남은 시간 : 0분 0초";
+            spawner.NextWave();
+            setTime = initTime;
         }
         
         //돈

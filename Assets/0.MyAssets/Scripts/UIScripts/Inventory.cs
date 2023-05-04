@@ -10,8 +10,10 @@ public class Inventory : MonoBehaviour
     public GameObject invenParent;//Inven 오브젝트
     private int currentSlot = 0; //인벤토리의 현재 슬롯 번호
     public Map map;
+    public TowerSpawner realTower;
 
     private void Start() {
+        realTower = GameObject.Find("RealTower").GetComponent<TowerSpawner>();
         invenSlots = new GameObject[3];
         //인벤토리 내 하위 슬롯들 초기화
         for (int i = 0; i < invenSlots.Length; i++)
@@ -21,11 +23,11 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void OnTowerClick(GameObject towerPrefab)
+    public void OnTowerClick(Sprite sprite)
     {
         int currentSlot = 0;
         //현재 슬롯이 인벤토리 슬롯의 배열길이보다 작고, 타워가 있는지
-        while (currentSlot < invenSlots.Length && invenSlots[currentSlot].transform.childCount == 3)
+        while (currentSlot < invenSlots.Length && invenSlots[currentSlot].transform.GetChild(0).GetComponent<Image>().sprite != null)
         {
             currentSlot++;
         }
@@ -36,34 +38,41 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        //인벤토리에 타워 추가
-        GameObject tower = Instantiate(towerPrefab, invenSlots[currentSlot].transform.position, UnityEngine.Quaternion.identity);
-        tower.transform.SetParent(invenSlots[currentSlot].transform);
-        invenSlots[currentSlot].transform.GetChild(0).GetComponent<Image>().sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
+        // //인벤토리에 타워 추가
+        // GameObject tower = Instantiate(towerPrefab, invenSlots[currentSlot].transform.position, UnityEngine.Quaternion.identity);
+        // // GameObject tower = Instantiate(towerPrefab, new UnityEngine.Vector3(-8.22f,-2.76f,0f), UnityEngine.Quaternion.identity);
+        // tower.transform.SetParent(invenSlots[currentSlot].transform);
+        // invenSlots[currentSlot].transform.GetChild(0).GetComponent<Image>().sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
+        invenSlots[currentSlot].transform.GetChild(0).GetComponent<Image>().sprite = sprite;
         invenSlots[currentSlot].gameObject.GetComponentInChildren<Button>().interactable = true;
     }
 
     //판매버튼 클릭시 이벤트
     public void OnSellClick(int slotIndex)
     {
+        Sprite sprite = invenSlots[slotIndex].transform.GetChild(0).GetComponent<Image>().sprite;
         //돈 다시 리턴
-        GameManagers.instance.Money += invenSlots[slotIndex].transform.GetChild(2).GetComponentInChildren<TowerUnit>().UnitPrice;
-		DestoryTower(slotIndex);
+        GameObject towerPrefab = realTower.FindTowerWithSprite(sprite);
+        GameManagers.instance.Money += towerPrefab.GetComponentInChildren<TowerUnit>().UnitPrice;
+		DestoryTower(slotIndex, sprite);
     }
 
-	public void DestoryTower(int slotIndex)
+	public void DestoryTower(int slotIndex, Sprite sprite)
 	{
-		Destroy(invenSlots[slotIndex].transform.GetChild(2).gameObject);
+        realTower.DestroyRealTower(sprite);
+
         invenSlots[slotIndex].transform.GetChild(0).GetComponent<Image>().sprite = null;
         invenSlots[slotIndex].gameObject.GetComponentInChildren<Button>().interactable = false;
 	}
 
     public bool IsInvenFull()
     {
+        Sprite sprite;
         for (int i = 0; i < invenSlots.Length; i++)
         {
-            //인벤슬롯에 타워가 안 들어갔으면
-            if(invenSlots[i].transform.childCount == 2)
+            sprite = invenSlots[i].transform.GetChild(0).GetComponent<Image>().sprite;
+            //인벤슬롯에 타워가 안 들어갔으면 -> 이미지가 없으면
+            if(sprite == null)
             {
                 return false;
             }

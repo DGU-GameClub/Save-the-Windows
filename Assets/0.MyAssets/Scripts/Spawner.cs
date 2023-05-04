@@ -103,7 +103,7 @@ public class Spawner : MonoBehaviour
         nextSpawnTime = Time.time;
         waveIndex++;
     }
-    public int CuurentState() {
+    public int CurrentState() {
         return (int)state;
     }
     [System.Serializable]

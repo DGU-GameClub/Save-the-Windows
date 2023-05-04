@@ -738,6 +738,7 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: 115dbb899c9272940855b4f5b0f929e8, type: 3}
   slotsParent: {fileID: 1396998757}
   inven: {fileID: 0}
+  realTower: {fileID: 1736615217}
 --- !u!114 &74282359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6814,6 +6815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invenParent: {fileID: 798435189}
   map: {fileID: 0}
+  realTower: {fileID: 1736615217}
 --- !u!1 &900908435
 GameObject:
   m_ObjectHideFlags: 0
@@ -10542,8 +10544,9 @@ MonoBehaviour:
   mainCanvas: {fileID: 938363377}
   gameOverCanvas: {fileID: 1839900662}
   gameWinCanvas: {fileID: 2015225822}
+  spawner: {fileID: 1717694067}
   countdownText: {fileID: 413259780}
-  setTime: 300
+  setTime: 180
   moneyText: {fileID: 1552341992}
   lifeText: {fileID: 483280877}
 --- !u!1001 &1345002076
@@ -11862,7 +11865,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!224 &1377628413
 RectTransform:
@@ -14646,6 +14649,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 774089973823153102, guid: 1be2a63e67732d5408f3faf135500ace, type: 3}
   m_PrefabInstance: {fileID: 1726002609}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1736615216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1736615218}
+  - component: {fileID: 1736615217}
+  m_Layer: 0
+  m_Name: RealTower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1736615217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736615216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1468bb7bdcf04f18b00e0b2b3f1c884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realTower: {fileID: 1736615216}
+--- !u!4 &1736615218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736615216}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 701.739}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741697110
 GameObject:
   m_ObjectHideFlags: 0
@@ -14895,6 +14943,7 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: 115dbb899c9272940855b4f5b0f929e8, type: 3}
   slotsParent: {fileID: 1408009879}
   inven: {fileID: 0}
+  realTower: {fileID: 1736615217}
 --- !u!1001 &1772090684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18152,6 +18201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invenParent: {fileID: 1669402522}
   map: {fileID: 0}
+  realTower: {fileID: 0}
 --- !u!222 &2122789620
 CanvasRenderer:
   m_ObjectHideFlags: 0
