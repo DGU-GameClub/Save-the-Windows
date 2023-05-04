@@ -64,7 +64,7 @@ public class Enemy : LivingEntity
         }
     }
 
-    public void Setup(Sprite sprite, float _speed, float _health, Transform _wayPoints, int price)
+    public void Setup(Sprite sprite, float _speed, float _health, Transform _wayPoints, int price, string tag = "Enemy")
     {
         GetComponent<SpriteRenderer>().sprite = sprite;
         moveSpeed = _speed;
@@ -74,6 +74,7 @@ public class Enemy : LivingEntity
         wayPoints = _wayPoints;
         Price = price;
         OriginPrice = Price;
+        gameObject.tag = tag;
     }
 
     public override void TakeDamage(float damage)
@@ -193,14 +194,11 @@ public class Enemy : LivingEntity
 
     IEnumerator MoveTarget()
     {
-        float percent = 0f;
-        Vector3 originPosition = transform.position;
         Vector3 targetPosition = targetArr[targetIndex++].position;
 
-        while (percent < 1f)
+        while (transform.position != targetPosition)
         {
-            percent += Time.deltaTime * moveSpeed;
-            transform.position = Vector3.Lerp(originPosition, targetPosition, percent);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
 
