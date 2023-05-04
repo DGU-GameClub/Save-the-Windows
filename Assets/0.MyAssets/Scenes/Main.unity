@@ -7659,7 +7659,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 046da996996c0495ea6877897f83930c, type: 3}
     - target: {fileID: 2872605405735655333, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
       propertyPath: waves.Array.data[0].enemyCount
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2872605405735655333, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
       propertyPath: waves.Array.data[1].enemyCount
@@ -7683,7 +7683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2872605405735655333, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
       propertyPath: bossWaves.Array.data[0].moveSpeed
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2872605405735655333, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
       propertyPath: bossWaves.Array.data[0].spawnTime
@@ -7707,15 +7707,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2872605405735655333, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
       propertyPath: bossWaves.Array.data[0].enemyCount
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2872605405735655333, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
       propertyPath: bossWaves.Array.data[1].enemyCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2872605405735655333, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
       propertyPath: bossWaves.Array.data[2].enemyCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2872605405735655334, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
       propertyPath: m_Name
