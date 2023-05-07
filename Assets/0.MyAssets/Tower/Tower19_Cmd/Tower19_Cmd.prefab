@@ -221,12 +221,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: CMD
-  Attack: 1.4
+  Attack: 1.3
+  NextAttack: []
   Cooldown: 0
-  UnitPrice: 0
+  UnitPrice: 40
   Contents: "\uC124\uCE58 \uD560 \uB54C \uBC94\uC704 \uC548\uC5D0 \uC788\uB294 \uD0C0\uC6CC
-    \uD558\uB098\uB97C \uC120\uD0DD\uD574 \uACF5\uACA9\uB825\uC740 \uC0C1\uC2B9,
-    \uCFE8\uD0C0\uC784\uC740 \uB9E4\uC6B0 \uAC10\uC18C\uC2DC\uD0A8\uB2E4."
+    \uD558\uB098\uB97C \uC120\uD0DD\uD574 \uC774 \uD0C0\uC6CC\uC758 \uACF5\uACA9\uB825\uB9CC\uD07C
+    \uACF5\uACA9\uB825\uC740 \uC0C1\uC2B9, \uCFE8\uD0C0\uC784\uC740 \uAC10\uC18C\uC2DC\uD0A8\uB2E4."
   Synergy1: "\uC6D0\uB3C4\uC6B0 \uD504\uB85C\uADF8\uB7A8"
   Synergy2: 
   TowerImage: {fileID: 3914505376101749565}

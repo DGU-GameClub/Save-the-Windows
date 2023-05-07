@@ -141,6 +141,6 @@ MonoBehaviour:
   Speed: 5
   Pdistance: 2.5
   Tower: {fileID: 0}
-  count: 5
-  power: 1.5
-  time: 1
+  count: 4
+  power: 0
+  time: 0.5

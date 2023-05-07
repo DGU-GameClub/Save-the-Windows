@@ -66,6 +66,7 @@ public class Tower23Spawn : MonoBehaviour
                 {
                     gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
                     isCreate = true;
+                    GameManagers.instance.AddTowerNumber();
                 }
             }
             Destroy(createalpha);

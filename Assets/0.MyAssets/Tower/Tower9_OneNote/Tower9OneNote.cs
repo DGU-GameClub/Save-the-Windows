@@ -32,11 +32,11 @@ public class Tower9OneNote : TowerUnit
     {
         if (TowerLevel == 2)
         {
-            StartCoroutine(OnOffColloder(0.2f));
+            StartCoroutine(OnOffColloder(0.11f));
         }
         else if (TowerLevel == 3)
         {
-            StartCoroutine(OnOffColloder(0.3f));
+            StartCoroutine(OnOffColloder(0.15f));
         }
     }
     IEnumerator OnOffColloder(float Value)

@@ -221,11 +221,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: PPT
-  Attack: 1.2
+  Attack: 1.1
+  NextAttack: []
   Cooldown: 0
-  UnitPrice: 0
+  UnitPrice: 30
   Contents: "PPT\uB97C \uC81C\uC791\uD574 \uC8FC\uBCC0 \uD0C0\uC6CC\uC758 \uACF5\uACA9\uB825\uC744
-    (20/30/50)% \uC0C1\uC2B9 \uC2DC\uD0A8\uB2E4."
+    (10/20/30)% \uC0C1\uC2B9 \uC2DC\uD0A8\uB2E4."
   Synergy1: "\uC624\uD53C\uC2A4"
   Synergy2: 
   TowerImage: {fileID: 3914505376101749565}

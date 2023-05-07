@@ -142,5 +142,5 @@ MonoBehaviour:
   Pdistance: 2.5
   Tower: {fileID: 0}
   count: 3
-  power: 1
+  power: 0
   time: 1

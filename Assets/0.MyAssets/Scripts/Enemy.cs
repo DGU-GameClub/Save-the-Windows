@@ -109,7 +109,6 @@ public class Enemy : LivingEntity
                 ApplyParalysis(collision.gameObject.GetComponent<TowerBulletParalysis>());
                 break;
             case "Slow":
-                if (gameObject.CompareTag("Boss")) return;
                 ApplySlow(collision.gameObject.GetComponent<TowerBulletSlow>());
                 break;
             default:
@@ -120,7 +119,7 @@ public class Enemy : LivingEntity
     {
         if (burnDamageCoroutine != null)
         {
-            return;
+            StopCoroutine(burnDamageCoroutine);
         }
         burnDamageCoroutine = StartCoroutine(BurnDamage(burn));
     }

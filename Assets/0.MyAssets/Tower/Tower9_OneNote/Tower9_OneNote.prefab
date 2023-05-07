@@ -221,11 +221,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: "\uC6D0\uB178\uD2B8"
-  Attack: 0.1
+  Attack: 0.06
+  NextAttack: []
   Cooldown: 0
-  UnitPrice: 0
+  UnitPrice: 20
   Contents: "\uB178\uD2B8\uB97C \uC81C\uC791\uD574 \uC8FC\uBCC0 \uD0C0\uC6CC\uB4E4\uC758
-    \uCFE8\uD0C0\uC784\uC744 (10/20/30)% \uAC10\uC18C \uC2DC\uD0A8\uB2E4."
+    \uCFE8\uD0C0\uC784\uC744 (6/11/15)% \uAC10\uC18C \uC2DC\uD0A8\uB2E4."
   Synergy1: "\uC624\uD53C\uC2A4"
   Synergy2: 
   TowerImage: {fileID: 3914505376101749565}

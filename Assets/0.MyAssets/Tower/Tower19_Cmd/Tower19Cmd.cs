@@ -40,14 +40,14 @@ public class Tower19Cmd : TowerUnit
             {
                 UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttack(Attack);
                 UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttackSpeed(Attack-1);
-                PrimitiveAttack = 1.5f;
-                Attack = 1.5f;
+                PrimitiveAttack = 1.4f;
+                Attack = 1.4f;
                 UpgradeTower.GetComponentInChildren<TowerUnit>().AttackSpeedUp((Attack - 1));
                 UpgradeTower.GetComponentInChildren<TowerUnit>().AttackUp(Attack);
             }
             else {
-                PrimitiveAttack = 1.5f;
-                Attack = 1.5f;
+                PrimitiveAttack = 1.4f;
+                Attack = 1.4f;
                 SetupCMD();
             }
         }
@@ -57,15 +57,15 @@ public class Tower19Cmd : TowerUnit
             {
                 UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttack(Attack);
                 UpgradeTower.GetComponentInChildren<TowerUnit>().InitAttackSpeed(Attack - 1);
-                PrimitiveAttack = 1.6f;
-                Attack = 1.6f;
+                PrimitiveAttack = 1.5f;
+                Attack = 1.5f;
                 UpgradeTower.GetComponentInChildren<TowerUnit>().AttackSpeedUp((Attack - 1));
                 UpgradeTower.GetComponentInChildren<TowerUnit>().AttackUp(Attack);
             }
             else
             {
-                PrimitiveAttack = 1.6f;
-                Attack = 1.6f;
+                PrimitiveAttack = 1.5f;
+                Attack = 1.5f;
                 SetupCMD();
             }
         }

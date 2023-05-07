@@ -56,4 +56,16 @@ public class Tower20RecycleBin : TowerUnit
             yield return null;
         }
     }
+
+    protected override void StatusUp()
+    {
+        if (TowerLevel == 2)
+        {
+            Cooldown = NextAttack[0];
+        }
+        else if (TowerLevel == 3)
+        {
+            Cooldown = NextAttack[1];
+        }
+    }
 }

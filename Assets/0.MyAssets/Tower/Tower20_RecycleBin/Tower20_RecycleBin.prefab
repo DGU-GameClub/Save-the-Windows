@@ -102,8 +102,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: "\uD734\uC9C0\uD1B5"
   Attack: 9999
-  Cooldown: 20
-  UnitPrice: 0
+  NextAttack:
+  - 20
+  - 6
+  Cooldown: 30
+  UnitPrice: 50
   Contents: "\uC801\uC744 \uD734\uC9C0\uD1B5 \uC548\uC73C\uB85C \uB123\uC5B4 \uC989\uC0AC
     \uC2DC\uD0A8\uB2E4."
   Synergy1: "\uC708\uB3C4\uC6B0 \uD504\uB85C\uADF8\uB7A8"
@@ -265,7 +268,7 @@ GameObject:
   - component: {fileID: 4523694381345585384}
   m_Layer: 8
   m_Name: Tower20_RecycleBin
-  m_TagString: Tower
+  m_TagString: TowerRecycleBin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

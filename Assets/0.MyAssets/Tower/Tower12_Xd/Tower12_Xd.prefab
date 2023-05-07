@@ -185,9 +185,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: XD
-  Attack: 0.8
+  Attack: 2
+  NextAttack:
+  - 4.8
+  - 10.4
   Cooldown: 0.8
-  UnitPrice: 0
+  UnitPrice: 30
   Contents: "\uC801 \uD558\uB098\uC5D0\uAC8C \uD574\uB9D1\uC740 XD \uD45C\uC815\uC744
     \uBE60\uB974\uAC8C \uB09C\uC0AC\uD55C\uB2E4."
   Synergy1: "\uC5B4\uB3C4\uBE44"

@@ -88,4 +88,4 @@ MonoBehaviour:
   Speed: 0
   Pdistance: 5
   Tower: {fileID: 0}
-  time: 6
+  time: 3

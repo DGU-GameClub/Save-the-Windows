@@ -18,7 +18,7 @@ public class Tower17Avast : TowerUnit
         else if (TowerLevel == 3)
         {
             PrimitiveAttack = 50f;
-            Attack = 50f;
+            Attack = 70f;
         }
     }
 }

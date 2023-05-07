@@ -222,9 +222,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: "\uC560\uD504\uD130\uC774\uD399\uD2B8"
-  Attack: 4
+  Attack: 6
+  NextAttack:
+  - 15
+  - 33
   Cooldown: 3
-  UnitPrice: 0
+  UnitPrice: 30
   Contents: "\uC801\uC744 \uAD00\uD1B5\uD558\uB294 \uC790\uC2E0\uC758 \uC601\uD654
     \uD544\uB984\uC744 \uB0A0\uB9B0\uB2E4."
   Synergy1: "\uC5B4\uB3C4\uBE44"

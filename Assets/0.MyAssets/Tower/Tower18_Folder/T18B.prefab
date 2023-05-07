@@ -108,7 +108,7 @@ MonoBehaviour:
   Percent: 1.5
   Tower: {fileID: 0}
   TowerAudio: {fileID: 804585283951411291}
-  Area: 1
+  Area: 2
   NextSprite: {fileID: 21300000, guid: e919f1beacec6ec4b9dfa56c94e7f762, type: 3}
 --- !u!58 &8801529211498549932
 CircleCollider2D:

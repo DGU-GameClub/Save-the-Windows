@@ -42,7 +42,21 @@ public class Tower4Whale : TowerUnit
         }
      }
     protected override void StatusUp() {
-        if (TowerLevel == 2) { Special = 7; }
-        else if (TowerLevel == 3) { Special = 10; }
+        if (TowerLevel == 2) {
+            float tempPercent = 0f;
+            if (base.Attack != PrimitiveAttack) tempPercent = base.Attack / PrimitiveAttack;
+            PrimitiveAttack = NextAttack[0];
+            base.Attack = PrimitiveAttack;
+            if (tempPercent > 0f) AttackUp(tempPercent);
+            Special = 7; 
+        }
+        else if (TowerLevel == 3) {
+            float tempPercent = 0f;
+            if (base.Attack != PrimitiveAttack) tempPercent = base.Attack / PrimitiveAttack;
+            PrimitiveAttack = NextAttack[1];
+            base.Attack = PrimitiveAttack;
+            if (tempPercent > 0f) AttackUp(tempPercent);
+            Special = 10; 
+        }
     }
 }
