@@ -95,7 +95,8 @@ public class Spawner : MonoBehaviour
 
 
         Enemy enemy = Instantiate(enemyPrefabs, Vector3.zero, Quaternion.identity);
-        enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath, wayPoints, curWave.Price);
+        //enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath * HeathUp(), wayPoints, curWave.Price);
+        enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath , wayPoints, curWave.Price);
         enemy.OnDeath += OnEnemyDeath;
         enemy.transform.parent = transform;
     }
@@ -113,9 +114,9 @@ public class Spawner : MonoBehaviour
                 isBoss = false;
             }
 
-            GameManagers.instance.TowerV3Ability();
-            GameManagers.instance.TowerAvastAbility();
-            GameManagers.instance.TowerNotepadAbilityOff();
+            //GameManagers.instance.TowerV3Ability();
+            //GameManagers.instance.TowerAvastAbility();
+            //GameManagers.instance.TowerNotepadAbilityOff();
         }
     }
 
@@ -153,12 +154,34 @@ public class Spawner : MonoBehaviour
 
         state = SPAWNER_STATE.START;
         nextSpawnTime = Time.time;
-        GameManagers.instance.TowerNotepadAbility();
+        //GameManagers.instance.TowerNotepadAbility();
     }
 
     public int CurentState()
     {
         return (int)state;
+    }
+
+    public float HeathUp()
+    {
+        float plus = 1f;
+
+        switch (GameManagers.instance.GetTowerNumber())
+        {
+            case 5:
+                plus = 1.2f;
+                break;
+            case 10:
+                plus = 1.5f;
+                break;
+            case 20:
+                plus = 2.0f;
+                break;
+            default:
+                break;
+        }
+
+        return plus;
     }
 
     [System.Serializable]
