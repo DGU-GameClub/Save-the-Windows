@@ -10,6 +10,7 @@ public class GameManagers : MonoBehaviour
     public UIManager UIManager;
     public Spawner Spawner;
     public int TowerNumber = 0;
+    public bool SellMode = false;
 
     // Start is called before the first frame update
     private void Awake()
@@ -41,6 +42,7 @@ public class GameManagers : MonoBehaviour
     }
     public void RecoveryLife(int rate) {
         Life += rate;
+        if (Life >= 20) Life = 20;
     }
     public void TowerV3Ability() {
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("TowerV3");

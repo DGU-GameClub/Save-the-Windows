@@ -33,7 +33,10 @@ public class TowerInfoManager : MonoBehaviour
         Name.text = tn;
         Synergy1.text = ts1;
         Synergy2.text = ts2;
-        Level.text = "레벨 : " + tl.ToString();
+        if (tl < 3)
+            Level.text = "레벨 : " + tl.ToString();
+        else if (tl == 3)
+            Level.text = "레벨 : "+ tl.ToString() + "(MAX)";
         Contents.text = tc;
         Attack.text = "공격력 : " + ta.ToString();
         Cooldown.text = "쿨타임 : " + tcd.ToString();
