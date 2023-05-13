@@ -693,7 +693,6 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: 115dbb899c9272940855b4f5b0f929e8, type: 3}
   slotsParent: {fileID: 1396998757}
   inven: {fileID: 0}
-  realTower: {fileID: 1736615217}
 --- !u!114 &74282359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6818,7 +6817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invenParent: {fileID: 798435189}
   map: {fileID: 0}
-  realTower: {fileID: 1736615217}
+  realTower: {fileID: 0}
 --- !u!1 &900908435
 GameObject:
   m_ObjectHideFlags: 0
@@ -12893,7 +12892,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -13022,7 +13021,6 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: 115dbb899c9272940855b4f5b0f929e8, type: 3}
   slotsParent: {fileID: 1408009879}
   inven: {fileID: 0}
-  realTower: {fileID: 1736615217}
 --- !u!1001 &1773767990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15590,7 +15588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invenParent: {fileID: 1669402522}
   map: {fileID: 0}
-  realTower: {fileID: 0}
+  realTower: {fileID: 1736615216}
 --- !u!222 &2122789620
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
-using System;
-using System.Numerics;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 // using UnityEngine.EventSystem;
@@ -10,20 +9,22 @@ public class Inventory : MonoBehaviour
     public GameObject invenParent;//Inven 오브젝트
     private int currentSlot = 0; //인벤토리의 현재 슬롯 번호
     public Map map;
-    public TowerSpawner realTower;
 
-    private void Start() {
-        realTower = GameObject.Find("RealTower").GetComponent<TowerSpawner>();
+    public GameObject realTower;
+    private List<GameObject> towerList;
+
+    private void Start()
+    {
         invenSlots = new GameObject[3];
+        towerList = new List<GameObject>();
         //인벤토리 내 하위 슬롯들 초기화
         for (int i = 0; i < invenSlots.Length; i++)
         {
             invenSlots[i] = invenParent.transform.GetChild(i).gameObject;
         }
-
     }
 
-    public void OnTowerClick(Sprite sprite)
+    public void OnTowerClick(GameObject tower)
     {
         int currentSlot = 0;
         //현재 슬롯이 인벤토리 슬롯의 배열길이보다 작고, 타워가 있는지
@@ -31,20 +32,14 @@ public class Inventory : MonoBehaviour
         {
             currentSlot++;
         }
-
         // 인벤토리 슬롯이 모두 찼으면 추가x
         if (currentSlot == invenSlots.Length)
         {
             return;
         }
-
-        // //인벤토리에 타워 추가
-        // GameObject tower = Instantiate(towerPrefab, invenSlots[currentSlot].transform.position, UnityEngine.Quaternion.identity);
-        // // GameObject tower = Instantiate(towerPrefab, new UnityEngine.Vector3(-8.22f,-2.76f,0f), UnityEngine.Quaternion.identity);
-        // tower.transform.SetParent(invenSlots[currentSlot].transform);
-        // invenSlots[currentSlot].transform.GetChild(0).GetComponent<Image>().sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
-        invenSlots[currentSlot].transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+        invenSlots[currentSlot].transform.GetChild(0).GetComponent<Image>().sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
         invenSlots[currentSlot].gameObject.GetComponentInChildren<Button>().interactable = true;
+        AddTower(tower, currentSlot);
     }
 
     //판매버튼 클릭시 이벤트
@@ -52,18 +47,12 @@ public class Inventory : MonoBehaviour
     {
         Sprite sprite = invenSlots[slotIndex].transform.GetChild(0).GetComponent<Image>().sprite;
         //돈 다시 리턴
-        GameObject towerPrefab = realTower.FindTowerWithSprite(sprite);
+        GameObject towerPrefab = FindTowerInList(sprite);
         GameManagers.instance.Money += towerPrefab.GetComponentInChildren<TowerUnit>().UnitPrice;
-		DestoryTower(slotIndex, sprite);
-    }
-
-	public void DestoryTower(int slotIndex, Sprite sprite)
-	{
-        realTower.DestroyRealTower(sprite);
-
         invenSlots[slotIndex].transform.GetChild(0).GetComponent<Image>().sprite = null;
         invenSlots[slotIndex].gameObject.GetComponentInChildren<Button>().interactable = false;
-	}
+        DestroyTower(towerPrefab);
+    }
 
     public bool IsInvenFull()
     {
@@ -72,11 +61,42 @@ public class Inventory : MonoBehaviour
         {
             sprite = invenSlots[i].transform.GetChild(0).GetComponent<Image>().sprite;
             //인벤슬롯에 타워가 안 들어갔으면 -> 이미지가 없으면
-            if(sprite == null)
+            if (sprite == null)
             {
                 return false;
             }
         }
         return true;
+    }
+    public void AddTower(GameObject tower, int currentSlot)
+    {
+        Debug.Log(currentSlot);
+        GameObject towerInstance = Instantiate(tower, invenSlots[currentSlot].transform.position, Quaternion.identity);
+        towerInstance.transform.SetParent(realTower.transform);
+        towerList.Add(towerInstance);
+    }
+
+    public GameObject FindTowerInList(Sprite target)
+    {
+        foreach(GameObject tower in towerList)
+        {
+            SpriteRenderer spriteRenderer = tower.GetComponentInChildren<SpriteRenderer>();
+          
+            if (spriteRenderer != null && spriteRenderer.sprite == target)
+            {
+                return tower; // 일치하는 스프라이트가 있는 타워 오브젝트를 반환합니다.
+            }
+        }
+        return null; // 일치하는 스프라이트가 없으면 null을 반환합니다.
+    }
+
+    public void DestroyTower(GameObject targetObject)
+    {
+        if (towerList.Contains(targetObject))
+        {
+            towerList.Remove(targetObject);
+            Debug.Log("Destroy " + targetObject);
+            Destroy(targetObject);  
+        }
     }
 }
