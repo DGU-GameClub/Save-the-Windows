@@ -19,6 +19,24 @@ public class Tower23Spawn : MonoBehaviour
     private void OnMouseDown()
     {
         isclicked = true;
+        if (GameManagers.instance.SellMode)
+        {
+            if (isCreate)
+            {
+                int SellMoney = 0;
+                if (Tu.TowerLevel == 1)
+                    SellMoney = (int)(Tu.UnitPrice * 0.8);
+                else if (Tu.TowerLevel == 2)
+                    SellMoney = (int)(Tu.UnitPrice * 0.8 * 5);
+                else if (Tu.TowerLevel == 3)
+                    SellMoney = (int)(Tu.UnitPrice * 0.8 * 12);
+                GameManagers.instance.AddMoney(SellMoney);
+                GameManagers.instance.RemoveTowerNumber();
+                Destroy(gameObject);
+                return;
+            }
+            else if (!isCreate) { return; }
+        }
         TowerInfoManager.instance.Setup(Tu.TowerImage, Tu.UnitPrice, Tu.UnitName,
             Tu.Synergy1, Tu.Synergy2, Tu.TowerLevel, Tu.Contents, Tu.Attack, Tu.Cooldown, Tu.ExpPercent());
         if (!isCreate)
@@ -33,6 +51,7 @@ public class Tower23Spawn : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if (GameManagers.instance.SellMode) return;
         if (isclicked && !isCreate)
         {
             // 마우스따라 반투명 캐릭터가 움직임
@@ -48,6 +67,7 @@ public class Tower23Spawn : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (GameManagers.instance.SellMode) return;
         isclicked = false;
         if (!isCreate)
         {
