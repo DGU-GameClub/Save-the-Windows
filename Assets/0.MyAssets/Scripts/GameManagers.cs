@@ -9,6 +9,7 @@ public class GameManagers : MonoBehaviour
     public int Life;
     public UIManager UIManager;
     public Spawner Spawner;
+    public int TowerNumber = 0;
 
     // Start is called before the first frame update
     private void Awake()
@@ -82,4 +83,13 @@ public class GameManagers : MonoBehaviour
             obj.GetComponentInChildren<TowerUnit>().InitAttackTime();
         }
     }
+    public void AddTowerNumber() {
+        TowerNumber++;
+    }
+    public void RemoveTowerNumber() { 
+        TowerNumber--;
+    }
+    public int GetTowerNumber() {
+        return TowerNumber;
+    } 
 }

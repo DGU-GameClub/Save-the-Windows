@@ -184,9 +184,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: "\uD3F4\uB354"
-  Attack: 4
-  Cooldown: 5
-  UnitPrice: 10
+  Attack: 9
+  NextAttack:
+  - 21.6
+  - 46.8
+  Cooldown: 3.5
+  UnitPrice: 40
   Contents: "\uC9C1\uBC15\uAD6C\uB9AC\uB97C \uB0A0\uB9B0\uB2E4. \uC9C1\uBC15\uAD6C\uB9AC\uB294
     \uC801\uC5D0\uAC8C \uB2FF\uC73C\uBA74 \uC74C\uD30C\uB97C \uBC1C\uC0AC\uD574 \uC8FC\uBCC0
     1\uCE78\uC5D0\uAC8C \uD53C\uD574\uB97C \uC785\uD78C\uB2E4."
@@ -200,7 +203,7 @@ MonoBehaviour:
   TowerPrefeb: {fileID: 6926746675528595401}
   bulletScale_X: 0.7
   bulletScale_Y: 0.7
-  Area: 1.5
+  Area: 2
 --- !u!58 &3914505376101749567
 CircleCollider2D:
   m_ObjectHideFlags: 0

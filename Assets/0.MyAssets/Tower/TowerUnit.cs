@@ -8,6 +8,7 @@ public class TowerUnit : MonoBehaviour
     public string UnitName;        //타워 이름
     [SerializeField]
     public float Attack;            //공격력
+    public float[] NextAttack;
     [SerializeField]
     public float Cooldown;         //공격 쿨타임
     [SerializeField]
@@ -129,20 +130,18 @@ public class TowerUnit : MonoBehaviour
     {
         if (TowerLevel == 2)
         {
-            PrimitiveAttack *= 1.2f;
-            Attack *= 1.2f;
+            float tempPercent = 0f;
+            if (Attack != PrimitiveAttack) tempPercent = Attack / PrimitiveAttack;
+            PrimitiveAttack = NextAttack[0];
+            Attack = PrimitiveAttack;
+            if (tempPercent > 0f) AttackUp(tempPercent);
         }
         else if (TowerLevel == 3) {
-            PrimitiveAttack *= 1.4f;
-            Attack *= 1.4f;
-            Cooldown -= (Cooldown * 0.2f);
-            PrimitiveCooldown -= (PrimitiveCooldown * 0.2f);
-            if (Cooldown <= 0.5f) {
-                Cooldown -= 0.5f;
-            }
-            if (PrimitiveCooldown <= 0.5f) {
-                PrimitiveCooldown = 0.5f;
-            }
+            float tempPercent = 0f;
+            if (Attack != PrimitiveAttack) tempPercent = Attack / PrimitiveAttack;
+            PrimitiveAttack = NextAttack[1];
+            Attack = PrimitiveAttack;
+            if (tempPercent > 0f) AttackUp(tempPercent);
         }
     }
     public float ExpPercent() {

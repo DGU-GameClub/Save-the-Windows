@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
@@ -12,24 +12,34 @@ public class Spawner : MonoBehaviour
 
     public Transform wayPoints;
     public Enemy enemyPrefabs;
+    public int bossParttern = 3;
     public Wave[] waves;
+    public Wave[] bossWaves;
 
+    float nextSpawnTime;
+    float nextBossSpawnTime;
     int waveIndex;
-    Wave currentWave;
+    int bossWaveIndex;
+    Wave curWave;
+    Wave curBossWave;
 
     SPAWNER_STATE state;
 
     int enemyRemainingToSpawn;
+    int bossRemainingToSpawn;
     int enemyRemainingAlive;
-    float nextSpawnTime;
+    bool isBoss;
 
     // Start is called before the first frame update
     void Start()
     {
+        bossWaveIndex = 0;
         waveIndex = 0;
+        nextSpawnTime = Time.time;
+        nextBossSpawnTime = Time.time;
         enemyRemainingToSpawn = 0;
         enemyRemainingAlive = 0;
-        nextSpawnTime = Time.time;
+        isBoss = false;
 
         state = SPAWNER_STATE.READY;
         //NextWave();
@@ -44,24 +54,48 @@ public class Spawner : MonoBehaviour
         if (enemyRemainingToSpawn > 0 && Time.time > nextSpawnTime)
         {
             enemyRemainingToSpawn--;
-            nextSpawnTime = Time.time + currentWave.spawnTime;
-
+            nextSpawnTime = Time.time + curWave.spawnTime;
             StartCoroutine("SpawnEnemy");
         }
+
+        if (isBoss && bossRemainingToSpawn > 0 && Time.time > nextBossSpawnTime)
+        {
+            bossRemainingToSpawn--;
+            nextBossSpawnTime = Time.time + curBossWave.spawnTime;
+            StartCoroutine("SpawnBoss");
+        }
+    }
+
+    IEnumerator SpawnBoss()
+    {
+        float spawnTimer = 0f;
+
+        while (spawnTimer < curBossWave.spawnTime)
+        {
+            spawnTimer += Time.deltaTime;
+            yield return null;
+        }
+
+
+        Enemy enemy = Instantiate(enemyPrefabs, Vector3.zero, Quaternion.identity);
+        enemy.Setup(curBossWave.sprite, curBossWave.moveSpeed, curBossWave.heath, wayPoints, curBossWave.Price, "Boss");
+        enemy.OnDeath += OnEnemyDeath;
+        enemy.transform.parent = transform;
     }
 
     IEnumerator SpawnEnemy()
     {
         float spawnTimer = 0f;
 
-        while (spawnTimer < currentWave.spawnTime)
+        while (spawnTimer < curWave.spawnTime)
         {
             spawnTimer += Time.deltaTime;
             yield return null;
         }
 
+
         Enemy enemy = Instantiate(enemyPrefabs, Vector3.zero, Quaternion.identity);
-        enemy.Setup(currentWave.sprite, currentWave.moveSpeed, currentWave.heath, wayPoints, currentWave.Price);
+        enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath, wayPoints, curWave.Price);
         enemy.OnDeath += OnEnemyDeath;
         enemy.transform.parent = transform;
     }
@@ -73,10 +107,15 @@ public class Spawner : MonoBehaviour
         if (enemyRemainingAlive == 0)
         {
             state = SPAWNER_STATE.READY;
+
+            if (isBoss == true)
+            {
+                isBoss = false;
+            }
+
             GameManagers.instance.TowerV3Ability();
             GameManagers.instance.TowerAvastAbility();
             GameManagers.instance.TowerNotepadAbilityOff();
-            //NextWave();
         }
     }
 
@@ -87,25 +126,41 @@ public class Spawner : MonoBehaviour
             Debug.Log("이미 시작했습니다");
             return;
         }
-
-        if (waveIndex < waves.Length)
+        if (waveIndex >= waves.Length)
         {
-            currentWave = waves[waveIndex];
-
-            enemyRemainingToSpawn = currentWave.enemyCount;
-            enemyRemainingAlive = enemyRemainingToSpawn;
-
-            print("Wave: " + (waveIndex + 1));
-            state = SPAWNER_STATE.START;
-            GameManagers.instance.TowerNotepadAbility();
-            GameManagers.instance.InitTower();
+            Debug.Log("wave 종료");
+            return;
         }
+
+        if (bossParttern <= 0)
+            bossParttern = 1;
+
+        if (isBoss == false && (waveIndex + 1) % bossParttern == 0)
+            isBoss = true;
+
+        curWave = waves[waveIndex++];
+        enemyRemainingToSpawn = curWave.enemyCount;
+        enemyRemainingAlive = enemyRemainingToSpawn;
+
+        if (isBoss && bossWaveIndex < bossWaves.Length)
+        {
+            curBossWave = bossWaves[bossWaveIndex++];
+            bossRemainingToSpawn = curBossWave.enemyCount;
+            enemyRemainingAlive += bossRemainingToSpawn;
+        }
+
+        print("Wave: " + waveIndex);
+
+        state = SPAWNER_STATE.START;
         nextSpawnTime = Time.time;
-        waveIndex++;
+        GameManagers.instance.TowerNotepadAbility();
     }
-    public int CurrentState() {
+
+    public int CurentState()
+    {
         return (int)state;
     }
+
     [System.Serializable]
     public class Wave
     {

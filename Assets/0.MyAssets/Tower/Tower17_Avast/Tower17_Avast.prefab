@@ -138,10 +138,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: Avast
   Attack: 10
+  NextAttack: []
   Cooldown: 0
-  UnitPrice: 0
+  UnitPrice: 20
   Contents: "\uB9E4 \uC2A4\uD14C\uC774\uC9C0\uAC00 \uB05D\uB0A0 \uB54C \uB9C8\uB2E4
-    (10/30/50) \uACE8\uB4DC \uB9CC\uD07C \uD655\uB4DD\uD55C\uB2E4."
+    (10/30/70) \uACE8\uB4DC \uB9CC\uD07C \uD655\uB4DD\uD55C\uB2E4."
   Synergy1: "\uBCF4\uC548"
   Synergy2: 
   TowerImage: {fileID: 3914505376101749565}

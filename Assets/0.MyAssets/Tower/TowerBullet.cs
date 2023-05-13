@@ -9,11 +9,6 @@ public class TowerBullet : MonoBehaviour
     public float Speed = 3.0f;
     public float Pdistance = 5f;
     public GameObject Tower = null;
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

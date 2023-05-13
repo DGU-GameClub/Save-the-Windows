@@ -26,7 +26,7 @@ public class Tower22Calculator : TowerUnit
         }
         else if (TowerLevel == 3)
         {
-            StartCoroutine(OnOffColloder(1.3f));
+            StartCoroutine(OnOffColloder(1.4f));
         }
     }
     IEnumerator OnOffColloder(float Value)

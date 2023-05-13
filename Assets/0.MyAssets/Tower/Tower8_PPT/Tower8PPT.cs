@@ -33,11 +33,11 @@ public class Tower8PPT : TowerUnit
         if (TowerLevel == 2)
         {
             
-            StartCoroutine(OnOffColloder(1.3f));
+            StartCoroutine(OnOffColloder(1.2f));
         }
         else if (TowerLevel == 3)
         {
-            StartCoroutine(OnOffColloder(1.5f));
+            StartCoroutine(OnOffColloder(1.3f));
         }
     }
     IEnumerator OnOffColloder(float Value) {

@@ -71,6 +71,7 @@ public class Tower19Spawn : MonoBehaviour
                     gameObject.GetComponentInChildren<Tower19Cmd>().SetupCMD();
                     Tu.EffectOn();
                     isCreate = true;
+                    GameManagers.instance.AddTowerNumber();
                 }
             }
             Destroy(createalpha);

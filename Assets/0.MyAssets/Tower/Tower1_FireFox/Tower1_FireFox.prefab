@@ -185,11 +185,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: "\uD30C\uC774\uC5B4 \uD3ED\uC2A4"
-  Attack: 2
-  Cooldown: 2.5
+  Attack: 2.5
+  NextAttack:
+  - 8
+  - 22.4
+  Cooldown: 2
   UnitPrice: 10
   Contents: "\uBD89\uC740 \uC5EC\uC6B0\uB294 \uC801 \uD558\uB098\uC5D0\uAC8C \uAD6C\uC2AC\uC744
-    \uB358\uC838 \uD654\uC0C1(\uC9C0\uC18D \uB370\uBBF8\uC9C0)\uC744 \uC785\uD78C\uB2E4. "
+    \uB358\uC838 \uD654\uC0C1\uC744 \uC785\uD78C\uB2E4. \uD654\uC0C1\uC740 \uACF5\uACA9\uB825\uC758
+    1/4\uC758 \uB370\uBBF8\uC9C0\uB97C \uC785\uD78C\uB2E4. "
   Synergy1: "\uBE0C\uB77C\uC6B0\uC800"
   Synergy2: "\uB3D9\uBB3C"
   TowerImage: {fileID: 3914505376101749565}

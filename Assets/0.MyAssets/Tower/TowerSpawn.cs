@@ -69,6 +69,7 @@ public class TowerSpawn : MonoBehaviour
                     gameObject.transform.position = Tilemap.GetCoordTileUnderMouse();
                     Tu.EffectOn();
                     isCreate = true;
+                    GameManagers.instance.AddTowerNumber();
                 }
             }
             Destroy(createalpha);

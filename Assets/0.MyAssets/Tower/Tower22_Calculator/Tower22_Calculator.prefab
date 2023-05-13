@@ -101,10 +101,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: "\uACC4\uC0B0\uAE30"
   Attack: 1.1
+  NextAttack: []
   Cooldown: 0
-  UnitPrice: 0
+  UnitPrice: 10
   Contents: "\uC801\uB4E4\uC744 \uACC4\uC0B0\uD574 \uBC94\uC704 \uC548\uC5D0\uC11C
-    \uC801\uB4E4\uC774 \uC8FD\uC744 \uC2DC (10/20/30)%\uC758 \uACE8\uB4DC\uB97C \uCD94\uAC00
+    \uC801\uB4E4\uC774 \uC8FD\uC744 \uC2DC (10/20/40)%\uC758 \uACE8\uB4DC\uB97C \uCD94\uAC00
     \uD68D\uB4DD\uD55C\uB2E4."
   Synergy1: "\uC708\uB3C4\uC6B0 \uD504\uB85C\uADF8\uB7A8"
   Synergy2: 

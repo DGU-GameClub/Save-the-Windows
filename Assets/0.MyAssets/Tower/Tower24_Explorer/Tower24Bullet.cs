@@ -28,7 +28,9 @@ public class Tower24Bullet : TowerBulletSlow
     {
         if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attack);
+            float dam = Tower.GetComponent<TowerUnit>().Attack;
+            if (collision.CompareTag("Enemy")) dam += collision.gameObject.GetComponent<Enemy>().health * Tower.GetComponent<Tower24Explorer>().special;
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(dam);
             Destroy(gameObject);
         }
     }

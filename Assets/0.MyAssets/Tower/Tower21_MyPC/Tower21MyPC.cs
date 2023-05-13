@@ -29,4 +29,15 @@ public class Tower21MyPC : TowerUnit
     {
         Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
     }
+    protected override void StatusUp()
+    {
+        if (TowerLevel == 2)
+        {
+            Cooldown = NextAttack[0];
+        }
+        else if (TowerLevel == 3)
+        {
+            Cooldown = NextAttack[1];
+        }
+    }
 }

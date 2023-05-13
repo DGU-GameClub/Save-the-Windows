@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
         //타이머 -> 정비시간때만 돌아가게. 실제 실행때는 리셋.
 
         //Spawner 스크립트의 Spawner_state를 사용해야 함 -> 질문
-        if (setTime > 0 && spawner.CurrentState() == 0)
+        if (setTime > 0 && spawner.CurentState() == 0)
         {
             setTime -= Time.deltaTime;
             if (setTime >= 60f)

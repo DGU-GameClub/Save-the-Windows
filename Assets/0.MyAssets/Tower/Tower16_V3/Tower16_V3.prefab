@@ -169,8 +169,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: V3
   Attack: 1
+  NextAttack: []
   Cooldown: 0
-  UnitPrice: 0
+  UnitPrice: 30
   Contents: "\uD0D0\uC0C9\uC744 \uD1B5\uD574 \uC545\uC131\uD504\uB85C\uADF8\uB7A8\uC744
     \uC81C\uAC70\uD574 \uB9E4 \uC2A4\uD14C\uC774\uC9C0\uAC00 \uB05D\uB0A0\uB54C \uB9C8\uB2E4
     \uCCB4\uB825\uC744 1\uB9CC\uD07C \uD68C\uBCF5\uD55C\uB2E4."
