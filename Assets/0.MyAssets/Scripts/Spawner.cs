@@ -95,8 +95,8 @@ public class Spawner : MonoBehaviour
 
 
         Enemy enemy = Instantiate(enemyPrefabs, Vector3.zero, Quaternion.identity);
-        //enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath * HeathUp(), wayPoints, curWave.Price);
-        enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath , wayPoints, curWave.Price);
+        enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath + HeathUp(), wayPoints, curWave.Price);
+        //enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath , wayPoints, curWave.Price);
         enemy.OnDeath += OnEnemyDeath;
         enemy.transform.parent = transform;
     }
@@ -114,9 +114,9 @@ public class Spawner : MonoBehaviour
                 isBoss = false;
             }
 
-            //GameManagers.instance.TowerV3Ability();
-            //GameManagers.instance.TowerAvastAbility();
-            //GameManagers.instance.TowerNotepadAbilityOff();
+            GameManagers.instance.TowerV3Ability();
+            GameManagers.instance.TowerAvastAbility();
+            GameManagers.instance.TowerNotepadAbilityOff();
         }
     }
 
@@ -154,7 +154,7 @@ public class Spawner : MonoBehaviour
 
         state = SPAWNER_STATE.START;
         nextSpawnTime = Time.time;
-        //GameManagers.instance.TowerNotepadAbility();
+        GameManagers.instance.TowerNotepadAbility();
     }
 
     public int CurentState()
@@ -164,18 +164,24 @@ public class Spawner : MonoBehaviour
 
     public float HeathUp()
     {
-        float plus = 1f;
+        float plus = 0f;
 
         switch (GameManagers.instance.GetTowerNumber())
         {
             case 5:
-                plus = 1.2f;
+                plus = 15f;
                 break;
             case 10:
-                plus = 1.5f;
+                plus = 30f;
                 break;
             case 20:
-                plus = 2.0f;
+                plus = 60f;
+                break;
+            case 25:
+                plus = 120f;
+                break;
+            case 30:
+                plus = 240f;
                 break;
             default:
                 break;
