@@ -5,7 +5,13 @@ using System.Collections.Generic;
 
 public class Store : MonoBehaviour
 {
-    public GameObject[] towerPrefabs; //타워 프리팹 배열
+    public GameObject[] towerPrefabs;
+    public GameObject[] towers10; //10원 타워 프리팹 배열
+    public GameObject[] towers20; //20원 타워 프리팹 배열
+    public GameObject[] towers30; //30원 타워 프리팹 배열
+    public GameObject[] towers40; //40원 타워 프리팹 배열
+    public GameObject[] towers50; //50원 타워 프리팹 배열
+
     public GameObject slotsParent; // 상점 슬롯들의 부모 오브젝트. -> store 오브젝트.
     public Inventory inven;
 
@@ -35,7 +41,7 @@ public class Store : MonoBehaviour
 
         for (int i = 0; i < slots.Length; i++)
         {
-            random = Random.Range(0,towerPrefabs.Length);
+            random = Random.Range(0, towerPrefabs.Length);
             GameObject tower = towerPrefabs[random];
 
             sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
@@ -107,4 +113,42 @@ public class Store : MonoBehaviour
         }
         return null;
     }
+    public GameObject GetRandomTower()
+    {
+        int probability10 = GameManagers.instance.probability10; // 10원 타워의 확률
+        int probability20 = GameManagers.instance.probability20; // 20원 타워의 확률
+        int probability30 = GameManagers.instance.probability30; // 30원 타워의 확률
+        int probability40 = GameManagers.instance.probability40;  // 40원 타워의 확률
+        int probability50 = GameManagers.instance.probability50;  // 50원 타워의 확률
+
+        int totalProbability = probability10 + probability20 + probability30 + probability40 + probability50;
+        int randomValue = Random.Range(0, totalProbability);
+
+        if (randomValue < probability10) // chance for 10원 tower
+        {
+            int index = Random.Range(0, towers10.Length);
+            return towers10[index];
+        }
+        else if (randomValue < probability10 + probability20) // chance for 20원 tower
+        {
+            int index = Random.Range(0, towers20.Length);
+            return towers20[index];
+        }
+        else if (randomValue < probability10 + probability20 + probability30 ) // chance for 30원 tower
+        {
+            int index = Random.Range(0, towers30.Length);
+            return towers30[index];
+        }
+        else if (randomValue < probability10 + probability20 + probability30 + probability40) // chance for 40원 tower
+        {
+            int index = Random.Range(0, towers40.Length);
+            return towers40[index];
+        }
+        else
+        {
+            int index = Random.Range(0, towers50.Length);
+            return towers50[index];
+        }
+    }
+
 }

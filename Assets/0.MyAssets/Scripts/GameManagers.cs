@@ -12,6 +12,13 @@ public class GameManagers : MonoBehaviour
     public int TowerNumber = 0;
     public bool SellMode = false;
     public SellManager _sellManager;
+
+    public int probability10 = 45; // 10원 타워의 확률
+    public int probability20 = 30; // 20원 타워의 확률
+    public int probability30 = 20; // 30원 타워의 확률
+    public int probability40 = 5;  // 40원 타워의 확률
+    public int probability50 = 0;  // 50원 타워의 확률
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -96,5 +103,9 @@ public class GameManagers : MonoBehaviour
     }
     public int GetTowerNumber() {
         return TowerNumber;
-    } 
+    }
+
+    public void UpdateProbability(int waveindxt) { 
+        
+    }
 }

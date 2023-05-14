@@ -6191,6 +6191,11 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: dfdaebb2bdf25494ba9cb6898879a033, type: 3}
   - {fileID: 6926746675528595401, guid: ad2bb0cbc0a3e514f80f37243ad6f469, type: 3}
   - {fileID: 6926746675528595401, guid: 115dbb899c9272940855b4f5b0f929e8, type: 3}
+  towers10: []
+  towers20: []
+  towers30: []
+  towers40: []
+  towers50: []
   slotsParent: {fileID: 985541102}
   inven: {fileID: 0}
 --- !u!114 &703716130
@@ -7466,7 +7471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invenParent: {fileID: 492865775}
   map: {fileID: 0}
-  realTower: {fileID: 0}
+  realTower: {fileID: 134470113}
 --- !u!222 &917541458
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13636,6 +13641,11 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: dfdaebb2bdf25494ba9cb6898879a033, type: 3}
   - {fileID: 6926746675528595401, guid: ad2bb0cbc0a3e514f80f37243ad6f469, type: 3}
   - {fileID: 6926746675528595401, guid: 115dbb899c9272940855b4f5b0f929e8, type: 3}
+  towers10: []
+  towers20: []
+  towers30: []
+  towers40: []
+  towers50: []
   slotsParent: {fileID: 442391857}
   inven: {fileID: 0}
 --- !u!114 &1854303926
