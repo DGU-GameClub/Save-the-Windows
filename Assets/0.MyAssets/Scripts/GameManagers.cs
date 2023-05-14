@@ -11,7 +11,7 @@ public class GameManagers : MonoBehaviour
     public Spawner Spawner;
     public int TowerNumber = 0;
     public bool SellMode = false;
-
+    public SellManager _sellManager;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -25,6 +25,7 @@ public class GameManagers : MonoBehaviour
     {
         Money = 100;
         Life = 10;
+        _sellManager = GameObject.Find("SellCanvas").GetComponent<SellManager>();
     }
 
     // Update is called once per frame
@@ -87,9 +88,11 @@ public class GameManagers : MonoBehaviour
     }
     public void AddTowerNumber() {
         TowerNumber++;
+        _sellManager.UpdateHealthBarUI();
     }
     public void RemoveTowerNumber() { 
         TowerNumber--;
+        _sellManager.UpdateHealthBarUI();
     }
     public int GetTowerNumber() {
         return TowerNumber;

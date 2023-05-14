@@ -8,10 +8,13 @@ public class SellManager : MonoBehaviour
     public TextMeshProUGUI Text;
     public bool ClickOn = false;
     public GameObject BackGround;
+    public GameObject Healthbar;
+    public TextMeshProUGUI CurrentTowerNumberText;
+    public GameObject[] HealthUI;
     public void SettingSellMode() {
         if (!ClickOn)
         {
-            
+            Healthbar.SetActive(false);
             BackGround.SetActive(true);
             GameManagers.instance.SellMode = true;
             ClickOn = true;
@@ -20,6 +23,7 @@ public class SellManager : MonoBehaviour
         }
         else if (ClickOn)
         {
+            Healthbar.SetActive(true);
             BackGround.SetActive(false);
             GameManagers.instance.SellMode = false;
             ClickOn = false;
@@ -33,5 +37,39 @@ public class SellManager : MonoBehaviour
             Text.CrossFadeAlpha(1f,1.2f,false);
             yield return new WaitForSeconds(1.2f);
         }
+    }
+    public void UpdateHealthBarUI() {
+        int TempNumber = GameManagers.instance.GetTowerNumber();
+        if (TempNumber < 5) {
+            for (int i = 0; i < 5; i++)
+                HealthUI[i].SetActive(false);
+        }
+        else if (TempNumber >= 5 && TempNumber < 10) {
+            HealthUI[0].SetActive(true);
+            for (int i = 1; i < 5; i++)
+                HealthUI[i].SetActive(false);
+        }
+        else if (TempNumber >= 10 && TempNumber < 15) {
+            for (int i = 0; i < 2; i++)
+                HealthUI[i].SetActive(true);
+            for (int i = 2; i < 5; i++)
+                HealthUI[i].SetActive(false);
+        }
+        else if (TempNumber >= 15 && TempNumber < 20) {
+            for (int i = 0; i < 3; i++)
+                HealthUI[i].SetActive(true);
+            for (int i = 3; i < 5; i++)
+                HealthUI[i].SetActive(false);
+        }
+        else if (TempNumber >= 20 && TempNumber < 25) {
+            for (int i = 0; i < 4; i++)
+                HealthUI[i].SetActive(true);
+                HealthUI[4].SetActive(false);
+        }
+        else if (TempNumber >= 25) {
+            for (int i = 0; i < 5; i++)
+                HealthUI[i].SetActive(true);
+        }
+        CurrentTowerNumberText.text = "현재 설치된 타워 수 : " + TempNumber.ToString();
     }
 }

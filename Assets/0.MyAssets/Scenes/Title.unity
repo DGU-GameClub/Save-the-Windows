@@ -956,7 +956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invenParent: {fileID: 1570070449}
   map: {fileID: 0}
-  realTower: {fileID: 134470114}
+  realTower: {fileID: 0}
 --- !u!222 &236389372
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6193,7 +6193,6 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: 115dbb899c9272940855b4f5b0f929e8, type: 3}
   slotsParent: {fileID: 985541102}
   inven: {fileID: 0}
-  realTower: {fileID: 134470114}
 --- !u!114 &703716130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13639,7 +13638,6 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: 115dbb899c9272940855b4f5b0f929e8, type: 3}
   slotsParent: {fileID: 442391857}
   inven: {fileID: 0}
-  realTower: {fileID: 134470114}
 --- !u!114 &1854303926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16005,6 +16003,10 @@ PrefabInstance:
     - target: {fileID: 3241863315129806774, guid: e4e47b98fc4b0654eafb27293cdb6a49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941494119793062584, guid: e4e47b98fc4b0654eafb27293cdb6a49, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4e47b98fc4b0654eafb27293cdb6a49, type: 3}

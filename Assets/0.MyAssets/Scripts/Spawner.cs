@@ -165,27 +165,13 @@ public class Spawner : MonoBehaviour
     public float HeathUp()
     {
         float plus = 0f;
+        int TempNumber = GameManagers.instance.GetTowerNumber();
 
-        switch (GameManagers.instance.GetTowerNumber())
-        {
-            case 5:
-                plus = 15f;
-                break;
-            case 10:
-                plus = 30f;
-                break;
-            case 20:
-                plus = 60f;
-                break;
-            case 25:
-                plus = 120f;
-                break;
-            case 30:
-                plus = 240f;
-                break;
-            default:
-                break;
-        }
+        if (TempNumber >= 5 && TempNumber < 10) plus = 10f;
+        else if (TempNumber >= 10 && TempNumber < 15) plus = 30f;
+        else if (TempNumber >= 15 && TempNumber < 20) plus = 60f;
+        else if (TempNumber >= 20 && TempNumber < 25) plus = 120f;
+        else if (TempNumber >= 25) plus = 240f;
 
         return plus;
     }
