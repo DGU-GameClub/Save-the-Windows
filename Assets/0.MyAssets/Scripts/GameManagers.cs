@@ -105,7 +105,29 @@ public class GameManagers : MonoBehaviour
         return TowerNumber;
     }
 
-    public void UpdateProbability(int waveindxt) { 
-        
+    public void UpdateProbability(int waveindxt) {
+        switch (waveindxt) {
+            case 10:
+                probability10 = 35;
+                probability20 = 25;
+                probability30 = 25;
+                probability40 = 10;
+                probability50 = 5;
+                break;
+            case 20:
+                probability10 = 30;
+                probability20 = 25;
+                probability30 = 20;
+                probability40 = 15;
+                probability50 = 10;
+                break;
+            case 25:
+                probability10 = 25;
+                probability20 = 25;
+                probability30 = 20;
+                probability40 = 20;
+                probability50 = 10;
+                break;
+        }
     }
 }
