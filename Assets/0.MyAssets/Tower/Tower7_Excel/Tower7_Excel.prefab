@@ -138,10 +138,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: "\uC5D1\uC140"
-  Attack: 11.7
+  Attack: 4.8
   NextAttack:
-  - 27.3
-  - 58.5
+  - 13.85
+  - 30.2
   Cooldown: 5
   UnitPrice: 40
   Contents: "\uC790\uC2E0\uC758 \uC0C1\uC9D5\uC778 X \uBD80\uBA54\uB791\uC744 \uB0A0\uB9B0\uB2E4. "
