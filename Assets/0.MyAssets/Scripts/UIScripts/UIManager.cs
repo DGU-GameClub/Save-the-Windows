@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
         if (setTime <= 0)
         {
             countdownText.text = "남은 시간 : 0분 0초";
-            spawner.NextWave();
+            //spawner.NextWave();
             setTime = initTime;
         }
         
@@ -87,11 +87,11 @@ public class UIManager : MonoBehaviour
     }
     public void ResetButtonOn()
     {
-        if (store != null && GameManagers.instance.Money >= 20)
+        if (store != null && GameManagers.instance.Money >= 10)
         {
             store.DestroyAllTower();
             //리셋버튼 클릭시 -20원으로 설정
-            GameManagers.instance.Money -= 20;
+            GameManagers.instance.Money -= 10;
         }
     }
     public void OnClickResetButton()
