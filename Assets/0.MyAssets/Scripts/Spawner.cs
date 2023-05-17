@@ -95,7 +95,8 @@ public class Spawner : MonoBehaviour
 
 
         Enemy enemy = Instantiate(enemyPrefabs, Vector3.zero, Quaternion.identity);
-        enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath, wayPoints, curWave.Price);
+        enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath + HeathUp(), wayPoints, curWave.Price);
+        //enemy.Setup(curWave.sprite, curWave.moveSpeed, curWave.heath , wayPoints, curWave.Price);
         enemy.OnDeath += OnEnemyDeath;
         enemy.transform.parent = transform;
     }
@@ -116,6 +117,7 @@ public class Spawner : MonoBehaviour
             GameManagers.instance.TowerV3Ability();
             GameManagers.instance.TowerAvastAbility();
             GameManagers.instance.TowerNotepadAbilityOff();
+            GameManagers.instance.UpdateProbability(waveIndex);
         }
     }
 
@@ -159,6 +161,20 @@ public class Spawner : MonoBehaviour
     public int CurentState()
     {
         return (int)state;
+    }
+
+    public float HeathUp()
+    {
+        float plus = 0f;
+        int TempNumber = GameManagers.instance.GetTowerNumber();
+
+        if (TempNumber >= 5 && TempNumber < 10) plus = 10f;
+        else if (TempNumber >= 10 && TempNumber < 15) plus = 30f;
+        else if (TempNumber >= 15 && TempNumber < 20) plus = 60f;
+        else if (TempNumber >= 20 && TempNumber < 25) plus = 120f;
+        else if (TempNumber >= 25) plus = 240f;
+
+        return plus;
     }
 
     [System.Serializable]

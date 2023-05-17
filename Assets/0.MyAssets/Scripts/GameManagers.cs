@@ -10,6 +10,14 @@ public class GameManagers : MonoBehaviour
     public UIManager UIManager;
     public Spawner Spawner;
     public int TowerNumber = 0;
+    public bool SellMode = false;
+    public SellManager _sellManager;
+
+    public int probability10 = 45; // 10원 타워의 확률
+    public int probability20 = 30; // 20원 타워의 확률
+    public int probability30 = 20; // 30원 타워의 확률
+    public int probability40 = 5;  // 40원 타워의 확률
+    public int probability50 = 0;  // 50원 타워의 확률
 
     // Start is called before the first frame update
     private void Awake()
@@ -24,6 +32,7 @@ public class GameManagers : MonoBehaviour
     {
         Money = 100;
         Life = 10;
+        _sellManager = GameObject.Find("SellCanvas").GetComponent<SellManager>();
     }
 
     // Update is called once per frame
@@ -41,6 +50,7 @@ public class GameManagers : MonoBehaviour
     }
     public void RecoveryLife(int rate) {
         Life += rate;
+        if (Life >= 20) Life = 20;
     }
     public void TowerV3Ability() {
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("TowerV3");
@@ -85,11 +95,17 @@ public class GameManagers : MonoBehaviour
     }
     public void AddTowerNumber() {
         TowerNumber++;
+        _sellManager.UpdateHealthBarUI();
     }
     public void RemoveTowerNumber() { 
         TowerNumber--;
+        _sellManager.UpdateHealthBarUI();
     }
     public int GetTowerNumber() {
         return TowerNumber;
-    } 
+    }
+
+    public void UpdateProbability(int waveindxt) { 
+        
+    }
 }
