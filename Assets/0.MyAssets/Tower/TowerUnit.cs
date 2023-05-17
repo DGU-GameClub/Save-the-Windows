@@ -41,7 +41,7 @@ public class TowerUnit : MonoBehaviour
         MaxExp = new int[3];
         curExp = 0;
         MaxExp[0] = 10;  //4°³ ¸ÔÀÌ¸é 1·¾¾÷
-        MaxExp[1] = 12; //7°³ ¸ÔÀÌ¸é 2·¾¾÷
+        MaxExp[1] = 23; //7°³ ¸ÔÀÌ¸é 2·¾¾÷
         MaxExp[2] = 10000;
     }
     private void OnTriggerEnter2D(Collider2D other)

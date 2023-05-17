@@ -22,6 +22,7 @@ public class Store : MonoBehaviour
 
     private void Start() {
         slots = new GameObject[3];
+        p = new int[3];
         inven = GameObject.Find("Inventory").GetComponent<Inventory>();
 
         for(int i = 0; i < slots.Length; i++)
@@ -51,7 +52,6 @@ public class Store : MonoBehaviour
             price = tu.UnitPrice;
             contents = tu.Contents;
             texts = slot.Find("Texts");
-
             slot.GetComponent<Image>().sprite = sprite;
             texts.GetChild(0).GetComponent<TMP_Text>().text = name;
             texts.GetChild(1).GetComponent<TMP_Text>().text = contents;
