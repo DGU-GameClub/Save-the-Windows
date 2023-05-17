@@ -254,6 +254,6 @@ MonoBehaviour:
   TowerPrefeb: {fileID: 4421553550944468666}
   bulletScale_X: 0.25
   bulletScale_Y: 0.25
-  Correction: 0.8
+  Correction: 0.5
   StopTime: 0.08
   Special: 5

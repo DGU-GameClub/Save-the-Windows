@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -214,7 +213,7 @@ public class Enemy : LivingEntity
     }
     public void UpPrice(float Percent)
     {
-        Price = (int)Math.Round(Price * Percent);
+        Price = (int)(Price * Percent);
     }
     public void InitPrice() {
         Price = OriginPrice;

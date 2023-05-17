@@ -20,10 +20,8 @@ public class Store : MonoBehaviour
     private Transform texts;
     private int price;
 
-    private int[] p;
     private void Start() {
         slots = new GameObject[3];
-        p = new int[3];
         inven = GameObject.Find("Inventory").GetComponent<Inventory>();
 
         for(int i = 0; i < slots.Length; i++)
@@ -44,12 +42,11 @@ public class Store : MonoBehaviour
         for (int i = 0; i < slots.Length; i++)
         {
             random = Random.Range(0, towerPrefabs.Length);
-            GameObject tower = GetRandomTower();
+            GameObject tower = towerPrefabs[random];
 
             sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
             name = tower.name.Substring(tower.name.LastIndexOf('_')+1);
             price = tower.GetComponentInChildren<TowerUnit>().UnitPrice;
-            p[i] = price;
             contents = tower.GetComponentInChildren<TowerUnit>().Contents;
             texts = slots[i].transform.Find("Texts");
 
@@ -63,7 +60,7 @@ public class Store : MonoBehaviour
 
     public void OnSlotClick(int slotIndex)
     {
-        /*Sprite target = slots[slotIndex].GetComponent<Image>().sprite;
+        Sprite target = slots[slotIndex].GetComponent<Image>().sprite;
         //해당 슬롯이 비어있거나, 인벤토리가 다 차 있거나, 돈이 없으면 클릭 불가능
         if (target == null || inven.IsInvenFull() || GameManagers.instance.Money == 0)
         {
@@ -79,8 +76,7 @@ public class Store : MonoBehaviour
         price = towerPrefab.GetComponentInChildren<TowerUnit>().UnitPrice;
         inven.OnTowerClick(towerPrefab);
 
-        SellTower(slotIndex, price);*/
-        SellTower(slotIndex, p[slotIndex]);
+        SellTower(slotIndex, price);
     }
 
     //타워를 판매하는 함수
