@@ -691,6 +691,11 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: dfdaebb2bdf25494ba9cb6898879a033, type: 3}
   - {fileID: 6926746675528595401, guid: ad2bb0cbc0a3e514f80f37243ad6f469, type: 3}
   - {fileID: 6926746675528595401, guid: 115dbb899c9272940855b4f5b0f929e8, type: 3}
+  towers10: []
+  towers20: []
+  towers30: []
+  towers40: []
+  towers50: []
   slotsParent: {fileID: 1396998757}
   inven: {fileID: 0}
 --- !u!114 &74282359
@@ -12767,6 +12772,10 @@ PrefabInstance:
       propertyPath: wayPoints
       value: 
       objectReference: {fileID: 1936680590}
+    - target: {fileID: 2872605405735655333, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
+      propertyPath: waves.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9219cbfc09fd5e642860aaf7ba15430a, type: 3}
     - target: {fileID: 2872605405735655334, guid: 8bd363f59a168e8448a5e72410df4ef5, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -13019,6 +13028,11 @@ MonoBehaviour:
   - {fileID: 6926746675528595401, guid: dfdaebb2bdf25494ba9cb6898879a033, type: 3}
   - {fileID: 6926746675528595401, guid: ad2bb0cbc0a3e514f80f37243ad6f469, type: 3}
   - {fileID: 6926746675528595401, guid: 115dbb899c9272940855b4f5b0f929e8, type: 3}
+  towers10: []
+  towers20: []
+  towers30: []
+  towers40: []
+  towers50: []
   slotsParent: {fileID: 1408009879}
   inven: {fileID: 0}
 --- !u!1001 &1773767990
