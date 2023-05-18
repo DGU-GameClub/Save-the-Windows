@@ -11,6 +11,7 @@ public class Tower4Whale : TowerUnit
     public float Correction;
     public float StopTime;
     public int Special = 5;
+    public AudioSource TowerAudio;
     private void Awake()
     {
         AttackTime = Cooldown;
@@ -35,6 +36,7 @@ public class Tower4Whale : TowerUnit
         for (int i = 0; i < Special; i++)
         {
             var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
+            TowerAudio.Play();
             Bullet.GetComponent<TowerBullet>().Tower = gameObject;
             Bullet.GetComponent<TowerBullet>().targetPosition = (EnemyRandomPosition - transform.position).normalized;
             Bullet.transform.localScale = new Vector3(bulletScale_X, bulletScale_Y);

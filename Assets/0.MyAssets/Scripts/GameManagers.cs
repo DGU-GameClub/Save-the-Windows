@@ -26,7 +26,6 @@ public class GameManagers : MonoBehaviour
             Destroy(gameObject);
         }
         instance = this;
-        Time.timeScale = 3f;
     }
     void Start()
     {
@@ -90,6 +89,16 @@ public class GameManagers : MonoBehaviour
     public void InitTower() {
         GameObject[] Towers = GameObject.FindGameObjectsWithTag("Tower");
         foreach (GameObject obj in Towers) {
+            obj.GetComponentInChildren<TowerUnit>().InitAttackTime();
+        }
+        Towers = GameObject.FindGameObjectsWithTag("TowerRecycleBin");
+        foreach (GameObject obj in Towers)
+        {
+            obj.GetComponentInChildren<TowerUnit>().InitAttackTime();
+        }
+        Towers = GameObject.FindGameObjectsWithTag("TowerMypc");
+        foreach (GameObject obj in Towers)
+        {
             obj.GetComponentInChildren<TowerUnit>().InitAttackTime();
         }
     }

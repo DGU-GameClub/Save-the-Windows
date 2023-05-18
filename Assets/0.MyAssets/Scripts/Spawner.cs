@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
 
     float nextSpawnTime;
     float nextBossSpawnTime;
-    int waveIndex;
+    public int waveIndex;
     int bossWaveIndex;
     Wave curWave;
     Wave curBossWave;
