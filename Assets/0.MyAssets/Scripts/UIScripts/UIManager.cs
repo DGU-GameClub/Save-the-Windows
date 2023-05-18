@@ -1,7 +1,7 @@
-using System.Net.Http.Headers;
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -43,8 +43,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         //타이머 -> 정비시간때만 돌아가게. 실제 실행때는 리셋.
-
-        //Spawner 스크립트의 Spawner_state를 사용해야 함 -> 질문
         if (setTime > 0 && spawner.CurentState() == 0)
         {
             setTime -= Time.deltaTime;
@@ -70,6 +68,7 @@ public class UIManager : MonoBehaviour
         {
             money = GameManagers.instance.Money;
             moneyText.text = ": " + money.ToString();
+            
         }
 
         //생명
@@ -90,7 +89,7 @@ public class UIManager : MonoBehaviour
         if (store != null && GameManagers.instance.Money >= 10)
         {
             store.DestroyAllTower();
-            //리셋버튼 클릭시 -20원으로 설정
+            //리셋버튼 클릭시 -10원으로 설정
             GameManagers.instance.Money -= 10;
         }
     }
@@ -122,5 +121,35 @@ public class UIManager : MonoBehaviour
         yield return StartCoroutine(BlackPannel.instance.FadeOut());
         gameWinCanvas.SetActive(true);
         StartCoroutine(BackToStart());
+    }
+
+    public void ColoringBox(int price, Image target)
+    {
+        Color skyblue;
+        Color orange = new Color(1f, 0.5f, 0f, 1f);
+        Color darkgreen;
+        Color lightgray;
+
+        ColorUtility.TryParseHtmlString("#0091FF", out skyblue);
+        ColorUtility.TryParseHtmlString("#00BA17", out darkgreen);
+        ColorUtility.TryParseHtmlString("#9D9D9D", out lightgray);
+
+        switch(price){
+            case 10:
+                target.color = lightgray;
+                break;
+            case 20:
+                target.color = skyblue;
+                break;
+            case 30:
+                target.color = darkgreen;
+                break;
+            case 40:
+                target.color = orange;
+                break;
+            case 50:
+                target.color = Color.red;
+                break;
+        }
     }
 }

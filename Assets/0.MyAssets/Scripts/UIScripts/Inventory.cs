@@ -1,17 +1,14 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-// using UnityEngine.EventSystem;
 
 public class Inventory : MonoBehaviour
 {
     private GameObject[] invenSlots;//인벤토리 슬롯 배열
     public GameObject invenParent;//Inven 오브젝트
-    private int currentSlot = 0; //인벤토리의 현재 슬롯 번호
-
     public GameObject realTower;
     GameObject[] towerArr;//인벤토리에 들어온 타워 배열
     Button[] sellBtns;
+    Vector3 towerPos;
 
     private void Start()
     {
@@ -28,6 +25,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void Update() {
+        //타워 위치랑 인벤토리 위치랑 비교해보기
+        //다르면 타워 배열에서 해당 타워 해제, 해당 sellBtn 비활성화
+        for(int i=0; i<3; i++){
+            towerPos = invenSlots[i].transform.position;
+            if(towerArr[i] != null && towerArr[i].transform.position != towerPos){
+                towerArr[i] = null;
+                sellBtns[i].interactable = false;
+            }
+        }
+    }
+
     public void OnTowerClick(GameObject tower)
     {
         int currentSlot = 0;
@@ -39,8 +48,6 @@ public class Inventory : MonoBehaviour
         if (currentSlot == invenSlots.Length){
             return;
         }
-        // checkInven[currentSlot] = true;
-        // 얘도 나중에 foreach로 수정하자
         sellBtns[currentSlot].interactable = true;
         AddTower(tower, currentSlot);
     }
@@ -82,27 +89,14 @@ public class Inventory : MonoBehaviour
         GameObject towerInstance = Instantiate(tower, invenSlots[currentSlot].transform.position, Quaternion.identity);
         towerInstance.transform.SetParent(realTower.transform);
         towerArr[currentSlot] = towerInstance;
-        Debug.Log(towerArr[currentSlot]);
     }
 
     public void DestroyTower(int towerIndex)
     {
         GameObject target = towerArr[towerIndex];
-        Debug.Log("Destroy " + target);
+        Debug.Log("Sell " + target.GetComponentInChildren<TowerUnit>().UnitName);
         sellBtns[towerIndex].interactable = false;
         towerArr[towerIndex] = null;
         Destroy(target);
     }
-
-    // public bool FindTower(GameObject target)
-    // {
-    //     foreach(GameObject tower in towerArr)
-    //     {
-    //         if (tower == target)
-    //         {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
 }
