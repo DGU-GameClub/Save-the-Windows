@@ -46,7 +46,7 @@ public class TowerUnit : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (UnitName == "»ﬁ¡ˆ≈Î") {
+        if (gameObject.CompareTag("TowerRecycleBin")) {
             if (other.gameObject.CompareTag("Enemy"))
                 EnemyOfRange.Add(other.gameObject);
             return;
