@@ -32,6 +32,10 @@ public class Tower13Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
         {
+            if ((collision.gameObject.GetComponent<Enemy>().health - Tower.GetComponent<TowerUnit>().Attack) <= 0)
+            {
+                Tower.GetComponent<TowerUnit>().KillNumber++;
+            }
             collision.gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attack);
         }
     }

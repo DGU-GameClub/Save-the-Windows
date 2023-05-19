@@ -27,7 +27,7 @@ public class TowerUnit : MonoBehaviour
     protected float PrimitiveAttack;
     protected float PrimitiveCooldown;
     public GameObject AttackEnemy; //현재 공격할 대상
-
+    public int KillNumber = 0;
     private List<GameObject> EnemyOfRange;  //콜라이더 안에 들어온 Enemy 오브젝트들(공격대상)
     
     // Start is called before the first frame update

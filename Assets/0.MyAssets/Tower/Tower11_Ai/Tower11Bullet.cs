@@ -31,6 +31,8 @@ public class Tower11Bullet : TowerBullet
             {
                 int random = Random.Range(3, 5);
                 GameManagers.instance.AddMoney(random);
+                Tower.GetComponent<TowerUnit>().KillNumber++;
+                
             }
             collision.gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attack);
             Destroy(gameObject);
