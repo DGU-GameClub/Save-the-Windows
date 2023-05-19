@@ -32,6 +32,7 @@ public class Tower20RecycleBin : TowerUnit
     {
         var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
         Bullet.GetComponent<Tower20Bullet>().Tower = gameObject;
+        if (AttackEnemy.CompareTag("Boss")) return;
         AttackEnemy.GetComponent<Enemy>().StopMove();
         AttackEnemy.tag = "Trash";
         AttackEnemy.GetComponent<SpriteRenderer>().sprite = Trash;
