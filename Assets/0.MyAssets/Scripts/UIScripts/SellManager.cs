@@ -11,6 +11,7 @@ public class SellManager : MonoBehaviour
     public GameObject Healthbar;
     public TextMeshProUGUI CurrentTowerNumberText;
     public GameObject[] HealthUI;
+    public TextMeshProUGUI Fasttext;
     int Fastindex = 0;
     public void SettingSellMode() {
         if (!ClickOn)
@@ -75,10 +76,16 @@ public class SellManager : MonoBehaviour
     }
     public void FastMode() {
         if (Fastindex == 0)
+        {
             Time.timeScale = 2f;
+            Fasttext.text = "x 2";
+        }
         else if (Fastindex == 1)
+        {
             Time.timeScale = 3f;
-        else if (Fastindex == 2) { Fastindex = 0; Time.timeScale = 1f; return; }
+            Fasttext.text = "x 1";
+        }
+        else if (Fastindex == 2) { Fastindex = 0; Time.timeScale = 1f; Fasttext.text = "x 1"; return; }
         Fastindex++;
     }
 }
