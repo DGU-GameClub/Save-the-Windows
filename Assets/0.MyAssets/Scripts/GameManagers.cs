@@ -19,6 +19,8 @@ public class GameManagers : MonoBehaviour
     public int probability40 = 5;  // 40원 타워의 확률
     public int probability50 = 0;  // 50원 타워의 확률
 
+    bool isEnd;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class GameManagers : MonoBehaviour
         Money = 100;
         Life = 10;
         _sellManager = GameObject.Find("SellCanvas").GetComponent<SellManager>();
+        isEnd = false;
     }
 
     // Update is called once per frame
@@ -41,10 +44,11 @@ public class GameManagers : MonoBehaviour
 
     public void DamageLife() {
         Life -= 1;
-        if (Life <= 0)
-        {
-            //게임 오버
-            StartCoroutine(UIManager.instance.GameOver());
+        if (Life <= 0 && !isEnd){
+                //게임 오버
+                int tmp = GameManagers.instance.Life;
+                StartCoroutine(UIManager.instance.GameOver(tmp));
+                isEnd = true;
         }
     }
     public void RecoveryLife(int rate) {

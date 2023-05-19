@@ -1,13 +1,18 @@
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject mainCanvas;
     public GameObject gameOverCanvas;
     public GameObject gameWinCanvas;
+    public GameObject storeInvenCanvas;
+    public GameObject enemyHpBarCanvas;
+
     public Spawner spawner;
     
     [SerializeField] TextMeshProUGUI countdownText;
@@ -18,6 +23,10 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] TextMeshProUGUI lifeText;
+    [SerializeField] TextMeshProUGUI moneyText_GO;
+    [SerializeField] TextMeshProUGUI lifeText_GO;
+        [SerializeField] TextMeshProUGUI moneyText_GW;
+    [SerializeField] TextMeshProUGUI lifeText_GW;
     int money;
     int life;
     float initTime;
@@ -32,14 +41,16 @@ public class UIManager : MonoBehaviour
             Destroy(instance);
         }
         instance = this;
-        
     }
+
     void Start() 
     {
         StartCoroutine(BlackPannel.instance.FadeOut());
         countdownText.text = setTime.ToString();
         store = GameObject.Find("Store").GetComponent<Store>();
         initTime = setTime;
+        gameOverCanvas.SetActive(false);
+        gameWinCanvas.SetActive(false);
     }
 
     void Update()
@@ -85,33 +96,58 @@ public class UIManager : MonoBehaviour
     public void OnClickResetButton()
     {
         //게임종료하기 전에 확인 메세지 띄우기
-        StartCoroutine(GameOver());
+        StartCoroutine(GameOver(GameManagers.instance.Life));
     }
 
-    public void OnClickRestart()
+    public void OnClickBack()
     {
-        StartCoroutine(BackToStart());
+        StartCoroutine(BackToMain());
     }
-    public IEnumerator BackToStart()
+    public IEnumerator BackToMain()
     {
         yield return StartCoroutine(BlackPannel.instance.FadeIn()); 
         BlackPannel.instance.NextScene("00.Start");
     }
-    public IEnumerator GameOver()
+
+    public void OnClickReStart(){
+        StartCoroutine(ReStart());
+    }
+
+    public IEnumerator ReStart(){
+        yield return StartCoroutine(BlackPannel.instance.FadeIn());
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    public IEnumerator GameOver(int life)
     {
         yield return StartCoroutine(BlackPannel.instance.FadeIn());
         mainCanvas.SetActive(false);
+
+        //플레이타임 추가
+        storeInvenCanvas.SetActive(false);
+        
+        lifeText_GO.text = "남은 생명: " + life.ToString();
+        moneyText_GO.text = "남은 돈: " + GameManagers.instance.Money.ToString();
         gameOverCanvas.SetActive(true);
         yield return StartCoroutine(BlackPannel.instance.FadeOut());
     }
 
     public IEnumerator GameWin()
     {
-        yield return StartCoroutine(BlackPannel.instance.FadeOut());
+        yield return StartCoroutine(BlackPannel.instance.FadeIn());
+        mainCanvas.SetActive(false);
+
+        //플레이타임 추가
+        storeInvenCanvas.SetActive(false);
+        
+        lifeText_GW.text = "남은 생명: " + GameManagers.instance.Life.ToString();
+        moneyText_GW.text = "남은 돈: " + GameManagers.instance.Money.ToString();
         gameWinCanvas.SetActive(true);
-        StartCoroutine(BackToStart());
+        yield return StartCoroutine(BlackPannel.instance.FadeOut());
     }
 
+    //테두리 색 정하기
     public void ColoringBox(int price, Image target)
     {
         Color skyblue;
