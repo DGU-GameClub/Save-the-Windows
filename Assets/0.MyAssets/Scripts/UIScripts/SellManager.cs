@@ -83,7 +83,7 @@ public class SellManager : MonoBehaviour
         else if (Fastindex == 1)
         {
             Time.timeScale = 3f;
-            Fasttext.text = "x 1";
+            Fasttext.text = "x 3";
         }
         else if (Fastindex == 2) { Fastindex = 0; Time.timeScale = 1f; Fasttext.text = "x 1"; return; }
         Fastindex++;
