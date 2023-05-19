@@ -244,7 +244,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: c8d4ad9e80e1d1541a7a547d04bf2832, type: 3}
     enemyCount: 1
     heath: 600
-    moveSpeed: 0.3
+    moveSpeed: 0.35
     spawnTime: 2
     Price: 70
   - sprite: {fileID: 21300000, guid: f9286805b193bdf44ab43604b027d6b3, type: 3}
@@ -256,13 +256,13 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 9219cbfc09fd5e642860aaf7ba15430a, type: 3}
     enemyCount: 1
     heath: 1000
-    moveSpeed: 0.15
+    moveSpeed: 0.45
     spawnTime: 2
     Price: 125
   - sprite: {fileID: 21300000, guid: 1bdb3ba59dfd12c4793cb42fffbe743b, type: 3}
     enemyCount: 1
     heath: 1500
-    moveSpeed: 0.15
+    moveSpeed: 0.4
     spawnTime: 2
     Price: 150
   waveIndex: 0
