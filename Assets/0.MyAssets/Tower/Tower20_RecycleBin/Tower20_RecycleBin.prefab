@@ -103,9 +103,9 @@ MonoBehaviour:
   UnitName: "\uD734\uC9C0\uD1B5"
   Attack: 9999
   NextAttack:
-  - 20
-  - 6
-  Cooldown: 30
+  - 30
+  - 12
+  Cooldown: 40
   UnitPrice: 50
   Contents: "\uC801\uC744 \uD734\uC9C0\uD1B5 \uC548\uC73C\uB85C \uB123\uC5B4 \uC989\uC0AC
     \uC2DC\uD0A8\uB2E4."

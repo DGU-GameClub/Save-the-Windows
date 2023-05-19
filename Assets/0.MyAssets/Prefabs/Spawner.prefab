@@ -259,7 +259,7 @@ MonoBehaviour:
     moveSpeed: 0.15
     spawnTime: 2
     Price: 125
-  - sprite: {fileID: 21300000, guid: 9219cbfc09fd5e642860aaf7ba15430a, type: 3}
+  - sprite: {fileID: 21300000, guid: 1bdb3ba59dfd12c4793cb42fffbe743b, type: 3}
     enemyCount: 1
     heath: 1500
     moveSpeed: 0.15
