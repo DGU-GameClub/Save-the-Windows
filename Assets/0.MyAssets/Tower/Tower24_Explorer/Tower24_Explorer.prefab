@@ -260,7 +260,7 @@ MonoBehaviour:
   NextAttack:
   - 15
   - 20
-  Cooldown: 6
+  Cooldown: 15
   UnitPrice: 50
   Contents: "\uC801\uC758 \uAC70\uB9AC\uC640 \uC131\uAD00 \uC5C6\uC774 16\uBC29\uD5A5\uC73C\uB85C
     \uAC15\uB825\uD55C \uBC14\uB78C\uC744 \uB0A0\uB9B0\uB2E4. \uBC14\uB78C\uC5D0

@@ -30,6 +30,7 @@ public class Enemy : LivingEntity
     private Coroutine slowDamageCoroutine = null;
     private Coroutine burnDamageCoroutine = null;
     private Coroutine paralysisDamageCoroutine = null;
+    private float Speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +77,7 @@ public class Enemy : LivingEntity
         Price = price;
         OriginPrice = Price;
         gameObject.tag = tag;
+        Speed = _speed;
     }
 
     public override void TakeDamage(float damage)
@@ -151,6 +153,7 @@ public class Enemy : LivingEntity
         {
             return;
         }
+        if (slowDamageCoroutine != null) moveSpeed = Speed;
         paralysisDamageCoroutine = StartCoroutine(ParalysisDamage(paralysis));
     }
     IEnumerator ParalysisDamage(TowerBulletParalysis paralysis)
@@ -172,10 +175,11 @@ public class Enemy : LivingEntity
 
     public void ApplySlow(TowerBulletSlow slow)
     {
-        if (slowDamageCoroutine != null)
+        if (slowDamageCoroutine != null || paralysisDamageCoroutine != null)
         {
             return;
         }
+        moveSpeed = Speed;
         slowDamageCoroutine = StartCoroutine(SlowDamage(slow));
     }
     IEnumerator SlowDamage(TowerBulletSlow slow)

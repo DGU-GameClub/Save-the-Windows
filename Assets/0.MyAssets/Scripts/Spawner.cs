@@ -156,6 +156,7 @@ public class Spawner : MonoBehaviour
         state = SPAWNER_STATE.START;
         nextSpawnTime = Time.time;
         GameManagers.instance.TowerNotepadAbility();
+        GameManagers.instance.InitTower();
     }
 
     public int CurentState()
