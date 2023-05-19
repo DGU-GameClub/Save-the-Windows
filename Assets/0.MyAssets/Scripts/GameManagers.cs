@@ -91,13 +91,13 @@ public class GameManagers : MonoBehaviour
         foreach (GameObject obj in Towers) {
             obj.GetComponentInChildren<TowerUnit>().InitAttackTime();
         }
-        Towers = GameObject.FindGameObjectsWithTag("TowerRecycleBin");
-        foreach (GameObject obj in Towers)
+        GameObject[] Towerss = GameObject.FindGameObjectsWithTag("TowerRecycleBin");
+        foreach (GameObject obj in Towerss)
         {
             obj.GetComponentInChildren<TowerUnit>().InitAttackTime();
         }
-        Towers = GameObject.FindGameObjectsWithTag("TowerMypc");
-        foreach (GameObject obj in Towers)
+        GameObject[] Towersss = GameObject.FindGameObjectsWithTag("TowerMypc");
+        foreach (GameObject obj in Towersss)
         {
             obj.GetComponentInChildren<TowerUnit>().InitAttackTime();
         }
