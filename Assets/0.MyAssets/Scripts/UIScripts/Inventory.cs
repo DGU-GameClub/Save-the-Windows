@@ -94,7 +94,7 @@ public class Inventory : MonoBehaviour
     public void DestroyTower(int towerIndex)
     {
         GameObject target = towerArr[towerIndex];
-        Debug.Log("Sell " + target.GetComponentInChildren<TowerUnit>().UnitName);
+        //Debug.Log("Sell " + target.GetComponentInChildren<TowerUnit>().UnitName);
         sellBtns[towerIndex].interactable = false;
         towerArr[towerIndex] = null;
         Destroy(target);

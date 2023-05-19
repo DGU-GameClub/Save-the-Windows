@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     float initTime;
 
     public static UIManager instance;
+    public TextMeshProUGUI[] probabilityText;
+    
     private void Awake()
     {
         if(instance != null)
@@ -43,26 +45,13 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         //타이머 -> 정비시간때만 돌아가게. 실제 실행때는 리셋.
-        if (setTime > 0 && spawner.CurentState() == 0)
-        {
-            setTime -= Time.deltaTime;
-            if (setTime >= 60f)
-            {
-                min = (int)setTime / 60;
-                sec = setTime % 60;
-                countdownText.text = "남은 시간 : " + min + "분 " + (int)sec + "초";
-            }
-            else if (setTime < 60f)
-                countdownText.text = "남은 시간 : " + "0분 " + (int)setTime + "초";
-        }
+        countdownText.text = "WAVE : " + spawner.waveIndex;
+        probabilityText[0].text = GameManagers.instance.probability10.ToString() + "%";
+        probabilityText[1].text = GameManagers.instance.probability20.ToString() + "%";
+        probabilityText[2].text = GameManagers.instance.probability30.ToString() + "%";
+        probabilityText[3].text = GameManagers.instance.probability40.ToString() + "%";
+        probabilityText[4].text = GameManagers.instance.probability50.ToString() + "%";
 
-        if (setTime <= 0)
-        {
-            countdownText.text = "남은 시간 : 0분 0초";
-            //spawner.NextWave();
-            setTime = initTime;
-        }
-        
         //돈
         if (money != GameManagers.instance.Money)
         {

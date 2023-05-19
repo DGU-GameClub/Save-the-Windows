@@ -11,6 +11,7 @@ public class SellManager : MonoBehaviour
     public GameObject Healthbar;
     public TextMeshProUGUI CurrentTowerNumberText;
     public GameObject[] HealthUI;
+    int Fastindex = 0;
     public void SettingSellMode() {
         if (!ClickOn)
         {
@@ -71,5 +72,13 @@ public class SellManager : MonoBehaviour
                 HealthUI[i].SetActive(true);
         }
         CurrentTowerNumberText.text = "현재 설치된 타워 수 : " + TempNumber.ToString();
+    }
+    public void FastMode() {
+        if (Fastindex == 0)
+            Time.timeScale = 2f;
+        else if (Fastindex == 1)
+            Time.timeScale = 3f;
+        else if (Fastindex == 2) { Fastindex = 0; Time.timeScale = 1f; return; }
+        Fastindex++;
     }
 }
