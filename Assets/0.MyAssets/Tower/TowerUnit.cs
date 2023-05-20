@@ -29,7 +29,9 @@ public class TowerUnit : MonoBehaviour
     public GameObject AttackEnemy; //현재 공격할 대상
     public int KillNumber = 0;
     private List<GameObject> EnemyOfRange;  //콜라이더 안에 들어온 Enemy 오브젝트들(공격대상)
-    
+
+    public AudioSource LevelUpSound;
+    public Animator LevelUpAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -116,6 +118,7 @@ public class TowerUnit : MonoBehaviour
         if (TowerLevel >= 3)
             return false;
         curExp += 3;
+        LevelUpSound.Play();
         CheckLevelUp();
         Destroy(obj);
         return true;
@@ -123,12 +126,13 @@ public class TowerUnit : MonoBehaviour
     private void CheckLevelUp()
     {
         if (curExp >= MaxExp[TowerLevel - 1]) {
-            TowerLevel++;
+            int tempLevel = TowerLevel++;
+            if (tempLevel != TowerLevel) LevelUpAnim.SetTrigger("LevelUp");
             if (TowerLevel >= 3)
                 curExp = 0;
             else
                 curExp -= MaxExp[TowerLevel - 2];
-            StatusUp();
+            StatusUp();     
         }
     }
     virtual protected void StatusUp()
