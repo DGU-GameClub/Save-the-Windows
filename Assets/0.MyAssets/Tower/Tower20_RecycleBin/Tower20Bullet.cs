@@ -25,6 +25,12 @@ public class Tower20Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Trash"))
         {
+            if (collision.gameObject == null) return;
+            if ((collision.gameObject.GetComponent<Enemy>().health - Tower.GetComponent<TowerUnit>().Attack) <= 0)
+            {
+                Tower.GetComponent<TowerUnit>().KillNumber++;
+            }
+            if (collision.gameObject == null) return;
             collision.gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attack);
             Destroy(gameObject);
         }

@@ -20,6 +20,7 @@ public class Tower15GoClean : TowerUnit
         if (AttackTime > Cooldown)
         {
             FindTarget();
+            if (AttackEnemy == null) return;
             AttackTime = 0.0f;
             Attack();
 

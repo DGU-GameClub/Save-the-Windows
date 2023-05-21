@@ -33,11 +33,13 @@ public class Tower15Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
         {
+            if (collision.gameObject == null) return;
             if ((collision.gameObject.GetComponent<Enemy>().health - Tower.GetComponent<TowerUnit>().Attack) <= 0) {
-                 //collision.gameObject.GetComponent<Enemy>().UpPrice(Percent);
-                int random = Random.Range(0, 2);
+                int random = Random.Range(0, 3);
                 if (random == 1) GameManagers.instance.RecoveryLife(1);
+                Tower.GetComponent<TowerUnit>().KillNumber++;
             }
+            if (collision.gameObject == null) return;
             collision.gameObject.GetComponent<Enemy>().TakeDamage(Tower.GetComponent<TowerUnit>().Attack);
             Destroy(gameObject);
         }

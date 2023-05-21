@@ -988,6 +988,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerInfoCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 447988605392919873, guid: d11598bcfaa4f834b91e04bd73888197, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d11598bcfaa4f834b91e04bd73888197, type: 3}
 --- !u!1 &107612386

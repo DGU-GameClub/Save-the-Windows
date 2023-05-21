@@ -143,4 +143,30 @@ public class GameManagers : MonoBehaviour
                 break;
         }
     }
+    public GameObject GetMostKillTower() {
+        GameObject[] Towers = GameObject.FindGameObjectsWithTag("Tower");
+        int MostKillNumber = 0;
+        GameObject MostKillTower = null;
+        if (Towers != null)
+            MostKillNumber = Towers[0].GetComponentInChildren<TowerUnit>().KillNumber;
+        foreach (GameObject obj in Towers)
+        {
+            int tempKillNumber = obj.GetComponentInChildren<TowerUnit>().KillNumber;
+            if (tempKillNumber > MostKillNumber) { 
+                MostKillNumber = tempKillNumber;
+                MostKillTower = obj;
+            }
+        }
+        Towers = GameObject.FindGameObjectsWithTag("TowerRecycleBin");
+        foreach (GameObject obj in Towers)
+        {
+            int tempKillNumber = obj.GetComponentInChildren<TowerUnit>().KillNumber;
+            if (tempKillNumber > MostKillNumber)
+            {
+                MostKillNumber = tempKillNumber;
+                MostKillTower = obj;
+            }
+        }
+        return MostKillTower;
+    }
 }

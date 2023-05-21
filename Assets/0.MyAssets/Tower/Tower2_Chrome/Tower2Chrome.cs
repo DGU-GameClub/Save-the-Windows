@@ -22,6 +22,7 @@ public class Tower2Chrome : TowerUnit
         if (AttackTime > Cooldown)
         {
             FindTarget();
+            if (AttackEnemy == null) return;
             AttackTime = 0.0f;
             Attack();
 

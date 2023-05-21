@@ -23,6 +23,7 @@ public class Tower4Whale : TowerUnit
         if (AttackTime > Cooldown)
         {
             AttackEnemy = FindDistanceObj();
+            if (AttackEnemy == null) return;
             StartCoroutine(Attack());
             AttackTime = 0.0f;
         }
