@@ -73,18 +73,37 @@ public class TowerUnit : MonoBehaviour
         }
     }
     //공격대상에 있는 적중 가장 가까운 적을 타겟팅.
-    public GameObject FindDistanceObj() {
+    public GameObject FindDistanceObj()
+    {
         if (EnemyOfRange.Count == 0) { return null; }
-        GameObject Enemy = EnemyOfRange[0];
-        float Mindis = 100f;
-        foreach (GameObject obj in EnemyOfRange) {
-            float dis = (gameObject.transform.position - obj.transform.position).sqrMagnitude;
-            if (Mindis > dis) {
-                Enemy = obj;
-                Mindis = dis;
+
+        GameObject closestEnemy = null;
+        float minDistance = float.MaxValue;
+
+        // Use a for loop to allow safe removal of objects from the list during iteration
+        for (int i = EnemyOfRange.Count - 1; i >= 0; i--)
+        {
+            GameObject enemy = EnemyOfRange[i];
+
+            // If the enemy is null, remove it from the list and continue to the next enemy
+            if (enemy == null)
+            {
+                EnemyOfRange.RemoveAt(i);
+                continue;
+            }
+
+            // Calculate the distance from the tower to the current enemy
+            float distance = (transform.position - enemy.transform.position).sqrMagnitude;
+
+            // If the current enemy is closer than the currently closest enemy, update the closest enemy and minimum distance
+            if (distance < minDistance)
+            {
+                closestEnemy = enemy;
+                minDistance = distance;
             }
         }
-        return Enemy;
+
+        return closestEnemy;
     }
 
     public bool CheckTheNullEnemy() {
