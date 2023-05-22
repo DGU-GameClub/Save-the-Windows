@@ -387,10 +387,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: "\uD06C\uB86C"
-  Attack: 2
+  Attack: 4
   NextAttack:
-  - 5
-  - 12
+  - 9.2
+  - 21
   Cooldown: 3
   UnitPrice: 20
   Contents: "\uC5EC\uB7EC\uAC00\uC9C0\uC758 \uC18D\uC131(\uC2AC\uB85C\uC6B0, \uD654\uC0C1,

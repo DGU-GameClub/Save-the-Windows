@@ -466,7 +466,7 @@ MonoBehaviour:
   UnitPrice: 50
   Contents: "\uC801\uC758 \uAC70\uB9AC\uC640 \uC131\uAD00 \uC5C6\uC774 16\uBC29\uD5A5\uC73C\uB85C
     \uAC15\uB825\uD55C \uBC14\uB78C\uC744 \uB0A0\uB9B0\uB2E4. \uBC14\uB78C\uC5D0
-    \uB9DE\uC740 \uC801\uC740 \uCD5C\uB300 \uCCB4\uB825\uC758 (5/10/15%) \uB9CC\uD07C\uC758
+    \uB9DE\uC740 \uC801\uC740 \uCD5C\uB300 \uCCB4\uB825\uC758 (3/7/15%) \uB9CC\uD07C\uC758
     \uCD94\uAC00 \uD53C\uD574\uB97C \uC785\uB294\uB2E4."
   Synergy1: "(\uAD6C)"
   Synergy2: "\uB9DD\uB839"
@@ -499,7 +499,7 @@ MonoBehaviour:
   - {fileID: 2675338623459896203}
   - {fileID: 6826417537514980536}
   TowerAudio: {fileID: 4693711980695203863}
-  special: 0.05
+  special: 0.03
 --- !u!58 &3914505376101749567
 CircleCollider2D:
   m_ObjectHideFlags: 0
