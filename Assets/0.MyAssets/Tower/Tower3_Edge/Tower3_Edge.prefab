@@ -310,7 +310,7 @@ MonoBehaviour:
   Cooldown: 1
   UnitPrice: 10
   Contents: "\uC801 \uD558\uB098\uC5D0\uAC8C \uBC14\uB78C\uC744 \uB0A0\uB9B0\uB2E4.
-    \uBC14\uB78C\uC5D0 \uB9DE\uC740 \uC801\uC740 \uC2AC\uB85C\uC6B0\uC5D0 \uAC78\uB9B0\uB2E4."
+    \uBC14\uB78C\uC5D0 \uB9DE\uC740 \uC801\uC740 \uC7A0\uC2DC \uB290\uB824\uC9C4\uB2E4."
   Synergy1: "\uBE0C\uB77C\uC6B0\uC800"
   Synergy2: 
   TowerImage: {fileID: 3914505376101749565}

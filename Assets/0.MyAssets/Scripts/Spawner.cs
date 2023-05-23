@@ -158,7 +158,7 @@ public class Spawner : MonoBehaviour
         nextSpawnTime = Time.time;
         GameManagers.instance.TowerNotepadAbility();
         GameManagers.instance.InitTower();
-    }
+        GameManagers.instance.BossStageOn(waveIndex);    }
 
     public int CurentState()
     {

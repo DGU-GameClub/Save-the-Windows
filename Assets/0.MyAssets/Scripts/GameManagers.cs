@@ -45,11 +45,11 @@ public class GameManagers : MonoBehaviour
 
     public void DamageLife() {
         Life -= 1;
-        if (Life <= 0 && !isEnd){
-                //게임 오버
-                int tmp = GameManagers.instance.Life;
-                StartCoroutine(UIManager.instance.GameOver(tmp));
-                isEnd = true;
+        if (Life <= 0 && !isEnd) {
+            //게임 오버
+            int tmp = GameManagers.instance.Life;
+            StartCoroutine(UIManager.instance.GameOver(tmp));
+            isEnd = true;
         }
     }
     public void RecoveryLife(int rate) {
@@ -78,7 +78,7 @@ public class GameManagers : MonoBehaviour
         if (gameObjects.Length == 0) return;
         foreach (GameObject obj in gameObjects)
         {
-            if(obj.GetComponent<Tower23Spawn>().isCreate)
+            if (obj.GetComponent<Tower23Spawn>().isCreate)
                 obj.GetComponentInChildren<Tower23Notepad>().RandomTowerSpawn();
         }
     }
@@ -111,7 +111,7 @@ public class GameManagers : MonoBehaviour
         TowerNumber++;
         _sellManager.UpdateHealthBarUI();
     }
-    public void RemoveTowerNumber() { 
+    public void RemoveTowerNumber() {
         TowerNumber--;
         _sellManager.UpdateHealthBarUI();
     }
@@ -153,7 +153,7 @@ public class GameManagers : MonoBehaviour
         foreach (GameObject obj in Towers)
         {
             int tempKillNumber = obj.GetComponentInChildren<TowerUnit>().KillNumber;
-            if (tempKillNumber > MostKillNumber) { 
+            if (tempKillNumber > MostKillNumber) {
                 MostKillNumber = tempKillNumber;
                 MostKillTower = obj;
             }
@@ -169,5 +169,30 @@ public class GameManagers : MonoBehaviour
             }
         }
         return MostKillTower;
+    }
+    public void BossStageOn(int i) {
+        switch (i) {
+            case 5:
+                _sellManager.BossStageStart(0);
+                break;
+            case 10:
+                _sellManager.BossStageStart(1);
+                break;
+            case 15:
+                _sellManager.BossStageStart(2);
+                break;
+            case 20:
+                _sellManager.BossStageStart(3);
+                break;
+            case 25:
+                _sellManager.BossStageStart(4);
+                break;
+            case 30:
+                _sellManager.BossStageStart(5);
+                break;
+            default:
+                _sellManager.BossStageEnd();
+                break;
+        }
     }
 }

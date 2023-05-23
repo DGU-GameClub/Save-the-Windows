@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 public class SellManager : MonoBehaviour
 {
     public TextMeshProUGUI Text;
@@ -20,6 +21,13 @@ public class SellManager : MonoBehaviour
     public GameObject TutoBackgorund;
     public GameObject[] TutoImageList;
 
+    public GameObject BossUI;
+    public Image CurrentBossImage;
+    public Sprite[] BossImages;
+    public GameObject MoveUI;
+    int currentStage;
+    bool isBossUI = false;
+    public Transform[] bosstransforms; 
     public void SettingSellMode() {
         if (!ClickOn)
         {
@@ -125,5 +133,26 @@ public class SellManager : MonoBehaviour
     public void PreviousTuto() {
         if (Tutoindex <= 1) { return; }
         else if (Tutoindex < 8) { TutoImageList[--Tutoindex].SetActive(false); TutoImageList[Tutoindex-1].SetActive(true); }
+    }
+
+    public void BossSpawnUI() {
+        if (!isBossUI)
+        {
+            CurrentBossImage.sprite = BossImages[currentStage];
+            MoveUI.transform.DOMove(bosstransforms[0].position, 1f).SetEase(Ease.OutQuad);
+            isBossUI = true;
+        }
+        else if (isBossUI) {
+            MoveUI.transform.DOMove(bosstransforms[1].position, 1f).SetEase(Ease.OutQuad);
+            isBossUI = false;
+        }
+    }
+    public void BossStageStart(int i) { 
+        BossUI.SetActive(true);
+        currentStage = i;
+        BossSpawnUI();
+    }
+    public void BossStageEnd() {
+        BossUI.SetActive(false);
     }
 }
