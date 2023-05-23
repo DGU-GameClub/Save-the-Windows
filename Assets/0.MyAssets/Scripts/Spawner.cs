@@ -123,6 +123,7 @@ public class Spawner : MonoBehaviour
 
     public void NextWave()
     {
+        if (Time.timeScale == 0f) return;
         if (state == SPAWNER_STATE.START)
         {
             Debug.Log("이미 시작했습니다");

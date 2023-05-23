@@ -34,6 +34,7 @@ public class GameManagers : MonoBehaviour
         Money = 100;
         Life = 10;
         _sellManager = GameObject.Find("SellCanvas").GetComponent<SellManager>();
+        _sellManager.TutorialStart();
         isEnd = false;
     }
 
