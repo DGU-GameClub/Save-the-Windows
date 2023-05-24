@@ -11,8 +11,13 @@ public class SellManager : MonoBehaviour
     public GameObject Healthbar;
     public TextMeshProUGUI CurrentTowerNumberText;
     public GameObject[] HealthUI;
-    public TextMeshProUGUI Fasttext;
+    // public TextMeshProUGUI Fasttext;
     int Fastindex = 0;
+
+    public Button Fast;
+    public Sprite play1;
+    public Sprite play2;
+    public Sprite play3;
     public void SettingSellMode() {
         if (!ClickOn)
         {
@@ -75,17 +80,20 @@ public class SellManager : MonoBehaviour
         CurrentTowerNumberText.text = "현재 설치된 타워 수 : " + TempNumber.ToString();
     }
     public void FastMode() {
+        Image FastImage = Fast.GetComponent<Image>();
         if (Fastindex == 0)
         {
             Time.timeScale = 2f;
-            Fasttext.text = "x 2";
+            // Fasttext.text = "x 2";
+            FastImage.sprite = play2;
         }
         else if (Fastindex == 1)
         {
             Time.timeScale = 3f;
-            Fasttext.text = "x 3";
+            // Fasttext.text = "x 3";
+            FastImage.sprite = play3;
         }
-        else if (Fastindex == 2) { Fastindex = 0; Time.timeScale = 1f; Fasttext.text = "x 1"; return; }
+        else if (Fastindex == 2) { Fastindex = 0; Time.timeScale = 1f; /*Fasttext.text = "x 1";*/ FastImage.sprite = play1; return; }
         Fastindex++;
     }
 }
