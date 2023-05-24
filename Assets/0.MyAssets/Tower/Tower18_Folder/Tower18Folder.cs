@@ -21,6 +21,7 @@ public class Tower18Folder : TowerUnit
         if (AttackTime > Cooldown)
         {
             FindTarget();
+            if (AttackEnemy == null) return;
             AttackTime = 0.0f;
             Attack();
 

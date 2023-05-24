@@ -44,7 +44,7 @@ public class Tower24Explorer : TowerUnit
     protected override void StatusUp()
     {
         base.StatusUp();
-        if (TowerLevel == 2) special = 0.1f;
+        if (TowerLevel == 2) special = 0.07f;
         else if (TowerLevel == 3) special = 0.15f;
     }
 }

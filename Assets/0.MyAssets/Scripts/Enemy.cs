@@ -31,6 +31,7 @@ public class Enemy : LivingEntity
     private Coroutine burnDamageCoroutine = null;
     private Coroutine paralysisDamageCoroutine = null;
     private float Speed;
+    private bool isParalysis = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -153,37 +154,39 @@ public class Enemy : LivingEntity
         {
             return;
         }
-        if (slowDamageCoroutine != null) moveSpeed = Speed;
+        if (slowDamageCoroutine != null) 
+            StopCoroutine(slowDamageCoroutine);
         paralysisDamageCoroutine = StartCoroutine(ParalysisDamage(paralysis));
     }
     IEnumerator ParalysisDamage(TowerBulletParalysis paralysis)
     {
+        isParalysis = true;
         float time = paralysis.time;
         float originSpeed = moveSpeed;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
- 
         moveSpeed = 0f;
         spriteRenderer.color = new Color(1, 0.5f, 0, 1);
 
         yield return new WaitForSeconds(time);
-        
-        moveSpeed = originSpeed;
-
+        moveSpeed = Speed;
+        isParalysis = false;
         paralysisDamageCoroutine = null;
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     public void ApplySlow(TowerBulletSlow slow)
     {
-        if (slowDamageCoroutine != null || paralysisDamageCoroutine != null)
+        if (slowDamageCoroutine != null || paralysisDamageCoroutine != null || isParalysis)
         {
             return;
         }
-        moveSpeed = Speed;
+        //moveSpeed = Speed;
         slowDamageCoroutine = StartCoroutine(SlowDamage(slow));
     }
     IEnumerator SlowDamage(TowerBulletSlow slow)
     {
+        if (isParalysis) yield break;
+
         float time = slow.time;
         float percent = slow.percent;
         float originSpeed = moveSpeed;
@@ -191,7 +194,7 @@ public class Enemy : LivingEntity
 
         yield return new WaitForSeconds(time);
 
-        moveSpeed = originSpeed;
+        moveSpeed = Speed;
 
         slowDamageCoroutine = null;
     }

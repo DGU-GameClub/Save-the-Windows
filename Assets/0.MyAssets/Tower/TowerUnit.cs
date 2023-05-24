@@ -27,9 +27,11 @@ public class TowerUnit : MonoBehaviour
     protected float PrimitiveAttack;
     protected float PrimitiveCooldown;
     public GameObject AttackEnemy; //현재 공격할 대상
-
+    public int KillNumber = 0;
     private List<GameObject> EnemyOfRange;  //콜라이더 안에 들어온 Enemy 오브젝트들(공격대상)
-    
+
+    public AudioSource LevelUpSound;
+    public Animator LevelUpAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +48,7 @@ public class TowerUnit : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (UnitName == "휴지통") {
+        if (gameObject.CompareTag("TowerRecycleBin")) {
             if (other.gameObject.CompareTag("Enemy"))
                 EnemyOfRange.Add(other.gameObject);
             return;
@@ -71,18 +73,37 @@ public class TowerUnit : MonoBehaviour
         }
     }
     //공격대상에 있는 적중 가장 가까운 적을 타겟팅.
-    public GameObject FindDistanceObj() {
+    public GameObject FindDistanceObj()
+    {
         if (EnemyOfRange.Count == 0) { return null; }
-        GameObject Enemy = EnemyOfRange[0];
-        float Mindis = 100f;
-        foreach (GameObject obj in EnemyOfRange) {
-            float dis = (gameObject.transform.position - obj.transform.position).sqrMagnitude;
-            if (Mindis > dis) {
-                Enemy = obj;
-                Mindis = dis;
+
+        GameObject closestEnemy = null;
+        float minDistance = float.MaxValue;
+
+        // Use a for loop to allow safe removal of objects from the list during iteration
+        for (int i = EnemyOfRange.Count - 1; i >= 0; i--)
+        {
+            GameObject enemy = EnemyOfRange[i];
+
+            // If the enemy is null, remove it from the list and continue to the next enemy
+            if (enemy == null)
+            {
+                EnemyOfRange.RemoveAt(i);
+                continue;
+            }
+
+            // Calculate the distance from the tower to the current enemy
+            float distance = (transform.position - enemy.transform.position).sqrMagnitude;
+
+            // If the current enemy is closer than the currently closest enemy, update the closest enemy and minimum distance
+            if (distance < minDistance)
+            {
+                closestEnemy = enemy;
+                minDistance = distance;
             }
         }
-        return Enemy;
+
+        return closestEnemy;
     }
 
     public bool CheckTheNullEnemy() {
@@ -116,6 +137,7 @@ public class TowerUnit : MonoBehaviour
         if (TowerLevel >= 3)
             return false;
         curExp += 3;
+        LevelUpSound.Play();
         CheckLevelUp();
         Destroy(obj);
         return true;
@@ -123,12 +145,13 @@ public class TowerUnit : MonoBehaviour
     private void CheckLevelUp()
     {
         if (curExp >= MaxExp[TowerLevel - 1]) {
-            TowerLevel++;
+            int tempLevel = TowerLevel++;
+            if (tempLevel != TowerLevel) LevelUpAnim.SetTrigger("LevelUp");
             if (TowerLevel >= 3)
                 curExp = 0;
             else
                 curExp -= MaxExp[TowerLevel - 2];
-            StatusUp();
+            StatusUp();     
         }
     }
     virtual protected void StatusUp()

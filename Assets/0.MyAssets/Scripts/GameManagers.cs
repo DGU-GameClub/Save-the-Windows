@@ -34,6 +34,7 @@ public class GameManagers : MonoBehaviour
         Money = 100;
         Life = 10;
         _sellManager = GameObject.Find("SellCanvas").GetComponent<SellManager>();
+        _sellManager.TutorialStart();
         isEnd = false;
     }
 
@@ -44,11 +45,11 @@ public class GameManagers : MonoBehaviour
 
     public void DamageLife() {
         Life -= 1;
-        if (Life <= 0 && !isEnd){
-                //게임 오버
-                int tmp = GameManagers.instance.Life;
-                StartCoroutine(UIManager.instance.GameOver(tmp));
-                isEnd = true;
+        if (Life <= 0 && !isEnd) {
+            //게임 오버
+            int tmp = GameManagers.instance.Life;
+            StartCoroutine(UIManager.instance.GameOver(tmp));
+            isEnd = true;
         }
     }
     public void RecoveryLife(int rate) {
@@ -77,7 +78,7 @@ public class GameManagers : MonoBehaviour
         if (gameObjects.Length == 0) return;
         foreach (GameObject obj in gameObjects)
         {
-            if(obj.GetComponent<Tower23Spawn>().isCreate)
+            if (obj.GetComponent<Tower23Spawn>().isCreate)
                 obj.GetComponentInChildren<Tower23Notepad>().RandomTowerSpawn();
         }
     }
@@ -110,7 +111,7 @@ public class GameManagers : MonoBehaviour
         TowerNumber++;
         _sellManager.UpdateHealthBarUI();
     }
-    public void RemoveTowerNumber() { 
+    public void RemoveTowerNumber() {
         TowerNumber--;
         _sellManager.UpdateHealthBarUI();
     }
@@ -140,6 +141,57 @@ public class GameManagers : MonoBehaviour
                 probability30 = 20;
                 probability40 = 20;
                 probability50 = 10;
+                break;
+        }
+    }
+    public GameObject GetMostKillTower() {
+        GameObject[] Towers = GameObject.FindGameObjectsWithTag("Tower");
+        int MostKillNumber = 0;
+        GameObject MostKillTower = null;
+        if (Towers != null)
+            MostKillNumber = Towers[0].GetComponentInChildren<TowerUnit>().KillNumber;
+        foreach (GameObject obj in Towers)
+        {
+            int tempKillNumber = obj.GetComponentInChildren<TowerUnit>().KillNumber;
+            if (tempKillNumber > MostKillNumber) {
+                MostKillNumber = tempKillNumber;
+                MostKillTower = obj;
+            }
+        }
+        Towers = GameObject.FindGameObjectsWithTag("TowerRecycleBin");
+        foreach (GameObject obj in Towers)
+        {
+            int tempKillNumber = obj.GetComponentInChildren<TowerUnit>().KillNumber;
+            if (tempKillNumber > MostKillNumber)
+            {
+                MostKillNumber = tempKillNumber;
+                MostKillTower = obj;
+            }
+        }
+        return MostKillTower;
+    }
+    public void BossStageOn(int i) {
+        switch (i) {
+            case 5:
+                _sellManager.BossStageStart(0);
+                break;
+            case 10:
+                _sellManager.BossStageStart(1);
+                break;
+            case 15:
+                _sellManager.BossStageStart(2);
+                break;
+            case 20:
+                _sellManager.BossStageStart(3);
+                break;
+            case 25:
+                _sellManager.BossStageStart(4);
+                break;
+            case 30:
+                _sellManager.BossStageStart(5);
+                break;
+            default:
+                _sellManager.BossStageEnd();
                 break;
         }
     }
