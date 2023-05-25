@@ -33,6 +33,7 @@ public class Tower13AE : TowerUnit
         //float angle = Mathf.Atan2(dir.x,dir.y) * Mathf.Rad2Deg;
         var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
         TowerAudio.Play();
+        Bullet.GetComponent<Tower13Bullet>().AttackEnemy = AttackEnemy;
         Bullet.GetComponent<Tower13Bullet>().Tower = gameObject;
         Bullet.GetComponent<Tower13Bullet>().targetPosition = dir.normalized;
         Bullet.transform.localScale = new Vector3(bulletScale_X, bulletScale_Y);

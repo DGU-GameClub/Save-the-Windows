@@ -45,7 +45,7 @@ public class Tower7Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
+        if ((collision.CompareTag("Enemy") || collision.CompareTag("Boss")))
         {
             if (collision.gameObject == null) return;
             if ((collision.gameObject.GetComponent<Enemy>().health - Tower.GetComponent<TowerUnit>().Attack) <= 0)

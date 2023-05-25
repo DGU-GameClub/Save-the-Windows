@@ -79,43 +79,43 @@ MonoBehaviour:
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 5d9b41568a8f5224c8634ea786c49553, type: 3}
-    enemyCount: 5
+    enemyCount: 6
     heath: 35
     moveSpeed: 0.65
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 5d9b41568a8f5224c8634ea786c49553, type: 3}
-    enemyCount: 6
+    enemyCount: 7
     heath: 40
     moveSpeed: 0.65
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: b511035a718b24a4c8f42e2aeac6df45, type: 3}
-    enemyCount: 10
+    enemyCount: 12
     heath: 75
-    moveSpeed: 0.3
+    moveSpeed: 0.35
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 5d9b41568a8f5224c8634ea786c49553, type: 3}
-    enemyCount: 8
+    enemyCount: 9
     heath: 50
     moveSpeed: 0.65
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 5d9b41568a8f5224c8634ea786c49553, type: 3}
-    enemyCount: 9
+    enemyCount: 10
     heath: 55
     moveSpeed: 0.65
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: bc2684d8271addb439edc1fda2029603, type: 3}
-    enemyCount: 8
+    enemyCount: 10
     heath: 110
-    moveSpeed: 0.4
+    moveSpeed: 0.45
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: b511035a718b24a4c8f42e2aeac6df45, type: 3}
-    enemyCount: 15
+    enemyCount: 17
     heath: 85
     moveSpeed: 0.4
     spawnTime: 3
@@ -133,99 +133,99 @@ MonoBehaviour:
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: bc2684d8271addb439edc1fda2029603, type: 3}
-    enemyCount: 12
+    enemyCount: 14
     heath: 130
     moveSpeed: 0.5
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 257e8e7b65edd4043b66c1bce57e34b5, type: 3}
-    enemyCount: 15
+    enemyCount: 18
     heath: 110
-    moveSpeed: 0.5
+    moveSpeed: 0.6
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 257e8e7b65edd4043b66c1bce57e34b5, type: 3}
-    enemyCount: 15
+    enemyCount: 18
     heath: 135
-    moveSpeed: 0.5
+    moveSpeed: 0.6
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 5d9b41568a8f5224c8634ea786c49553, type: 3}
-    enemyCount: 13
+    enemyCount: 15
     heath: 80
     moveSpeed: 0.75
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 257e8e7b65edd4043b66c1bce57e34b5, type: 3}
-    enemyCount: 15
+    enemyCount: 18
     heath: 165
-    moveSpeed: 0.5
+    moveSpeed: 0.6
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 257e8e7b65edd4043b66c1bce57e34b5, type: 3}
-    enemyCount: 15
+    enemyCount: 18
     heath: 180
+    moveSpeed: 0.6
+    spawnTime: 3
+    Price: 5
+  - sprite: {fileID: 21300000, guid: 8e6715dbb067d2441b88a6179e76d73a, type: 3}
+    enemyCount: 18
+    heath: 180
+    moveSpeed: 0.65
+    spawnTime: 3
+    Price: 5
+  - sprite: {fileID: 21300000, guid: 8e6715dbb067d2441b88a6179e76d73a, type: 3}
+    enemyCount: 18
+    heath: 240
+    moveSpeed: 0.65
+    spawnTime: 3
+    Price: 5
+  - sprite: {fileID: 21300000, guid: b511035a718b24a4c8f42e2aeac6df45, type: 3}
+    enemyCount: 18
+    heath: 300
     moveSpeed: 0.5
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 8e6715dbb067d2441b88a6179e76d73a, type: 3}
-    enemyCount: 15
-    heath: 180
-    moveSpeed: 0.6
-    spawnTime: 3
-    Price: 5
-  - sprite: {fileID: 21300000, guid: 8e6715dbb067d2441b88a6179e76d73a, type: 3}
-    enemyCount: 15
-    heath: 240
-    moveSpeed: 0.6
-    spawnTime: 3
-    Price: 5
-  - sprite: {fileID: 21300000, guid: b511035a718b24a4c8f42e2aeac6df45, type: 3}
-    enemyCount: 15
-    heath: 300
-    moveSpeed: 0.4
-    spawnTime: 3
-    Price: 5
-  - sprite: {fileID: 21300000, guid: 8e6715dbb067d2441b88a6179e76d73a, type: 3}
-    enemyCount: 15
+    enemyCount: 18
     heath: 280
-    moveSpeed: 0.6
+    moveSpeed: 0.65
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 5d9b41568a8f5224c8634ea786c49553, type: 3}
-    enemyCount: 15
+    enemyCount: 18
     heath: 115
     moveSpeed: 0.75
     spawnTime: 4
     Price: 5
   - sprite: {fileID: 21300000, guid: 5a9141c53d4b65b4483d957f4f19c110, type: 3}
-    enemyCount: 15
+    enemyCount: 20
     heath: 300
-    moveSpeed: 0.5
+    moveSpeed: 0.6
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 257e8e7b65edd4043b66c1bce57e34b5, type: 3}
-    enemyCount: 15
+    enemyCount: 20
     heath: 340
-    moveSpeed: 0.5
+    moveSpeed: 0.6
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: bc2684d8271addb439edc1fda2029603, type: 3}
-    enemyCount: 15
+    enemyCount: 20
     heath: 250
+    moveSpeed: 0.65
+    spawnTime: 3
+    Price: 5
+  - sprite: {fileID: 21300000, guid: 5a9141c53d4b65b4483d957f4f19c110, type: 3}
+    enemyCount: 20
+    heath: 360
     moveSpeed: 0.6
     spawnTime: 3
     Price: 5
   - sprite: {fileID: 21300000, guid: 5a9141c53d4b65b4483d957f4f19c110, type: 3}
-    enemyCount: 15
-    heath: 360
-    moveSpeed: 0.5
-    spawnTime: 3
-    Price: 5
-  - sprite: {fileID: 21300000, guid: 5a9141c53d4b65b4483d957f4f19c110, type: 3}
-    enemyCount: 15
+    enemyCount: 20
     heath: 390
-    moveSpeed: 0.5
+    moveSpeed: 0.6
     spawnTime: 3
     Price: 5
   bossWaves:

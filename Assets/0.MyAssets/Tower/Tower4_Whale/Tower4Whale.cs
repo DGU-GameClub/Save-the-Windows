@@ -38,6 +38,7 @@ public class Tower4Whale : TowerUnit
         {
             var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
             TowerAudio.Play();
+            Bullet.GetComponent<TowerBullet>().AttackEnemy = AttackEnemy;
             Bullet.GetComponent<TowerBullet>().Tower = gameObject;
             Bullet.GetComponent<TowerBullet>().targetPosition = (EnemyRandomPosition - transform.position).normalized;
             Bullet.transform.localScale = new Vector3(bulletScale_X, bulletScale_Y);

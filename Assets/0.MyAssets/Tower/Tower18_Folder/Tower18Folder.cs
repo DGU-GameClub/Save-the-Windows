@@ -33,6 +33,7 @@ public class Tower18Folder : TowerUnit
         Vector3 dir = AttackEnemy.transform.position - transform.position;
         //float angle = Mathf.Atan2(dir.x,dir.y) * Mathf.Rad2Deg;
         var Bullet = Instantiate(TowerBullet, transform.position, Quaternion.identity, TowerPrefeb.transform);
+        Bullet.GetComponent<Tower18Bullet>().AttackEnemy = AttackEnemy;
         Bullet.GetComponent<Tower18Bullet>().Tower = gameObject;
         Bullet.GetComponent<Tower18Bullet>().Area = Area;
         Bullet.GetComponent<Tower18Bullet>().targetPosition = dir.normalized;

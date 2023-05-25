@@ -14,7 +14,8 @@ public class Tower18Bullet : MonoBehaviour
     bool isStop = false;
     public float Area;
     public Sprite NextSprite;
-    
+    public GameObject AttackEnemy = null;
+
     // Use this for initialization
     void Start()
     {

@@ -37,6 +37,7 @@ public class Tower2Chrome : TowerUnit
         if (RandomNum < 2) TowerAudio.volume = .3f;
         else TowerAudio.volume = .45f;
         TowerAudio.Play();
+        Bullet.GetComponent<TowerBullet>().AttackEnemy = AttackEnemy;
         Bullet.GetComponent<TowerBullet>().Tower = gameObject;
         Bullet.GetComponent<TowerBullet>().targetPosition = (AttackEnemy.transform.position - transform.position).normalized;
         Bullet.transform.localScale = new Vector3(bulletScale_X, bulletScale_Y);

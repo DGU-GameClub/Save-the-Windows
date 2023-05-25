@@ -9,6 +9,7 @@ public class Tower13Bullet : MonoBehaviour
     public float Speed = 3.0f;
     public float Pdistance = 5f;
     public GameObject Tower = null;
+    public GameObject AttackEnemy = null;
     // Use this for initialization
     void Start()
     {
@@ -30,7 +31,7 @@ public class Tower13Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
+        if ((collision.CompareTag("Enemy") || collision.CompareTag("Boss")) && AttackEnemy != null && AttackEnemy.Equals(collision.gameObject))
         {
             if (collision.gameObject == null) return;
             if ((collision.gameObject.GetComponent<Enemy>().health - Tower.GetComponent<TowerUnit>().Attack) <= 0)
