@@ -129,7 +129,6 @@ public class UIManager : MonoBehaviour
         
         lifeText_GO.text = "남은 생명: " + life.ToString();
         moneyText_GO.text = "남은 돈: " + GameManagers.instance.Money.ToString();
-        waveText.text = "클리어 : " ;
         gameOverCanvas.SetActive(true);
         yield return StartCoroutine(BlackPannel.instance.FadeOut());
     }
