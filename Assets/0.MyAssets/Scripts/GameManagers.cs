@@ -20,6 +20,7 @@ public class GameManagers : MonoBehaviour
     public int probability50 = 0;  // 50원 타워의 확률
 
     bool isEnd;
+    int Stageindex = 0;
 
     // Start is called before the first frame update
     private void Awake()
@@ -28,6 +29,8 @@ public class GameManagers : MonoBehaviour
             Destroy(gameObject);
         }
         instance = this;
+        SoundManager.instance.StopBGM();
+        SoundManager.instance.PlayBGM("GameStart",false, 1f);
     }
     void Start()
     {
@@ -50,6 +53,8 @@ public class GameManagers : MonoBehaviour
             int tmp = GameManagers.instance.Life;
             StartCoroutine(UIManager.instance.GameOver(tmp));
             isEnd = true;
+            SoundManager.instance.StopBGM();
+            SoundManager.instance.PlayBGM("GameOver", false, 1f);
         }
     }
     public void RecoveryLife(int rate) {
@@ -171,28 +176,47 @@ public class GameManagers : MonoBehaviour
         return MostKillTower;
     }
     public void BossStageOn(int i) {
+       
         switch (i) {
             case 5:
                 _sellManager.BossStageStart(0);
+                SoundManager.instance.StopBGM();
+                SoundManager.instance.PlayBGM("Boss", true, 0.5f);
                 break;
             case 10:
                 _sellManager.BossStageStart(1);
+                SoundManager.instance.StopBGM();
+                SoundManager.instance.PlayBGM("Boss", true, 0.5f);
                 break;
             case 15:
                 _sellManager.BossStageStart(2);
+                SoundManager.instance.StopBGM();
+                SoundManager.instance.PlayBGM("Boss", true, 0.5f);
                 break;
             case 20:
                 _sellManager.BossStageStart(3);
+                SoundManager.instance.StopBGM();
+                SoundManager.instance.PlayBGM("Boss", true, 0.5f);
                 break;
             case 25:
                 _sellManager.BossStageStart(4);
+                SoundManager.instance.StopBGM();
+                SoundManager.instance.PlayBGM("Boss", true, 0.5f);
                 break;
             case 30:
                 _sellManager.BossStageStart(5);
+                SoundManager.instance.StopBGM();
+                SoundManager.instance.PlayBGM("Boss", true, 0.5f);
                 break;
             default:
+                if(_sellManager.isBossUI) _sellManager.BossSpawnUI();
                 _sellManager.BossStageEnd();
+                if (Stageindex % 5 == 0) {
+                    SoundManager.instance.StopBGM();
+                    SoundManager.instance.PlayBGM("NonBoss", true, 0.5f);
+                }
                 break;
         }
+        Stageindex = i;
     }
 }

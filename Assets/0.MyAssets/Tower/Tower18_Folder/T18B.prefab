@@ -110,6 +110,7 @@ MonoBehaviour:
   TowerAudio: {fileID: 804585283951411291}
   Area: 1.2
   NextSprite: {fileID: 21300000, guid: e919f1beacec6ec4b9dfa56c94e7f762, type: 3}
+  AttackEnemy: {fileID: 0}
 --- !u!58 &8801529211498549932
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -159,7 +160,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 844541863110947925, guid: 44f09be461b3b4d5dad5282ff1e9dd08, type: 2}
   m_audioClip: {fileID: 8300000, guid: cb7b5df172c78314d8cac828f6af41d9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.08
+  m_Volume: 0.16
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -26,7 +26,7 @@ public class SellManager : MonoBehaviour
     public Sprite[] BossImages;
     public GameObject MoveUI;
     int currentStage;
-    bool isBossUI = false;
+    public bool isBossUI = false;
     public Transform[] bosstransforms; 
     public void SettingSellMode() {
         if (!ClickOn)
@@ -124,15 +124,17 @@ public class SellManager : MonoBehaviour
     }
     public void NextTuto() {
         if (Tutoindex == 0) TutoImageList[Tutoindex++].SetActive(true);
-        else if (Tutoindex < 7) { TutoImageList[Tutoindex - 1].SetActive(false); TutoImageList[Tutoindex++].SetActive(true); }
+        else if (Tutoindex < 8) { TutoImageList[Tutoindex - 1].SetActive(false); TutoImageList[Tutoindex++].SetActive(true); }
         else {
             TutoImageList[Tutoindex - 1].SetActive(false);
             TutoBackgorund.SetActive(false);
+            SoundManager.instance.StopBGM();
+            SoundManager.instance.PlayBGM("NonBoss", true, 0.3f);
         }
     }
     public void PreviousTuto() {
         if (Tutoindex <= 1) { return; }
-        else if (Tutoindex < 8) { TutoImageList[--Tutoindex].SetActive(false); TutoImageList[Tutoindex-1].SetActive(true); }
+        else if (Tutoindex < 9) { TutoImageList[--Tutoindex].SetActive(false); TutoImageList[Tutoindex-1].SetActive(true); }
     }
 
     public void BossSpawnUI() {

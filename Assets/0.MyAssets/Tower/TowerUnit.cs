@@ -32,6 +32,8 @@ public class TowerUnit : MonoBehaviour
 
     public AudioSource LevelUpSound;
     public Animator LevelUpAnim;
+
+    GameObject[] LevelStar = new GameObject[2];
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,8 @@ public class TowerUnit : MonoBehaviour
         MaxExp[0] = 10;  //4°³ ¸ÔÀÌ¸é 1·¾¾÷
         MaxExp[1] = 23; //7°³ ¸ÔÀÌ¸é 2·¾¾÷
         MaxExp[2] = 10000;
+        LevelStar[0] = transform.GetChild(0).gameObject;
+        LevelStar[1] = transform.GetChild(1).gameObject;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -147,10 +151,19 @@ public class TowerUnit : MonoBehaviour
         if (curExp >= MaxExp[TowerLevel - 1]) {
             int tempLevel = TowerLevel++;
             if (tempLevel != TowerLevel) LevelUpAnim.SetTrigger("LevelUp");
+
             if (TowerLevel >= 3)
+            {
                 curExp = 0;
+                LevelStar[1].SetActive(true);
+                LevelStar[0].SetActive(false);
+            }
             else
+            {
                 curExp -= MaxExp[TowerLevel - 2];
+                LevelStar[0].SetActive(true);
+                LevelStar[1].SetActive(false);
+            }
             StatusUp();     
         }
     }

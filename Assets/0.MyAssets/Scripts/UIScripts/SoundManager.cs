@@ -15,6 +15,18 @@ public class SoundManager : MonoBehaviour
     public AudioMixer audioMixer;
     public Slider BgmSlider;
     public Slider SfxSlider;
+    [System.Serializable]
+    public struct BgmType
+    {
+        public string name;
+        public AudioClip audio;
+    }
+
+    // Inspector 에표시할 배경음악 목록
+    public BgmType[] BGMList;
+
+    public AudioSource BGM;
+    private string NowBGMname = "";
 
     private void Awake() {
         if(instance != null)
@@ -35,7 +47,24 @@ public class SoundManager : MonoBehaviour
         BgmSlider.value = PlayerPrefs.GetFloat("BGM", 0.5f);
         SfxSlider.value = PlayerPrefs.GetFloat("SFX", 0.5f);
     }
+    //음악 재생
+    public void PlayBGM(string name, bool isLoop, float Vol)
+    {
 
+        for (int i = 0; i < BGMList.Length; ++i)
+            if (BGMList[i].name.Equals(name))
+            {
+                BGM.clip = BGMList[i].audio;
+                BGM.loop = isLoop; 
+                BGM.volume = Vol;
+                BGM.Play();
+                NowBGMname = name;
+            }
+    }
+    public void StopBGM()
+    {
+        BGM.Stop();
+    }
     //볼륨조절
     public void SetBgmSlider()
     {

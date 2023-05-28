@@ -1059,9 +1059,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 83370146267605358, guid: 44f09be461b3b4d5dad5282ff1e9dd08, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 8562444f3f2204abb9cca027cf550778, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 99686a010ef78be43941c5d905917ac9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2523,6 +2523,18 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 44f09be461b3b4d5dad5282ff1e9dd08, type: 2}
   BgmSlider: {fileID: 517073769}
   SfxSlider: {fileID: 563198576}
+  BGMList:
+  - name: Main
+    audio: {fileID: 8300000, guid: 99686a010ef78be43941c5d905917ac9, type: 3}
+  - name: NonBoss
+    audio: {fileID: 8300000, guid: 4356ed4e21ed97c43a46497387e68c8f, type: 3}
+  - name: Boss
+    audio: {fileID: 8300000, guid: 95e3fbcb30c7c2d42b152a5331934073, type: 3}
+  - name: GameStart
+    audio: {fileID: 8300000, guid: 2810e86332b9d634cb6dd42335770cc0, type: 3}
+  - name: GameOver
+    audio: {fileID: 8300000, guid: dbcbba324b354a440af6d5cfed1b76c3, type: 3}
+  BGM: {fileID: 456575290}
 --- !u!4 &1163318896
 Transform:
   m_ObjectHideFlags: 0
