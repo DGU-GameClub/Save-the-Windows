@@ -1,9 +1,11 @@
-using System.Collections.Generic;
+using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+// using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,23 +19,28 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] float setTime = 10.0f;
-    int min;
-    float sec;
+    // int min;
+    // float sec;
     Store store;
 
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] TextMeshProUGUI lifeText;
     [SerializeField] TextMeshProUGUI moneyText_GO;
     [SerializeField] TextMeshProUGUI lifeText_GO;
-        [SerializeField] TextMeshProUGUI moneyText_GW;
+    [SerializeField] TextMeshProUGUI moneyText_GW;
     [SerializeField] TextMeshProUGUI lifeText_GW;
     int money;
     int life;
-    float initTime;
 
     public static UIManager instance;
     public TextMeshProUGUI[] probabilityText;
-    
+    public TextMeshProUGUI lastWave;
+    float Starttime;
+    float playTime;
+    public TextMeshProUGUI playTimeText_GO;
+    public TextMeshProUGUI playTimeText_GW;
+    public GameObject errorUI;
+
     private void Awake()
     {
         if(instance != null)
@@ -48,14 +55,14 @@ public class UIManager : MonoBehaviour
         StartCoroutine(BlackPannel.instance.FadeOut());
         countdownText.text = setTime.ToString();
         store = GameObject.Find("Store").GetComponent<Store>();
-        initTime = setTime;
         gameOverCanvas.SetActive(false);
         gameWinCanvas.SetActive(false);
+        errorUI.SetActive(false);
+        Starttime = Time.realtimeSinceStartup;
     }
 
     void Update()
     {
-        //타이머 -> 정비시간때만 돌아가게. 실제 실행때는 리셋.
         countdownText.text = "WAVE : " + spawner.waveIndex;
         probabilityText[0].text = GameManagers.instance.probability10.ToString() + "%";
         probabilityText[1].text = GameManagers.instance.probability20.ToString() + "%";
@@ -86,7 +93,13 @@ public class UIManager : MonoBehaviour
     }
     public void ResetButtonOn()
     {
-        if (store != null && GameManagers.instance.Money >= 10)
+        if (GameManagers.instance.Money < 10)
+        {
+            ShowErrorMessage();
+            return;
+        }
+        
+        if (store != null)
         {
             store.DestroyAllTower();
             //리셋버튼 클릭시 -10원으로 설정
@@ -122,13 +135,15 @@ public class UIManager : MonoBehaviour
     public IEnumerator GameOver(int life)
     {
         yield return StartCoroutine(BlackPannel.instance.FadeIn());
+        playTime = Time.realtimeSinceStartup - Starttime;
         mainCanvas.SetActive(false);
-
-        //플레이타임 추가
         storeInvenCanvas.SetActive(false);
         
         lifeText_GO.text = "남은 생명: " + life.ToString();
         moneyText_GO.text = "남은 돈: " + GameManagers.instance.Money.ToString();
+        lastWave.text = "마지막 단계: " + spawner.waveIndex.ToString();
+        playTimeText_GO.text = "소요 시간: " + getTimeText(playTime);
+
         gameOverCanvas.SetActive(true);
         yield return StartCoroutine(BlackPannel.instance.FadeOut());
     }
@@ -136,6 +151,7 @@ public class UIManager : MonoBehaviour
     public IEnumerator GameWin()
     {
         yield return StartCoroutine(BlackPannel.instance.FadeIn());
+        playTime = Time.realtimeSinceStartup - Starttime;
         mainCanvas.SetActive(false);
 
         //플레이타임 추가
@@ -143,6 +159,8 @@ public class UIManager : MonoBehaviour
         
         lifeText_GW.text = "남은 생명: " + GameManagers.instance.Life.ToString();
         moneyText_GW.text = "남은 돈: " + GameManagers.instance.Money.ToString();
+        playTimeText_GW.text = "플레이 타임: " + getTimeText(playTime);
+
         gameWinCanvas.SetActive(true);
         yield return StartCoroutine(BlackPannel.instance.FadeOut());
     }
@@ -176,5 +194,27 @@ public class UIManager : MonoBehaviour
                 target.color = Color.red;
                 break;
         }
+    }
+
+    private String getTimeText(float time)
+    {
+        String minS;
+        String secS;
+        float min = Mathf.Floor(time / 60);
+        float sec = Mathf.RoundToInt(time % 60);
+
+        minS = min.ToString();
+        secS = Mathf.RoundToInt(sec).ToString();
+
+        return(string.Format("{0}분 {1}초", minS, secS));
+    }
+
+    public void ShowErrorMessage()
+    {
+        TextMeshProUGUI errorMessage = errorUI.GetComponentInChildren<TextMeshProUGUI>();
+        errorUI.SetActive(true);
+        errorMessage.text = "돈이 부족하여\n구매할 수 없습니다!";
+        // myTween.SetDelay(0.5f);
+        // errorUI.SetActive(false);
     }
 }
