@@ -95,7 +95,7 @@ public class Store : MonoBehaviour
 
         //사려는 타워가 휴지통이 아니고, 가진 돈보다 비싼 타워인지 검사
         if (towerPrefab.transform.tag != "TowerRecycleBin" && GameManagers.instance.Money - price < 0){
-            Debug.Log("돈이 부족합니다!");
+            UIManager.instance.ShowErrorMessage();
             return;
         }
          //해당 슬롯에 있는 타워 프리팹을 인벤토리에 추가.
