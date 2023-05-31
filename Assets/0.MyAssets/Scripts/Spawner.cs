@@ -118,6 +118,10 @@ public class Spawner : MonoBehaviour
             GameManagers.instance.TowerAvastAbility();
             GameManagers.instance.TowerNotepadAbilityOff();
             GameManagers.instance.UpdateProbability(waveIndex);
+
+            if (waveIndex == 1) {
+                GameManagers.instance.LastWave();
+            }
         }
     }
 

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-// using DG.Tweening;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -39,13 +39,14 @@ public class UIManager : MonoBehaviour
     float playTime;
     public TextMeshProUGUI playTimeText_GO;
     public TextMeshProUGUI playTimeText_GW;
+    public TextMeshProUGUI mvtNameText;
     public GameObject errorUI;
 
     private void Awake()
     {
         if(instance != null)
         {
-            Destroy(instance);
+            Destroy(gameObject);
         }
         instance = this;
     }
@@ -152,15 +153,21 @@ public class UIManager : MonoBehaviour
     {
         yield return StartCoroutine(BlackPannel.instance.FadeIn());
         playTime = Time.realtimeSinceStartup - Starttime;
-        mainCanvas.SetActive(false);
 
-        //플레이타임 추가
+        GameObject mvt = GameManagers.instance.GetMostKillTower();
+        mainCanvas.SetActive(false);
         storeInvenCanvas.SetActive(false);
-        
+
         lifeText_GW.text = "남은 생명: " + GameManagers.instance.Life.ToString();
         moneyText_GW.text = "남은 돈: " + GameManagers.instance.Money.ToString();
-        playTimeText_GW.text = "플레이 타임: " + getTimeText(playTime);
-
+        playTimeText_GW.text = "소요 시간: " + getTimeText(playTime);
+        
+        if (mvt == null) {
+            mvtNameText.text = "MVT: 없습니다"; 
+        } else {
+            mvtNameText.text = "MVT: " + mvt.GetComponentInChildren<TowerUnit>().UnitName.ToString();
+        }
+        
         gameWinCanvas.SetActive(true);
         yield return StartCoroutine(BlackPannel.instance.FadeOut());
     }
@@ -214,7 +221,12 @@ public class UIManager : MonoBehaviour
         TextMeshProUGUI errorMessage = errorUI.GetComponentInChildren<TextMeshProUGUI>();
         errorUI.SetActive(true);
         errorMessage.text = "돈이 부족하여\n구매할 수 없습니다!";
-        // myTween.SetDelay(0.5f);
-        // errorUI.SetActive(false);
+        //0.5초 후에 함수 실행. 비동기.
+        Invoke("tryInvoke", 0.65f);
+    }
+
+    void tryInvoke()
+    {
+        errorUI.SetActive(false);
     }
 }

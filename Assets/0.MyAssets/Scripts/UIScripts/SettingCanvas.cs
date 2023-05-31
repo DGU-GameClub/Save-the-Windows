@@ -10,7 +10,7 @@ public class SettingCanvas : MonoBehaviour
     {
         if(instance != null)
         {
-            Destroy(instance);
+            Destroy(gameObject);
         }
         instance = this;
         DontDestroyOnLoad(gameObject);

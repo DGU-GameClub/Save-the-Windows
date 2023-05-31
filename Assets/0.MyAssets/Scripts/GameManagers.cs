@@ -176,7 +176,6 @@ public class GameManagers : MonoBehaviour
         return MostKillTower;
     }
     public void BossStageOn(int i) {
-       
         switch (i) {
             case 5:
                 _sellManager.BossStageStart(0);
@@ -218,5 +217,11 @@ public class GameManagers : MonoBehaviour
                 break;
         }
         Stageindex = i;
+    }
+
+    public void LastWave()
+    {
+        Debug.Log("Game Win!");
+        StartCoroutine(UIManager.instance.GameWin());
     }
 }
