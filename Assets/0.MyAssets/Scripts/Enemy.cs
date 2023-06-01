@@ -101,19 +101,18 @@ public class Enemy : LivingEntity
         _hpbar.offset = hpBarOffset;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        switch (collision.tag)
+    public void ApplySpecial(String Special, GameObject Tower) {
+        switch (Special)
         {
             case "Burn":
-                ApplyBurn(collision.gameObject.GetComponent<TowerBulletBurn>());
+                ApplyBurn(Tower.GetComponent<TowerBulletBurn>());
                 break;
             case "Paralysis":
                 if (gameObject.CompareTag("Boss")) return;
-                ApplyParalysis(collision.gameObject.GetComponent<TowerBulletParalysis>());
+                ApplyParalysis(Tower.GetComponent<TowerBulletParalysis>());
                 break;
             case "Slow":
-                ApplySlow(collision.gameObject.GetComponent<TowerBulletSlow>());
+                ApplySlow(Tower.GetComponent<TowerBulletSlow>());
                 break;
             default:
                 break;

@@ -26,12 +26,12 @@ public class SoundManager : MonoBehaviour
     public BgmType[] BGMList;
 
     public AudioSource BGM;
-    private string NowBGMname = "";
 
     private void Awake() {
         if(instance != null)
         {
             Destroy(gameObject);
+            return;
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
@@ -39,6 +39,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>();
         VolumeInit();
     }
 
@@ -50,7 +51,7 @@ public class SoundManager : MonoBehaviour
     //음악 재생
     public void PlayBGM(string name, bool isLoop, float Vol)
     {
-
+        if (BGM == null) BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>();
         for (int i = 0; i < BGMList.Length; ++i)
             if (BGMList[i].name.Equals(name))
             {
@@ -58,11 +59,11 @@ public class SoundManager : MonoBehaviour
                 BGM.loop = isLoop; 
                 BGM.volume = Vol;
                 BGM.Play();
-                NowBGMname = name;
             }
     }
     public void StopBGM()
     {
+        if(BGM == null) BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>();
         BGM.Stop();
     }
     //볼륨조절

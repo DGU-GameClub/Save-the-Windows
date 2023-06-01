@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
         if(instance != null)
         {
             Destroy(gameObject);
+            return;
         }
         instance = this;
     }
@@ -111,6 +112,8 @@ public class UIManager : MonoBehaviour
     {
         //게임종료하기 전에 확인 메세지 띄우기
         StartCoroutine(GameOver(GameManagers.instance.Life));
+        SoundManager.instance.StopBGM();
+        SoundManager.instance.PlayBGM("GameOver", false, 1f);
     }
 
     public void OnClickBack()
@@ -165,7 +168,7 @@ public class UIManager : MonoBehaviour
         if (mvt == null) {
             mvtNameText.text = "MVT: 없습니다"; 
         } else {
-            mvtNameText.text = "MVT: " + mvt.GetComponentInChildren<TowerUnit>().UnitName.ToString();
+            mvtNameText.text = "MVT: " + mvt.GetComponentInChildren<TowerUnit>().UnitName;
         }
         
         gameWinCanvas.SetActive(true);

@@ -17,6 +17,7 @@ TagManager:
   - Boss
   - TowerRecycleBin
   - TowerMypc
+  - BGM
   layers:
   - Default
   - TransparentFX

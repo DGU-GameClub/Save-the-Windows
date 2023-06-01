@@ -119,7 +119,7 @@ public class Spawner : MonoBehaviour
             GameManagers.instance.TowerNotepadAbilityOff();
             GameManagers.instance.UpdateProbability(waveIndex);
 
-            if (waveIndex == 1) {
+            if (waveIndex == waves.Length) {
                 GameManagers.instance.LastWave();
             }
         }
@@ -130,12 +130,10 @@ public class Spawner : MonoBehaviour
         if (Time.timeScale == 0f) return;
         if (state == SPAWNER_STATE.START)
         {
-            Debug.Log("이미 시작했습니다");
             return;
         }
         if (waveIndex >= waves.Length)
         {
-            Debug.Log("wave 종료");
             return;
         }
 
@@ -155,8 +153,6 @@ public class Spawner : MonoBehaviour
             bossRemainingToSpawn = curBossWave.enemyCount;
             enemyRemainingAlive += bossRemainingToSpawn;
         }
-
-        print("Wave: " + waveIndex);
 
         state = SPAWNER_STATE.START;
         nextSpawnTime = Time.time;

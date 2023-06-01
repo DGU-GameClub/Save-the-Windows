@@ -7,9 +7,14 @@ public class StartCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        settingMenu = GameObject.Find("Setting Canvas").transform.Find("Setting Menu").gameObject;
         Screen.SetResolution(1920, 1080, true);
         settingMenu.SetActive(false);
         StartCoroutine(BlackPannel.instance.FadeOut());
+        SoundManager.instance.StopBGM();
+        SoundManager.instance.PlayBGM("Main", true, 1f);
+
     }
 
     public void OnClickStartGame()

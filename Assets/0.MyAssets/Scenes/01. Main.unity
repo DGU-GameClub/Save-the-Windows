@@ -13859,7 +13859,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1736615218}
-  - component: {fileID: 1736615217}
   m_Layer: 0
   m_Name: RealTower
   m_TagString: Untagged
@@ -13867,18 +13866,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1736615217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736615216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1468bb7bdcf04f18b00e0b2b3f1c884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1736615218
 Transform:
   m_ObjectHideFlags: 0

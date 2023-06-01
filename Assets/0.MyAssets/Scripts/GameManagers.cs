@@ -27,10 +27,9 @@ public class GameManagers : MonoBehaviour
     {
         if (instance != null) {
             Destroy(gameObject);
+            return;
         }
         instance = this;
-        SoundManager.instance.StopBGM();
-        SoundManager.instance.PlayBGM("GameStart",false, 1f);
     }
     void Start()
     {
@@ -39,6 +38,8 @@ public class GameManagers : MonoBehaviour
         _sellManager = GameObject.Find("SellCanvas").GetComponent<SellManager>();
         _sellManager.TutorialStart();
         isEnd = false;
+        SoundManager.instance.StopBGM();
+        SoundManager.instance.PlayBGM("GameStart", false, 1f);
     }
 
     // Update is called once per frame
@@ -221,7 +222,6 @@ public class GameManagers : MonoBehaviour
 
     public void LastWave()
     {
-        Debug.Log("Game Win!");
         StartCoroutine(UIManager.instance.GameWin());
     }
 }
