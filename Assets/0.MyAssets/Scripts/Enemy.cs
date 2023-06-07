@@ -161,7 +161,6 @@ public class Enemy : LivingEntity
     {
         isParalysis = true;
         float time = paralysis.time;
-        float originSpeed = moveSpeed;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         moveSpeed = 0f;
         spriteRenderer.color = new Color(1, 0.5f, 0, 1);

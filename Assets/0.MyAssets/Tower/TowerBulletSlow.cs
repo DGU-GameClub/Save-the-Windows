@@ -16,7 +16,7 @@ public class TowerBulletSlow : TowerBullet
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.CompareTag("Enemy") || collision.CompareTag("Boss")) && ((AttackEnemy != null && AttackEnemy.Equals(collision.gameObject)) || Tower.GetComponent<TowerUnit>().UnitName.Equals("¿þÀÏ")))
+        if ((collision.CompareTag("Enemy") || collision.CompareTag("Boss")) && ((AttackEnemy != null && AttackEnemy.Equals(collision.gameObject))))
         {
             if (collision.gameObject == null) return;
             if ((collision.gameObject.GetComponent<Enemy>().health - Tower.GetComponent<TowerUnit>().Attack) <= 0)
