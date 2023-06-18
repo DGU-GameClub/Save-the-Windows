@@ -152,10 +152,10 @@ public class GameManagers : MonoBehaviour
     }
     public GameObject GetMostKillTower() {
         GameObject[] Towers = GameObject.FindGameObjectsWithTag("Tower");
+        if (Towers.Length == 0) return null;
         int MostKillNumber = 0;
         GameObject MostKillTower = null;
-        if (Towers != null)
-            MostKillNumber = Towers[0].GetComponentInChildren<TowerUnit>().KillNumber;
+        Debug.Log(Towers.Length);
         foreach (GameObject obj in Towers)
         {
             int tempKillNumber = obj.GetComponentInChildren<TowerUnit>().KillNumber;
@@ -211,7 +211,7 @@ public class GameManagers : MonoBehaviour
             default:
                 if(_sellManager.isBossUI) _sellManager.BossSpawnUI();
                 _sellManager.BossStageEnd();
-                if (Stageindex % 5 == 0) {
+                if (Stageindex % 5 == 0 && Stageindex > 0) {
                     SoundManager.instance.StopBGM();
                     SoundManager.instance.PlayBGM("NonBoss", true, 0.5f);
                 }
