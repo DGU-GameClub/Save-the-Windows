@@ -44,6 +44,7 @@ public class UIManager : MonoBehaviour
     public Image mvtImage_GO;
     public Image mvtImage_GW;
     public GameObject errorUI;
+    public GameObject exitUI;
 
     private void Awake()
     {
@@ -63,6 +64,7 @@ public class UIManager : MonoBehaviour
         gameOverCanvas.SetActive(false);
         gameWinCanvas.SetActive(false);
         errorUI.SetActive(false);
+        exitUI.SetActive(false);
         Starttime = Time.realtimeSinceStartup;
     }
 
@@ -111,9 +113,19 @@ public class UIManager : MonoBehaviour
             GameManagers.instance.Money -= 10;
         }
     }
-    public void OnClickResetButton()
+    public void OnClickExitButton()
     {
-        //게임종료하기 전에 확인 메세지 띄우기
+        exitUI.SetActive(true);
+    }
+
+    public void OnClicNoExitButton()
+    {
+        exitUI.SetActive(false);
+    }
+
+    public void OnClickYesExitButton()
+    {
+        exitUI.SetActive(false);
         StartCoroutine(GameOver(GameManagers.instance.Life));
         SoundManager.instance.StopBGM();
         SoundManager.instance.PlayBGM("GameOver", false, 1f);
