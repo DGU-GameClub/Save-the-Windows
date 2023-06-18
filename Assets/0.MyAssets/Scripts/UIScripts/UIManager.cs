@@ -39,7 +39,10 @@ public class UIManager : MonoBehaviour
     float playTime;
     public TextMeshProUGUI playTimeText_GO;
     public TextMeshProUGUI playTimeText_GW;
-    public TextMeshProUGUI mvtNameText;
+    public TextMeshProUGUI mvtText_GO;
+    public TextMeshProUGUI mvtText_GW;
+    public Image mvtImage_GO;
+    public Image mvtImage_GW;
     public GameObject errorUI;
 
     private void Awake()
@@ -140,6 +143,8 @@ public class UIManager : MonoBehaviour
     {
         yield return StartCoroutine(BlackPannel.instance.FadeIn());
         playTime = Time.realtimeSinceStartup - Starttime;
+        GameObject mvt = GameManagers.instance.GetMostKillTower();
+        
         mainCanvas.SetActive(false);
         storeInvenCanvas.SetActive(false);
         
@@ -147,6 +152,13 @@ public class UIManager : MonoBehaviour
         moneyText_GO.text = "남은 돈: " + GameManagers.instance.Money.ToString();
         lastWave.text = "마지막 단계: " + spawner.waveIndex.ToString();
         playTimeText_GO.text = "소요 시간: " + getTimeText(playTime);
+
+        if (mvt == null) {
+            mvtText_GO.text = "MVT: 없습니다"; 
+        } else {
+            mvtText_GO.text = "MVT: " + mvt.GetComponentInChildren<TowerUnit>().UnitName;
+            mvtImage_GO.sprite = mvt.GetComponentInChildren<TowerUnit>().TowerImage.sprite;
+        }
 
         gameOverCanvas.SetActive(true);
         yield return StartCoroutine(BlackPannel.instance.FadeOut());
@@ -166,9 +178,10 @@ public class UIManager : MonoBehaviour
         playTimeText_GW.text = "소요 시간: " + getTimeText(playTime);
         
         if (mvt == null) {
-            mvtNameText.text = "MVT: 없습니다"; 
+            mvtText_GW.text = "MVT: 없습니다"; 
         } else {
-            mvtNameText.text = "MVT: " + mvt.GetComponentInChildren<TowerUnit>().UnitName;
+            mvtText_GW.text = "MVT: " + mvt.GetComponentInChildren<TowerUnit>().UnitName;
+            mvtImage_GW.sprite = mvt.GetComponentInChildren<TowerUnit>().TowerImage.sprite;
         }
         
         gameWinCanvas.SetActive(true);
