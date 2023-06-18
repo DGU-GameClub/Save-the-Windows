@@ -154,9 +154,9 @@ public class UIManager : MonoBehaviour
         playTimeText_GO.text = "소요 시간: " + getTimeText(playTime);
 
         if (mvt == null) {
-            mvtText_GO.text = "MVT: 없습니다"; 
+            mvtText_GO.text = "없습니다"; 
         } else {
-            mvtText_GO.text = "MVT: " + mvt.GetComponentInChildren<TowerUnit>().UnitName;
+            mvtText_GO.text = mvt.GetComponentInChildren<TowerUnit>().UnitName;
             mvtImage_GO.sprite = mvt.GetComponentInChildren<TowerUnit>().TowerImage.sprite;
         }
 
@@ -178,9 +178,9 @@ public class UIManager : MonoBehaviour
         playTimeText_GW.text = "소요 시간: " + getTimeText(playTime);
         
         if (mvt == null) {
-            mvtText_GW.text = "MVT: 없습니다"; 
+            mvtText_GW.text = "없습니다"; 
         } else {
-            mvtText_GW.text = "MVT: " + mvt.GetComponentInChildren<TowerUnit>().UnitName;
+            mvtText_GW.text = mvt.GetComponentInChildren<TowerUnit>().UnitName;
             mvtImage_GW.sprite = mvt.GetComponentInChildren<TowerUnit>().TowerImage.sprite;
         }
         
