@@ -1896,8 +1896,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0.34100342, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2275,7 +2275,6 @@ MonoBehaviour:
   - {fileID: 8784303020881453732}
   - {fileID: 7123427216288994208}
   - {fileID: 2419846592793303277}
-  Fasttext: {fileID: 0}
   Tutoindex: 0
   TutoBackgorund: {fileID: 5995914883935490854}
   TutoImageList:
@@ -2297,9 +2296,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9219cbfc09fd5e642860aaf7ba15430a, type: 3}
   - {fileID: 21300000, guid: 1bdb3ba59dfd12c4793cb42fffbe743b, type: 3}
   MoveUI: {fileID: 8814861166628921589}
+  isBossUI: 0
   bosstransforms:
   - {fileID: 3207119941017447120}
   - {fileID: 5175305560392843572}
+  FastButton: {fileID: 0}
+  play1: {fileID: 0}
+  play2: {fileID: 0}
+  play3: {fileID: 0}
 --- !u!1 &3241863315921305298
 GameObject:
   m_ObjectHideFlags: 0

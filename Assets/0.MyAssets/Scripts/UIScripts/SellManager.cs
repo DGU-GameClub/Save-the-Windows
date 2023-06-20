@@ -159,8 +159,12 @@ public class SellManager : MonoBehaviour
         BossUI.SetActive(true);
         currentStage = i;
         BossSpawnUI();
+        Invoke(nameof(FirstBossUI), 10f);
     }
     public void BossStageEnd() {
         BossUI.SetActive(false);
+    }
+    public void FirstBossUI() { 
+        BossSpawnUI();
     }
 }

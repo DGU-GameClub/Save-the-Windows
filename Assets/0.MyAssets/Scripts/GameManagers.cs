@@ -155,7 +155,6 @@ public class GameManagers : MonoBehaviour
         if (Towers.Length == 0) return null;
         int MostKillNumber = 0;
         GameObject MostKillTower = null;
-        Debug.Log(Towers.Length);
         foreach (GameObject obj in Towers)
         {
             int tempKillNumber = obj.GetComponentInChildren<TowerUnit>().KillNumber;
