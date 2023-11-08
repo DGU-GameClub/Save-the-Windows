@@ -5,6 +5,9 @@
 \
 **윈도우를 지켜라.** 
 
+\
+<img src="https://github.com/DGU-GameClub/Save-the-Windows/assets/83286384/c1fcd470-a91f-4b2b-b85e-8ca0118ecec2"/>
+
 ## Commit 방법
 꼭 다음의 방법을 따라서 커밋할 필요는 없지만, 알아보기 쉽게하기 위함.
 \
