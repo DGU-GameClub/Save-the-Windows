@@ -8,6 +8,11 @@
 \
 <img src="https://github.com/DGU-GameClub/Save-the-Windows/assets/83286384/c1fcd470-a91f-4b2b-b85e-8ca0118ecec2"/>
 
+## Play 화면
+![_2024_03_30_23_43_21_472-ezgif com-video-to-gif-converter](https://github.com/DGU-GameClub/Save-the-Windows/assets/23547185/475ac611-d966-47a0-83cc-3c55245000d2)
+![_2024_03_30_23_43_05_682-ezgif com-video-to-gif-converter](https://github.com/DGU-GameClub/Save-the-Windows/assets/23547185/0cec0ce2-bd02-4e1e-a9ee-b8fe492e86ec)
+
+
 ## Commit 방법
 꼭 다음의 방법을 따라서 커밋할 필요는 없지만, 알아보기 쉽게하기 위함.
 \
