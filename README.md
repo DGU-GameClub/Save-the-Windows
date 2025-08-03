@@ -72,8 +72,12 @@ DGU-GameClub은 총 3인으로 구상하여, 작지만 완성도 있는 게임�
 <br>
 
 ## 플레이영상
+https://youtu.be/vqWhBU6oIBw
+<br>
 
 ## 게임 다운로드
+https://drive.google.com/file/d/18-SDEGv577sY1xvPta4Ku-q7cYbl8jpe/view?usp=sharing
+<br>
 
 ## Commit 방법
 꼭 다음의 방법을 따라서 커밋할 필요는 없지만, 알아보기 쉽게하기 위함.
